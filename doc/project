@@ -1,0 +1,65 @@
+================================================================================
+--------------------------------------------------------------------------------
+# S.T.A.L.K.E.R. Sheet
+--------------------------------------------------------------------------------
+================================================================================
+
+	Roll20 Character Sheet for S.T.A.L.K.E.R. Role Playing Game by Fabien « Amatsu » Gest (5th version, 2011).
+	Inspired by video games S.T.A.L.K.E.R.: Shadow of Chernobyl, Clear Sky & Call of Pripyat which rights are owned by GSC Game World.
+	Based upon Capitaine Red character sheet.
+	Version 2.0
+
+================================================================================
+--------------------------------------------------------------------------------
+# Snippets
+--------------------------------------------------------------------------------
+================================================================================
+
+@{Borja|repeating_sacados_$0_NomObjet}
+
+value="@{whisper_to_gm} &{template:default} {{name=Roll Test}} {{desc=This is a roll test.}}"
+
+================================================================================
+--------------------------------------------------------------------------------
+# TODO
+--------------------------------------------------------------------------------
+================================================================================
+
+! Format HTML
+! Format CSS
+! Fix 'Repeating_Specialite' bug
+! Set character name read-only (i.e. All-in bug preventing)
+! Add tab names
+! Add translation file
+! Add JavaScript Webworker
+	> Compute inventory weight
+	> Add one-page view
+! Add Roll20 Templates
+	> Attack
+	> Damage
+	> Armor Resistance
+! Add Character Gender Field
+! Add XP Field
+! Add Money Field
+! Add Titles Field
+! Add Reputation Field
+! Add Resistances (physical + elemental)
+
+1) character - Personnage
+	A - state - État civil
+	B - history - Historique
+2) abilities - Caractéristiques
+3) status - Condition
+	A - vitals - Signes vitaux
+	B - conditions - États préjudiciables
+4) notes - Notes
+5) specialities - Spécialités
+6) armament - Armement
+7) equipment - Équipement
+8) backpack - Sac à dos
+
+Questions
+- Combien de points de sang-froid utilisables au maximum en une fois ?
+- Combien de points de points de vie récupérés après un repos ? (valeur arbitraire fixée au nombre de points de vie maximum)
+- Combien de points de radiation perdus après un repos ? (valeur arbitraire fixée à 10 pts)
+- Combien de points de fatigue perdus après un repos ? (valeur arbitraire fixée à 50 pts)

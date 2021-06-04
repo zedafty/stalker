@@ -1,0 +1,676 @@
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../sheet.css"></head><body>
+
+<div class="stalker"><!-- STALKER -->
+
+	<div class="sheet"><!-- SHEET -->
+
+		<!-- SHEET CONTROLS -->
+		<input type="checkbox" class="mod tab0" id="tab0" name="attr_show_all_tabs" value="1" /><label for="tab0" data-i18n="show_all_tabs">Show All Tabs</label>
+		<input type="checkbox" class="mod" id="ask_modifiers" name="attr_ask_modifiers" value="1" /><label for="ask_modifiers" data-i18n="ask_modifiers">Ask Modifier</label>
+		<input type="checkbox" class="mod" id="whisper_to_gm" name="attr_whisper_to_gm" value="1" /><label for="whisper_to_gm" data-i18n="whisper_to_gm">Whisper to GM</label>
+		<!-- END SHEET CONTROLS -->
+
+		<!-- SHEET TABS -->
+		<input type="radio" class="tog tab1" id="tab1" name="attr_tab" value="1" checked="checked" /><label for="tab1" data-i18n="character">Character</label>
+		<input type="radio" class="tog tab2" id="tab2" name="attr_tab" value="2" /><label for="tab2" data-i18n="abilities">Abilities</label>
+		<input type="radio" class="tog tab3" id="tab3" name="attr_tab" value="3" /><label for="tab3" data-i18n="status">Status</label>
+		<input type="radio" class="tog tab4" id="tab4" name="attr_tab" value="4" /><label for="tab4" data-i18n="notes">Notes</label>
+		<input type="radio" class="tog tab5" id="tab5" name="attr_tab" value="5" /><label for="tab5" data-i18n="specialities">Specialities</label>
+		<input type="radio" class="tog tab6" id="tab6" name="attr_tab" value="6" /><label for="tab6" data-i18n="armament">Armament</label>
+		<input type="radio" class="tog tab7" id="tab7" name="attr_tab" value="7" /><label for="tab7" data-i18n="equipment">Equipment</label>
+		<input type="radio" class="tog tab8" id="tab8" name="attr_tab" value="8" /><label for="tab8" data-i18n="backpack">Backpack</label>
+		<!-- END SHEET TABS -->
+
+		<span class="debug" type="text" name="attr_debug"></span><!-- DEBUG-->
+
+		<div class="modifiers"><!-- MODIFIERS-->
+			<div class="self-control">
+				<input type="radio" name="attr_selfcontrol_use" value="0" title="0" checked="checked" />
+				<label data-i18n="selfcontrol">Self-control</label>
+				<input type="radio" name="attr_selfcontrol_use" value="1" title="1" /><span></span>
+				<input type="radio" name="attr_selfcontrol_use" value="2" title="2" /><span></span>
+				<input type="radio" name="attr_selfcontrol_use" value="3" title="3" /><span></span>
+				<input type="radio" name="attr_selfcontrol_use" value="4" title="4" /><span></span>
+				<input type="radio" name="attr_selfcontrol_use" value="5" title="5" /><span></span>
+				<span class="count" name="attr_selfcontrol_use" />0</span>
+			</div>
+			<div class="leadership">
+				<label for="leadership" data-i18n="leadership">Leadership</label>
+				<input id="leadership" name="attr_leadership" type="number" min="0" max="10" value="0" />
+				<button type="action" name="act_leadership_reset">*</button>
+			</div>
+		</div><!-- END MODIFIERS-->
+
+		<div class="tab tab1 character"><!-- CHARACTER-->
+			<h1 data-i18n="state">State</h1>
+			<div class="state" ><!-- STATE -->
+				<div>
+					<label for="char_surname" data-i18n="char_surname">Name</label>
+					<input type="text" id="char_surname" name="attr_character_name" value="Charname" readonly />
+				</div>
+				<div>
+					<label for="char_fname" data-i18n="char_fname">First</label>
+					<input type="text" id="char_fname" name="attr_char_fname" />
+				</div>
+				<div>
+					<label for="char_lname" data-i18n="char_lname">Last</label>
+					<input type="text" id="char_lname" name="attr_char_lname" />
+				</div>
+				<div>
+					<label for="char_age" data-i18n="char_age">Age</label>
+					<input type="text" id="char_age" name="attr_char_age" />
+				</div>
+				<div>
+					<label for="char_size" data-i18n="char_size">Size</label>
+					<input type="text" id="char_size" name="attr_char_size" />
+				</div>
+				<div>
+					<label for="char_weight" data-i18n="char_weight">Weight</label>
+					<input type="text" id="char_weight" name="attr_char_weight" />
+				</div>
+				<div><!-- NEW-->
+					<label for="char_skin" data-i18n="char_skin">Skin</label>
+					<input type="text" id="char_skin" name="attr_char_skin" />
+				</div>
+				<div>
+					<label for="char_hair" data-i18n="char_hair">Hair</label>
+					<input type="text" id="char_hair" name="attr_char_hair" />
+				</div>
+				<div>
+					<label for="char_eyes" data-i18n="char_eyes">Eyes</label>
+					<input type="text" id="char_eyes" name="attr_char_eyes" />
+				</div>
+				<div>
+					<label for="char_faction" data-i18n="char_faction">Faction</label>
+					<select id="char_faction" name="attr_char_faction">
+						<option data-i18n="loners">Loners</option>
+						<option data-i18n="duty">Duty</option>
+						<option data-i18n="freedom">Freedom</option>
+						<option data-i18n="clearsky">ClearSky</option>
+						<option data-i18n="ecologists">Ecologist</option>
+						<option data-i18n="mercenaries">Mercenaries</option>
+						<option data-i18n="military_forces">Military Forces</option>
+						<option data-i18n="unisg">UNISG</option>
+						<option data-i18n="bandits">Bandit</option>
+						<option data-i18n="renegades">Renegades</option>
+						<option data-i18n="monoliths">Monolith</option>
+						<option data-i18n="sin">Sin</option>
+					</select>
+				</div>
+				<div><!-- NEW-->
+					<label for="char_rank" data-i18n="char_rank">Rank</label>
+					<select id="char_rank" name="attr_char_rank">
+						<option data-i18n="rookie">Rookie</option>
+						<option data-i18n="stalker">Stalker</option>
+						<option data-i18n="veteran">Veteran</option>
+						<option data-i18n="master">Master</option>
+					</select>
+				</div>
+				<div>
+					<label for="char_xp" data-i18n="char_xp">XP</label>
+					<input type="text" id="char_xp" name="attr_char_xp" />
+				</div>
+			</div><!-- END STATE -->
+			<h1 data-i18n="history">History</h1>
+			<div class="history" ><!-- HISTORY -->
+
+				<div>
+					<label data-i18n="antecedents">Antecedents</label>
+					<input type="text" name="attr_antecedent1" />
+					<input type="text" name="attr_antecedent2" />
+					<input type="text" name="attr_antecedent3" />
+				</div>
+
+				<div>
+					<label data-i18n="titles">Titles</label>
+					<input type="text" name="attr_title1" />
+					<input type="text" name="attr_title2" />
+					<input type="text" name="attr_title3" />
+					<input type="text" name="attr_title4" />
+					<input type="text" name="attr_title5" />
+					<input type="text" name="attr_title6" />
+				</div>
+
+				<label data-i18n="biography">Biography</label>
+				<textarea name="attr_biography"></textarea>
+
+			</div> <!-- END HISTORY -->
+
+		</div><!-- END CHARACTER -->
+
+		<div class="tab tab2 abilities"><!-- ABILITIES-->
+			<h1 data-i18n="abilities">Abilities</h1>
+			<div class="ability">
+				<label data-i18n="strength">Strength</label>
+				<span class="max" name="attr_strength">0</span>
+				<span class="cur" name="attr_strength_cur">0</span>
+				<div class="ability-boxes">
+					<input type="hidden" name="attr_strength_use" value="10">
+					<input type="radio" name="attr_strength" value="0" title="0" checked="checked" /><span></span>
+					<input type="radio" name="attr_strength" value="1" title="1" /><span></span>
+					<input type="radio" name="attr_strength" value="2" title="2" /><span></span>
+					<input type="radio" name="attr_strength" value="3" title="3" /><span></span>
+					<input type="radio" name="attr_strength" value="4" title="4" /><span></span>
+					<input type="radio" name="attr_strength" value="5" title="5" /><span></span>
+					<input type="radio" name="attr_strength" value="6" title="6" /><span></span>
+					<input type="radio" name="attr_strength" value="7" title="7" /><span></span>
+					<input type="radio" name="attr_strength" value="8" title="8" /><span></span>
+					<input type="radio" name="attr_strength" value="9" title="9" /><span></span>
+					<input type="radio" name="attr_strength" value="10" title="10" /><span></span>
+					<input type="radio" name="attr_strength" value="11" title="11" /><span></span>
+					<input type="radio" name="attr_strength" value="12" title="12" /><span></span>
+					<input type="radio" name="attr_strength" value="13" title="13" /><span></span>
+					<input type="radio" name="attr_strength" value="14" title="14" /><span></span>
+					<input type="radio" name="attr_strength" value="15" title="15" /><span></span>
+					<input type="radio" name="attr_strength" value="16" title="16" /><span></span>
+					<input type="radio" name="attr_strength" value="17" title="17" /><span></span>
+					<input type="radio" name="attr_strength" value="18" title="18" /><span></span>
+					<input type="radio" name="attr_strength" value="19" title="19" /><span></span>
+					<input type="radio" name="attr_strength" value="20" title="20" /><span></span>
+				</div>
+				<input class="options-flag" name="attr_options_flag_strength" type="checkbox" data-i18n-title="show-hide-options" title="Show/hide options"><span></span>
+				<div class="options">
+					<label for="strength_mod" data-i18n="mod">Mod.</label>
+					<input type="number" id="strength_mod" name="attr_strength_mod" value="0" min="0" max="5" />
+					<label for="strength_base" data-i18n="base">Base</label>
+					<input id="strength_base" type="number" name="attr_strength_base" value="1" min="1" max="10" />
+				</div>
+			</div>
+			<div class="ability">
+				<label data-i18n="endurance">Endurance</label>
+				<input class="max" type="number" name="attr_endurance_base" value="1" min="1" max="10" />
+				<span class="cur" name="attr_endurance">0</span>
+				<div class="ability-boxes">
+					<input type="hidden" name="attr_endurance_use" value="10">
+					<input type="radio" name="attr_endurance" value="0" title="0" checked="checked" /><span></span>
+					<input type="radio" name="attr_endurance" value="1" title="1" /><span></span>
+					<input type="radio" name="attr_endurance" value="2" title="2" /><span></span>
+					<input type="radio" name="attr_endurance" value="3" title="3" /><span></span>
+					<input type="radio" name="attr_endurance" value="4" title="4" /><span></span>
+					<input type="radio" name="attr_endurance" value="5" title="5" /><span></span>
+					<input type="radio" name="attr_endurance" value="6" title="6" /><span></span>
+					<input type="radio" name="attr_endurance" value="7" title="7" /><span></span>
+					<input type="radio" name="attr_endurance" value="8" title="8" /><span></span>
+					<input type="radio" name="attr_endurance" value="9" title="9" /><span></span>
+					<input type="radio" name="attr_endurance" value="10" title="10" /><span></span>
+					<input type="radio" name="attr_endurance" value="11" title="11" /><span></span>
+					<input type="radio" name="attr_endurance" value="12" title="12" /><span></span>
+					<input type="radio" name="attr_endurance" value="13" title="13" /><span></span>
+					<input type="radio" name="attr_endurance" value="14" title="14" /><span></span>
+					<input type="radio" name="attr_endurance" value="15" title="15" /><span></span>
+					<input type="radio" name="attr_endurance" value="16" title="16" /><span></span>
+					<input type="radio" name="attr_endurance" value="17" title="17" /><span></span>
+					<input type="radio" name="attr_endurance" value="18" title="18" /><span></span>
+					<input type="radio" name="attr_endurance" value="19" title="19" /><span></span>
+					<input type="radio" name="attr_endurance" value="20" title="20" /><span></span>
+				</div>
+			</div>
+			<div class="ability">
+				<label data-i18n="health">Health</label>
+				<input class="max" type="number" name="attr_health_base" value="1" min="1" max="10" />
+				<span class="cur" name="attr_health">0</span>
+				<div class="ability-boxes">
+					<input type="hidden" name="attr_health_use" value="10">
+					<input type="radio" name="attr_health" value="0" title="0" checked="checked" /><span></span>
+					<input type="radio" name="attr_health" value="1" title="1" /><span></span>
+					<input type="radio" name="attr_health" value="2" title="2" /><span></span>
+					<input type="radio" name="attr_health" value="3" title="3" /><span></span>
+					<input type="radio" name="attr_health" value="4" title="4" /><span></span>
+					<input type="radio" name="attr_health" value="5" title="5" /><span></span>
+					<input type="radio" name="attr_health" value="6" title="6" /><span></span>
+					<input type="radio" name="attr_health" value="7" title="7" /><span></span>
+					<input type="radio" name="attr_health" value="8" title="8" /><span></span>
+					<input type="radio" name="attr_health" value="9" title="9" /><span></span>
+					<input type="radio" name="attr_health" value="10" title="10" /><span></span>
+					<input type="radio" name="attr_health" value="11" title="11" /><span></span>
+					<input type="radio" name="attr_health" value="12" title="12" /><span></span>
+					<input type="radio" name="attr_health" value="13" title="13" /><span></span>
+					<input type="radio" name="attr_health" value="14" title="14" /><span></span>
+					<input type="radio" name="attr_health" value="15" title="15" /><span></span>
+					<input type="radio" name="attr_health" value="16" title="16" /><span></span>
+					<input type="radio" name="attr_health" value="17" title="17" /><span></span>
+					<input type="radio" name="attr_health" value="18" title="18" /><span></span>
+					<input type="radio" name="attr_health" value="19" title="19" /><span></span>
+					<input type="radio" name="attr_health" value="20" title="20" /><span></span>
+				</div>
+			</div>
+			<div class="ability">
+				<label data-i18n="agility">Agility</label>
+				<input class="max" type="number" name="attr_agility_base" value="1" min="1" max="10" />
+				<span class="cur" name="attr_agility">0</span>
+				<div class="ability-boxes">
+					<input type="hidden" name="attr_agility_use" value="10">
+					<input type="radio" name="attr_agility" value="0" title="0" checked="checked" /><span></span>
+					<input type="radio" name="attr_agility" value="1" title="1" /><span></span>
+					<input type="radio" name="attr_agility" value="2" title="2" /><span></span>
+					<input type="radio" name="attr_agility" value="3" title="3" /><span></span>
+					<input type="radio" name="attr_agility" value="4" title="4" /><span></span>
+					<input type="radio" name="attr_agility" value="5" title="5" /><span></span>
+					<input type="radio" name="attr_agility" value="6" title="6" /><span></span>
+					<input type="radio" name="attr_agility" value="7" title="7" /><span></span>
+					<input type="radio" name="attr_agility" value="8" title="8" /><span></span>
+					<input type="radio" name="attr_agility" value="9" title="9" /><span></span>
+					<input type="radio" name="attr_agility" value="10" title="10" /><span></span>
+					<input type="radio" name="attr_agility" value="11" title="11" /><span></span>
+					<input type="radio" name="attr_agility" value="12" title="12" /><span></span>
+					<input type="radio" name="attr_agility" value="13" title="13" /><span></span>
+					<input type="radio" name="attr_agility" value="14" title="14" /><span></span>
+					<input type="radio" name="attr_agility" value="15" title="15" /><span></span>
+					<input type="radio" name="attr_agility" value="16" title="16" /><span></span>
+					<input type="radio" name="attr_agility" value="17" title="17" /><span></span>
+					<input type="radio" name="attr_agility" value="18" title="18" /><span></span>
+					<input type="radio" name="attr_agility" value="19" title="19" /><span></span>
+					<input type="radio" name="attr_agility" value="20" title="20" /><span></span>
+				</div>
+			</div>
+			<div class="ability">
+				<label data-i18n="reflexes">Reflexes</label>
+				<input class="max" type="number" name="attr_reflexes_base" value="1" min="1" max="10" />
+				<span class="cur" name="attr_reflexes">0</span>
+				<div class="ability-boxes">
+					<input type="hidden" name="attr_reflexes_use" value="10">
+					<input type="radio" name="attr_reflexes" value="0" title="0" checked="checked" /><span></span>
+					<input type="radio" name="attr_reflexes" value="1" title="1" /><span></span>
+					<input type="radio" name="attr_reflexes" value="2" title="2" /><span></span>
+					<input type="radio" name="attr_reflexes" value="3" title="3" /><span></span>
+					<input type="radio" name="attr_reflexes" value="4" title="4" /><span></span>
+					<input type="radio" name="attr_reflexes" value="5" title="5" /><span></span>
+					<input type="radio" name="attr_reflexes" value="6" title="6" /><span></span>
+					<input type="radio" name="attr_reflexes" value="7" title="7" /><span></span>
+					<input type="radio" name="attr_reflexes" value="8" title="8" /><span></span>
+					<input type="radio" name="attr_reflexes" value="9" title="9" /><span></span>
+					<input type="radio" name="attr_reflexes" value="10" title="10" /><span></span>
+					<input type="radio" name="attr_reflexes" value="11" title="11" /><span></span>
+					<input type="radio" name="attr_reflexes" value="12" title="12" /><span></span>
+					<input type="radio" name="attr_reflexes" value="13" title="13" /><span></span>
+					<input type="radio" name="attr_reflexes" value="14" title="14" /><span></span>
+					<input type="radio" name="attr_reflexes" value="15" title="15" /><span></span>
+					<input type="radio" name="attr_reflexes" value="16" title="16" /><span></span>
+					<input type="radio" name="attr_reflexes" value="17" title="17" /><span></span>
+					<input type="radio" name="attr_reflexes" value="18" title="18" /><span></span>
+					<input type="radio" name="attr_reflexes" value="19" title="19" /><span></span>
+					<input type="radio" name="attr_reflexes" value="20" title="20" /><span></span>
+				</div>
+			</div>
+			<div class="ability">
+				<label data-i18n="accuracy">Accuracy</label>
+				<input class="max" type="number" name="attr_accuracy_base" value="1" min="1" max="10" />
+				<span class="cur" name="attr_accuracy">0</span>
+				<div class="ability-boxes">
+					<input type="hidden" name="attr_accuracy_use" value="10">
+					<input type="radio" name="attr_accuracy" value="0" title="0" checked="checked" /><span></span>
+					<input type="radio" name="attr_accuracy" value="1" title="1" /><span></span>
+					<input type="radio" name="attr_accuracy" value="2" title="2" /><span></span>
+					<input type="radio" name="attr_accuracy" value="3" title="3" /><span></span>
+					<input type="radio" name="attr_accuracy" value="4" title="4" /><span></span>
+					<input type="radio" name="attr_accuracy" value="5" title="5" /><span></span>
+					<input type="radio" name="attr_accuracy" value="6" title="6" /><span></span>
+					<input type="radio" name="attr_accuracy" value="7" title="7" /><span></span>
+					<input type="radio" name="attr_accuracy" value="8" title="8" /><span></span>
+					<input type="radio" name="attr_accuracy" value="9" title="9" /><span></span>
+					<input type="radio" name="attr_accuracy" value="10" title="10" /><span></span>
+					<input type="radio" name="attr_accuracy" value="11" title="11" /><span></span>
+					<input type="radio" name="attr_accuracy" value="12" title="12" /><span></span>
+					<input type="radio" name="attr_accuracy" value="13" title="13" /><span></span>
+					<input type="radio" name="attr_accuracy" value="14" title="14" /><span></span>
+					<input type="radio" name="attr_accuracy" value="15" title="15" /><span></span>
+					<input type="radio" name="attr_accuracy" value="16" title="16" /><span></span>
+					<input type="radio" name="attr_accuracy" value="17" title="17" /><span></span>
+					<input type="radio" name="attr_accuracy" value="18" title="18" /><span></span>
+					<input type="radio" name="attr_accuracy" value="19" title="19" /><span></span>
+					<input type="radio" name="attr_accuracy" value="20" title="20" /><span></span>
+				</div>
+			</div>
+			<div class="ability">
+				<label data-i18n="perception">Perception</label>
+				<input class="max" type="number" name="attr_perception_base" value="1" min="1" max="10" />
+				<span class="cur" name="attr_perception">0</span>
+				<div class="ability-boxes">
+					<input type="hidden" name="attr_perception_use" value="10">
+					<input type="radio" name="attr_perception" value="0" title="0" checked="checked" /><span></span>
+					<input type="radio" name="attr_perception" value="1" title="1" /><span></span>
+					<input type="radio" name="attr_perception" value="2" title="2" /><span></span>
+					<input type="radio" name="attr_perception" value="3" title="3" /><span></span>
+					<input type="radio" name="attr_perception" value="4" title="4" /><span></span>
+					<input type="radio" name="attr_perception" value="5" title="5" /><span></span>
+					<input type="radio" name="attr_perception" value="6" title="6" /><span></span>
+					<input type="radio" name="attr_perception" value="7" title="7" /><span></span>
+					<input type="radio" name="attr_perception" value="8" title="8" /><span></span>
+					<input type="radio" name="attr_perception" value="9" title="9" /><span></span>
+					<input type="radio" name="attr_perception" value="10" title="10" /><span></span>
+					<input type="radio" name="attr_perception" value="11" title="11" /><span></span>
+					<input type="radio" name="attr_perception" value="12" title="12" /><span></span>
+					<input type="radio" name="attr_perception" value="13" title="13" /><span></span>
+					<input type="radio" name="attr_perception" value="14" title="14" /><span></span>
+					<input type="radio" name="attr_perception" value="15" title="15" /><span></span>
+					<input type="radio" name="attr_perception" value="16" title="16" /><span></span>
+					<input type="radio" name="attr_perception" value="17" title="17" /><span></span>
+					<input type="radio" name="attr_perception" value="18" title="18" /><span></span>
+					<input type="radio" name="attr_perception" value="19" title="19" /><span></span>
+					<input type="radio" name="attr_perception" value="20" title="20" /><span></span>
+				</div>
+			</div>
+			<div class="ability">
+				<label data-i18n="knowledge">Knowledge</label>
+				<input class="max" type="number" name="attr_knowledge_base" value="1" min="1" max="10" />
+				<span class="cur" name="attr_knowledge">0</span>
+				<div class="ability-boxes">
+					<input type="hidden" name="attr_knowledge_use" value="10">
+					<input type="radio" name="attr_knowledge" value="0" title="0" checked="checked" /><span></span>
+					<input type="radio" name="attr_knowledge" value="1" title="1" /><span></span>
+					<input type="radio" name="attr_knowledge" value="2" title="2" /><span></span>
+					<input type="radio" name="attr_knowledge" value="3" title="3" /><span></span>
+					<input type="radio" name="attr_knowledge" value="4" title="4" /><span></span>
+					<input type="radio" name="attr_knowledge" value="5" title="5" /><span></span>
+					<input type="radio" name="attr_knowledge" value="6" title="6" /><span></span>
+					<input type="radio" name="attr_knowledge" value="7" title="7" /><span></span>
+					<input type="radio" name="attr_knowledge" value="8" title="8" /><span></span>
+					<input type="radio" name="attr_knowledge" value="9" title="9" /><span></span>
+					<input type="radio" name="attr_knowledge" value="10" title="10" /><span></span>
+					<input type="radio" name="attr_knowledge" value="11" title="11" /><span></span>
+					<input type="radio" name="attr_knowledge" value="12" title="12" /><span></span>
+					<input type="radio" name="attr_knowledge" value="13" title="13" /><span></span>
+					<input type="radio" name="attr_knowledge" value="14" title="14" /><span></span>
+					<input type="radio" name="attr_knowledge" value="15" title="15" /><span></span>
+					<input type="radio" name="attr_knowledge" value="16" title="16" /><span></span>
+					<input type="radio" name="attr_knowledge" value="17" title="17" /><span></span>
+					<input type="radio" name="attr_knowledge" value="18" title="18" /><span></span>
+					<input type="radio" name="attr_knowledge" value="19" title="19" /><span></span>
+					<input type="radio" name="attr_knowledge" value="20" title="20" /><span></span>
+				</div>
+			</div>
+			<div class="ability">
+				<label data-i18n="will">Will</label>
+				<input class="max" type="number" name="attr_will_base" value="1" min="1" max="10" />
+				<span class="cur" name="attr_will">0</span>
+				<div class="ability-boxes">
+					<input type="hidden" name="attr_will_use" value="10">
+					<input type="radio" name="attr_will" value="0" title="0" checked="checked" /><span></span>
+					<input type="radio" name="attr_will" value="1" title="1" /><span></span>
+					<input type="radio" name="attr_will" value="2" title="2" /><span></span>
+					<input type="radio" name="attr_will" value="3" title="3" /><span></span>
+					<input type="radio" name="attr_will" value="4" title="4" /><span></span>
+					<input type="radio" name="attr_will" value="5" title="5" /><span></span>
+					<input type="radio" name="attr_will" value="6" title="6" /><span></span>
+					<input type="radio" name="attr_will" value="7" title="7" /><span></span>
+					<input type="radio" name="attr_will" value="8" title="8" /><span></span>
+					<input type="radio" name="attr_will" value="9" title="9" /><span></span>
+					<input type="radio" name="attr_will" value="10" title="10" /><span></span>
+					<input type="radio" name="attr_will" value="11" title="11" /><span></span>
+					<input type="radio" name="attr_will" value="12" title="12" /><span></span>
+					<input type="radio" name="attr_will" value="13" title="13" /><span></span>
+					<input type="radio" name="attr_will" value="14" title="14" /><span></span>
+					<input type="radio" name="attr_will" value="15" title="15" /><span></span>
+					<input type="radio" name="attr_will" value="16" title="16" /><span></span>
+					<input type="radio" name="attr_will" value="17" title="17" /><span></span>
+					<input type="radio" name="attr_will" value="18" title="18" /><span></span>
+					<input type="radio" name="attr_will" value="19" title="19" /><span></span>
+					<input type="radio" name="attr_will" value="20" title="20" /><span></span>
+				</div>
+			</div>
+			<div class="ability">
+				<label data-i18n="empathy">Empathy</label>
+				<input class="max" type="number" name="attr_empathy_base" value="1" min="1" max="10" />
+				<span class="cur" name="attr_empathy">0</span>
+				<div class="ability-boxes">
+					<input type="hidden" name="attr_empathy_use" value="10">
+					<input type="radio" name="attr_empathy" value="0" title="0" checked="checked" /><span></span>
+					<input type="radio" name="attr_empathy" value="1" title="1" /><span></span>
+					<input type="radio" name="attr_empathy" value="2" title="2" /><span></span>
+					<input type="radio" name="attr_empathy" value="3" title="3" /><span></span>
+					<input type="radio" name="attr_empathy" value="4" title="4" /><span></span>
+					<input type="radio" name="attr_empathy" value="5" title="5" /><span></span>
+					<input type="radio" name="attr_empathy" value="6" title="6" /><span></span>
+					<input type="radio" name="attr_empathy" value="7" title="7" /><span></span>
+					<input type="radio" name="attr_empathy" value="8" title="8" /><span></span>
+					<input type="radio" name="attr_empathy" value="9" title="9" /><span></span>
+					<input type="radio" name="attr_empathy" value="10" title="10" /><span></span>
+					<input type="radio" name="attr_empathy" value="11" title="11" /><span></span>
+					<input type="radio" name="attr_empathy" value="12" title="12" /><span></span>
+					<input type="radio" name="attr_empathy" value="13" title="13" /><span></span>
+					<input type="radio" name="attr_empathy" value="14" title="14" /><span></span>
+					<input type="radio" name="attr_empathy" value="15" title="15" /><span></span>
+					<input type="radio" name="attr_empathy" value="16" title="16" /><span></span>
+					<input type="radio" name="attr_empathy" value="17" title="17" /><span></span>
+					<input type="radio" name="attr_empathy" value="18" title="18" /><span></span>
+					<input type="radio" name="attr_empathy" value="19" title="19" /><span></span>
+					<input type="radio" name="attr_empathy" value="20" title="20" /><span></span>
+				</div>
+			</div>
+			<div class="ability">
+				<label data-i18n="persuasion">Persuasion</label>
+				<input class="max" type="number" name="attr_persuasion_base" value="1" min="1" max="10" />
+				<span class="cur" name="attr_persuasion">0</span>
+				<div class="ability-boxes">
+					<input type="hidden" name="attr_persuasion_use" value="10">
+					<input type="radio" name="attr_persuasion" value="0" title="0" checked="checked" /><span></span>
+					<input type="radio" name="attr_persuasion" value="1" title="1" /><span></span>
+					<input type="radio" name="attr_persuasion" value="2" title="2" /><span></span>
+					<input type="radio" name="attr_persuasion" value="3" title="3" /><span></span>
+					<input type="radio" name="attr_persuasion" value="4" title="4" /><span></span>
+					<input type="radio" name="attr_persuasion" value="5" title="5" /><span></span>
+					<input type="radio" name="attr_persuasion" value="6" title="6" /><span></span>
+					<input type="radio" name="attr_persuasion" value="7" title="7" /><span></span>
+					<input type="radio" name="attr_persuasion" value="8" title="8" /><span></span>
+					<input type="radio" name="attr_persuasion" value="9" title="9" /><span></span>
+					<input type="radio" name="attr_persuasion" value="10" title="10" /><span></span>
+					<input type="radio" name="attr_persuasion" value="11" title="11" /><span></span>
+					<input type="radio" name="attr_persuasion" value="12" title="12" /><span></span>
+					<input type="radio" name="attr_persuasion" value="13" title="13" /><span></span>
+					<input type="radio" name="attr_persuasion" value="14" title="14" /><span></span>
+					<input type="radio" name="attr_persuasion" value="15" title="15" /><span></span>
+					<input type="radio" name="attr_persuasion" value="16" title="16" /><span></span>
+					<input type="radio" name="attr_persuasion" value="17" title="17" /><span></span>
+					<input type="radio" name="attr_persuasion" value="18" title="18" /><span></span>
+					<input type="radio" name="attr_persuasion" value="19" title="19" /><span></span>
+					<input type="radio" name="attr_persuasion" value="20" title="20" /><span></span>
+				</div>
+			</div>
+			<div class="ability">
+				<label data-i18n="psychology">Psychology</label>
+				<input class="max" type="number" name="attr_psychology_base" value="1" min="1" max="10" />
+				<span class="cur" name="attr_psychology">0</span>
+				<div class="ability-boxes">
+					<input type="hidden" name="attr_psychology_use" value="10">
+					<input type="radio" name="attr_psychology" value="0" title="0" checked="checked" /><span></span>
+					<input type="radio" name="attr_psychology" value="1" title="1" /><span></span>
+					<input type="radio" name="attr_psychology" value="2" title="2" /><span></span>
+					<input type="radio" name="attr_psychology" value="3" title="3" /><span></span>
+					<input type="radio" name="attr_psychology" value="4" title="4" /><span></span>
+					<input type="radio" name="attr_psychology" value="5" title="5" /><span></span>
+					<input type="radio" name="attr_psychology" value="6" title="6" /><span></span>
+					<input type="radio" name="attr_psychology" value="7" title="7" /><span></span>
+					<input type="radio" name="attr_psychology" value="8" title="8" /><span></span>
+					<input type="radio" name="attr_psychology" value="9" title="9" /><span></span>
+					<input type="radio" name="attr_psychology" value="10" title="10" /><span></span>
+					<input type="radio" name="attr_psychology" value="11" title="11" /><span></span>
+					<input type="radio" name="attr_psychology" value="12" title="12" /><span></span>
+					<input type="radio" name="attr_psychology" value="13" title="13" /><span></span>
+					<input type="radio" name="attr_psychology" value="14" title="14" /><span></span>
+					<input type="radio" name="attr_psychology" value="15" title="15" /><span></span>
+					<input type="radio" name="attr_psychology" value="16" title="16" /><span></span>
+					<input type="radio" name="attr_psychology" value="17" title="17" /><span></span>
+					<input type="radio" name="attr_psychology" value="18" title="18" /><span></span>
+					<input type="radio" name="attr_psychology" value="19" title="19" /><span></span>
+					<input type="radio" name="attr_psychology" value="20" title="20" /><span></span>
+				</div>
+			</div>
+			<div class="ability">
+				<label style="color: red;" data-i18n="selfcontrol">Self-control</label>
+				<span class="max" name="attr_selfcontrol_base">0</span>
+				<span class="cur" name="attr_selfcontrol">0</span>
+			</div>
+		</div><!-- END ABILITIES-->
+
+		<div class="tab tab3 status"><!-- STATUS -->
+
+			<h1 data-i18n="vitals">Vitals</h1>
+			<div class="vitals" ><!-- VITALS -->
+				<div class="green">
+					<span data-i18n="hit_points">Hit Points</span>
+					<input type="number" min="0" max="100" name="attr_hp" value="5">
+					<input type="number" min="0" max="100" name="attr_hp_max" value="5">
+				</div>
+				<div class="red">
+					<span data-i18n="radiation">Radiation</span>
+					<input type="number" min="0" max="100" name="attr_radiation" value="0">
+				</div>
+				<div class="orange">
+					<span data-i18n="exhaustion">Exhaustion</span>
+					<input type="number" min="0" max="100" name="attr_exhaustion" value="0">
+				</div>
+				<div class="yellow">
+					<span data-i18n="starvation">Starvation</span>
+					<input type="number" min="0" max="100" name="attr_starvation" value="0">
+				</div>
+				<div class="blue">
+					<span data-i18n="thirst">Thirst</span>
+					<input type="number" min="0" max="100" name="attr_thirst" value="0">
+				</div>
+				<div>
+					<span data-i18n="weighing_load">Weighing Load</span>
+					<input type="number" min="0" max="120" name="attr_weighing_load" value="0">
+					<input type="number" min="0" max="120" name="attr_weighing_load_max" value="12">
+				</div>
+			</div><!-- END VITALS -->
+
+			<h1 data-i18n="conditions">Conditions</h1>
+			<div class="conditions"><!-- CONDITIONS -->
+				<div class="header">
+					<span data-i18n="name">Name</span>
+					<span data-i18n="number">Number</span>
+					<span data-i18n="duration">Duration</span>
+				</div>
+				<fieldset class="repeating_conditions">
+					<input type="text" name="attr_cond_name" data-i18n-placeholder="condition" placeholder="Condition" />
+					<input type="number" name="attr_cond_number" min="0" step="1" value="0" />
+					<input type="number" name="attr_cond_duration" min="0" step="1" value="0" />
+					<button class="pictos" name="show_condition" type="roll" value="@{whisper_to_gm} &{template:default} {{name=Roll Test}} {{desc=This is a roll test.}}">E</button>
+				</fieldset>
+			</div><!-- END CONDITIONS -->
+
+		</div><!-- END HEALTH -->
+
+		<div class="tab tab4 notes"><!-- NOTES -->
+			<h1 data-i18n="notes">Notes</h1>
+			<button type="action" name="act_rest">Rest</button>
+			<button type="action" name="act_recalc">Recalc</button>
+			<button type="action" name="act_update">Update</button>
+		</div><!-- END NOTES -->
+
+		<div class="tab tab5 specialities"><!-- SPECIALITIES -->
+			<h1 data-i18n="specialities">Specialities</h1>
+			<div>
+				<div class="header">
+					<span data-i18n="name">Name</span>
+					<span data-i18n="rank">Rank</span>
+					<span data-i18n="ability">Ability</span>
+				</div>
+				<fieldset class="repeating_specialities">
+					<input type="text" name="attr_spec_name" data-i18n-placeholder="spec_name" placeholder="Speciality" />
+					<select name="attr_spec_rank">
+						<option data-i18n="rookie">Rookie</option>
+						<option data-i18n="stalker">Stalker</option>
+						<option data-i18n="veteran">Veteran</option>
+						<option data-i18n="master">Master</option>
+					</select>
+
+					<select id="spec_ability" name="spec_ability">
+						<option data-i18n="strength">Strength</option>
+						<option data-i18n="endurance">Endurance</option>
+						<option data-i18n="agility">Agility</option>
+						<option data-i18n="reflexes">Reflexes</option>
+						<option data-i18n="accuracy">Accuracy</option>
+						<option data-i18n="perception">Perception</option>
+						<option data-i18n="knowledge">Knowledge</option>
+						<option data-i18n="will">Will</option>
+						<option data-i18n="empathy">Empathy</option>
+						<option data-i18n="persuasion">Persuasion</option>
+						<option data-i18n="psychology">Psychology</option>
+					</select>
+
+					<button class="dicefont" name="roll_speciality" type="roll" value="@{whisper_to_gm} &{template:default} {{name=Roll Test}} {{desc=This is a roll test.}}">0</button>
+
+				</fieldset>
+			</div>
+		</div><!-- END SPECIALITIES -->
+
+		<div class="tab tab6 armament"><!-- ARMAMENT -->
+			<h1 data-i18n="armament">Armament</h1>
+			<div>
+				<div class="header">
+					<span data-i18n="name">Name</span>
+					<span data-i18n="damage">Damage</span>
+					<span data-i18n="accuracy">Accuracy</span>
+				</div>
+				<fieldset class="repeating_armament">
+					<input type="text" name="attr_weapon_name" data-i18n-placeholder="weapon_name" placeholder="Weapon" />
+					<input type="text" name="attr_weapon_damage" data-i18n-placeholder="weapon_damage" placeholder="Damage" />
+					<input type="text" name="attr_weapon_accuracy" data-i18n-placeholder="weapon_accuracy" placeholder="Accuracy" />
+				</fieldset>
+				<div class="footer">
+					<input type="number" name="attr_item_weight" min="0" step="0.1" value="0" readonly />
+					<span>kg</span>
+				</div>
+			</div>
+		</div><!-- END ARMAMENT -->
+
+		<div class="tab tab7 inventory"><!-- EQUIPMENT -->
+			<h1 data-i18n="equipment">Equipment</h1>
+			<div>
+				<div class="header">
+					<span data-i18n="name">Name</span>
+					<span data-i18n="quantity">Quantity</span>
+					<span data-i18n="weight">Weight</span>
+					<span data-i18n="total">Total</span>
+				</div>
+				<fieldset class="repeating_equipment">
+					<input type="text" name="attr_item_name" data-i18n-placeholder="item_name" placeholder="Item" />
+					<input type="number" name="attr_item_number" min="0" step="1" value="0" />
+					<span>&times;</span>
+					<input type="number" name="attr_item_weight" min="0" step="0.1" value="0" />
+					<span>=</span>
+					<input type="number" name="attr_item_weight_total" min="0" step="0.1" value="0" readonly />
+					<span>kg</span>
+				</fieldset>
+				<div class="footer">
+					<input type="number" name="attr_equipment_weight" min="0" step="0.1" value="0" readonly />
+					<span>kg</span>
+				</div>
+			</div>
+		</div><!-- END EQUIPMENT -->
+
+		<div class="tab tab8 inventory"><!-- BACKPACK -->
+			<h1 data-i18n="backpack">Backpack</h1>
+			<div>
+				<div class="header">
+					<span data-i18n="name">Name</span>
+					<span data-i18n="quantity">Quantity</span>
+					<span data-i18n="weight">Weight</span>
+					<span data-i18n="total">Total</span>
+				</div>
+				<fieldset class="repeating_backpack">
+					<input type="text" name="attr_item_name" data-i18n-placeholder="item_name" placeholder="Item" />
+					<input type="number" name="attr_item_number" min="0" step="1" value="0" />
+					<span>&times;</span>
+					<input type="number" name="attr_item_weight" min="0" step="0.1" value="0" />
+					<span>=</span>
+					<input type="number" name="attr_item_weight_total" min="0" step="0.1" value="0" readonly />
+					<span>kg</span>
+				</fieldset>
+				<div class="footer">
+					<input type="number" name="attr_backpack_weight" min="0" step="0.1" value="0" readonly />
+					<span>kg</span>
+				</div>
+			</div>
+		</div><!-- END BACKPACK -->
+
+		<div class="footnotes">
+			<span data-i18n="character_sheet">Character Sheet</span>&nbsp;<span data-i18n="version">v.</span>&nbsp;<span name="attr_version"></span>
+		</div>
+
+	</div><!-- END SHEET -->
+
+</div><!-- END STALKER -->
+
+</body></html>

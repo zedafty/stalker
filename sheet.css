@@ -1,0 +1,1175 @@
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # HTML (reset)
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker div,
+.stalker span,
+.stalker label,
+.stalker button[type="roll"],
+.stalker button[type="action"],
+.stalker input[type="text"],
+.stalker input[type="number"],
+.stalker input[type="radio"],
+.stalker input[type="checkbox"],
+.stalker select,
+.stalker textarea,
+.stalker fieldset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: top;
+	box-sizing: border-box;
+}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Titles
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker h1 {
+	margin: 0 25px 20px;
+	line-height: 30px;
+	font-weight: bold;
+	font-size: 12px;
+	color: forestgreen;
+	border-width: 2px 0 2px 0;
+	border-style: solid;
+	border-color: rgba(0,255,0,.375);
+	background-color: rgba(0,0,0,.5);
+	opacity: .75;
+}
+
+.stalker h1:not(:first-child) {
+	margin-top: 30px;
+}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Inputs
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker label {
+	user-select: none;
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+	padding: 0 4px;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: center;
+	color: forestgreen;
+}
+.stalker label[for]:hover {
+	cursor: pointer;
+	color: lime;
+}
+.stalker input[type="radio"],
+.stalker input[type="checkbox"] {
+	appearance: none;
+	cursor: pointer;
+	margin: 0;
+	outline: 0;
+}
+.stalker select,
+.stalker textarea,
+.stalker input[type="text"],
+.stalker input[type="number"] {
+	height: 20px;
+	color: white;
+	font-family: sans-serif;
+	border: 1px solid white;
+	border-radius: 0;
+	background-color: transparent;
+	opacity: .75;
+	outline: 0;
+}
+.stalker select,
+.stalker input[type="text"],
+.stalker input[type="number"] {
+	font-size: 10px;
+	font-weight: bold;
+	text-align: center;
+}
+.stalker select,
+.stalker input[type="text"] {
+	border-width: 0 0 1px 0;
+}
+.stalker textarea,
+.stalker input[type="number"] {
+	background-color: rgba(0,0,0,.5);
+}
+.stalker select {
+	appearance: none;
+	width: 100px;
+	line-height: 0;
+}
+.stalker select option {
+	color: rgba(255,255,255,.75);
+	background-color: rgba(0,0,0,.75);
+}
+.stalker textarea {
+	resize: none;
+	padding: 5px;
+	font-size: 12px;
+	background-color: rgba(0,0,0,.5);
+}
+.stalker input[type="number"]::-webkit-inner-spin-button,
+.stalker input[type="number"]::-webkit-outer-spin-button {
+	appearance: none;
+}
+.stalker input[type="number"] {
+	-moz-appearance: textfield;
+}
+.stalker select:hover,
+.stalker select:focus,
+.stalker textarea:hover,
+.stalker textarea:focus,
+.stalker input[type="text"]:not([readonly]):hover,
+.stalker input[type="text"]:not([readonly]):focus,
+.stalker input[type="number"]:not([readonly]):hover,
+.stalker input[type="number"]:not([readonly]):focus {
+	border-color: lime;
+	color: lime;
+}
+.stalker select:focus,
+.stalker textarea:focus,
+.stalker input[type="text"]:not([readonly]):focus,
+.stalker input[type="number"]:not([readonly]):focus {
+	background-color: rgba(128,255,0,.125);
+}
+.stalker select:hover,
+.stalker textarea:hover,
+.stalker input[type="text"]:not([readonly]):hover,
+.stalker input[type="number"]:not([readonly]):hover {
+	background-color: rgba(0,255,0,.25);
+}
+.stalker input[type="text"][readonly],
+.stalker input[type="number"][readonly] {
+	border: 0;
+}
+.stalker input[type="text"][readonly]:hover,
+.stalker input[type="number"][readonly]:hover {
+	cursor: default;
+}
+.stalker select::selection,
+.stalker textarea::selection,
+.stalker input::selection {
+	color: white;
+	background-color: rgba(128,224,0,.5);
+}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Containers */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker {
+	position: relative;
+	display: table;
+	width: 600px;
+	margin: 30px 0 40px;
+	font-family: sans-serif;
+	font-size: 0;
+	background-image: url("img/background-repeat.jpg");
+	background-repeat: repeat-y;
+	background-color: rgb(12,10,8);
+}
+.stalker:after,
+.stalker:before {
+	content: "";
+	position: absolute;
+	display: block;
+	width: inherit;
+	left: 0;
+	background-repeat: no-repeat;
+}
+.stalker:before {
+	top: -20px;
+	height: 30px;
+	background-image: url("img/background-top.png");
+}
+.stalker:after {
+	bottom: -30px;
+	height: 40px;
+	background-image: url("img/background-bottom.png");
+}
+
+.stalker .sheet {
+	display: table-cell;
+	width: 500px;
+	padding: 20px 50px 0;
+	text-align: center;
+	box-sizing: content-box;
+}
+
+.stalker .tab {
+	position: relative;
+	display: none;
+	padding: 10px 0 20px;
+}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Sheet Inputs */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .sheet input[type="number"] {
+	width: 40px;
+}
+.stalker .sheet button[type="roll"]:before {
+	content: none;
+}
+.stalker .sheet button[type="roll"],
+.stalker .sheet button[type="action"] {
+	cursor: pointer;
+	height: 20px;
+	font-family: sans-serif;
+	border-radius: 0;
+	box-shadow: none;
+	background: none;
+	outline: 0;
+}
+.stalker .sheet button[type="roll"] {
+	width: 30px;
+	font-size: 16px;
+	color: white;
+	border: 1px solid white;
+	background-color: rgba(255,255,255,.125);
+}
+.stalker .sheet button[type="roll"]:focus {
+	background-color: rgba(255,255,255,.375);
+}
+.stalker .sheet button[type="roll"]:hover {
+	background-color: rgba(255,255,255,.5);
+}
+.stalker .sheet button[type="roll"].pictos {
+	font-family: "Pictos";
+}
+.stalker .sheet button[type="roll"].dicefont {
+	font-family: "dicefontd20";
+}
+.stalker .sheet button[type="action"] {
+	padding: 0 5px;
+	font-size: 12px;
+	line-height: 20px;
+	color: rgb(24,24,24);
+	border: 0;
+	background-color: rgb(144,144,144);
+}
+.stalker .sheet button[type="action"] + button {
+	margin-left: 10px;
+}
+.stalker .sheet button[type="action"]:focus {
+	background-color: rgb(176,176,176);
+}
+.stalker .sheet button[type="action"]:hover {
+	background-color: rgb(192,192,192);
+}
+.stalker .sheet button[type="action"]:active {
+	background-color: rgb(128,128,128);
+}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Modifiers */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .modifiers .self-control,
+.stalker .modifiers .leadership {
+	display: inline-block;
+	height: 30px;
+	padding-top: 5px;
+}
+.stalker .modifiers .self-control input {
+	opacity: 0;
+}
+.stalker .modifiers .self-control input[value="0"] {
+	width: 80px
+}
+.stalker .modifiers .self-control input[value="0"] + label {
+	width: 80px;
+	height: 20px;
+	line-height: 20px;
+	margin-left: -80px;
+	color: red;
+}
+.stalker .modifiers .self-control input[value="0"]:hover + label {
+	color: yellow;
+}
+.stalker .modifiers .self-control input,
+.stalker .modifiers .self-control input + span {
+	height: 16px;
+	width: 16px;
+	margin-top: 2px;
+}
+.stalker .modifiers .self-control input + span {
+	pointer-events: none;
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	margin-right: 4px;
+	border: 1px solid yellow;
+	background-color: rgba(255,255,255,.125);
+}
+.stalker .modifiers .self-control input + span {
+	margin-left: -16px;
+	opacity: .75;
+}
+.stalker .modifiers .self-control input:hover + span {
+	background-color: red;
+}
+.stalker .modifiers .self-control input:disabled + span {
+	cursor: default;
+	background-color: transparent;
+}
+
+.stalker .modifiers .self-control input + span:after {
+	content: "*";
+	position: absoltue;
+	top: 0;
+	left: 0;
+	width: inherit;
+	height: inherit;
+	line-height: 14px;
+	font-size: 12px;
+	font-family: "Pictos";
+	color: yellow;
+	transition: opacity .125s;
+}
+.stalker .modifiers .self-control input:checked ~ input + span {
+	border-color: transparent;
+}
+.stalker .modifiers .self-control input:checked ~ input + span:after {
+	opacity: 0;
+}
+.stalker .modifiers .self-control .count { /* TEMP */
+	font-size: 10px;
+	color: white;
+	display: inline-block;
+	height: 18px;
+	line-height: 18px;
+	width: 10px;
+	opacity: .75;
+}
+.stalker .modifiers .leadership label {
+	width: 100px;
+}
+.stalker .modifiers .leadership button {
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	margin: 2px;
+	margin-left: 5px;
+	padding: 0;
+	font-family: "Pictos";
+	color: rgba(255,255,255,.75);
+	border-radius: 100%;
+	background-color: rgba(192,24,24,.625);
+}
+.stalker .modifiers .leadership button:focus {background-color: rgba(192,24,24,.875);}
+.stalker .modifiers .leadership button:hover {background-color: rgba(192,24,24,1);}
+.stalker .modifiers .leadership button:active {background-color: rgba(192,24,24,.375);}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Tabs */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker input[type="checkbox"].mod {
+	height: 20px;
+}
+.stalker input[type="radio"].tog {
+	height: 30px;
+}
+
+.stalker input.tog,
+.stalker input.mod {
+	opacity: 0;
+}
+.stalker input.tog,
+.stalker input.tog + label {
+	width: 125px;
+}
+.stalker input.tog + label {
+	height: 30px;
+	line-height: 30px;
+	margin-left: -125px;
+	padding: 0;
+	font-size: 11px;
+	border: 1px solid rgba(0,255,0,.25);
+	background-color: rgba(0,0,0,.5);
+}
+.stalker input.tog:hover + label {
+	color: lime;
+	background-color: rgba(0,255,0,.25);
+}
+.stalker input.tog:checked + label {
+	color: black;
+	border-color: forestgreen;
+	background-color: forestgreen;
+}
+
+.stalker input.mod,
+.stalker input.mod + label {
+	width: 125px;
+}
+.stalker input.mod + label {
+	position: relative;
+	height: 20px;
+	margin-left: -125px;
+	margin-bottom: 4px;
+	padding-left: 32px;
+	text-align: left;
+	color:rgba(255,255,255,.5);
+}
+.stalker input.mod + label:before,
+.stalker input.mod + label:after {
+	content: "";
+	position: absolute;
+	display: inline-block;
+	transition: left .25s, background .125s;
+	opacity: .75s;
+}
+.stalker input.mod + label:before {
+	width: 22px;
+	height: 12px;
+	left: 4px;
+	top: 4px;
+	border-radius: 16px;
+	background-color: rgba(255,255,255,.25);
+}
+.stalker input.mod + label:after {
+	width: 8px;
+	height: 8px;
+	left: 6px;
+	top: 6px;
+	border-radius: 100%;
+	background-color: rgba(255,255,255,.375);
+}
+.stalker input.mod:checked + label {
+	color: forestgreen;
+}
+.stalker input.mod:checked + label:before {
+	background-color: forestgreen;
+}
+.stalker input.mod:checked + label:after {
+	background-color: lime;
+	left: 16px;
+}
+.stalker input.mod:hover + label {
+	color: lime;
+}
+.stalker input.mod:hover + label:after {
+	background-color: lime;
+}
+.stalker input.mod:nth-of-type(1) + label {
+	margin-right: 125px;
+}
+
+.stalker .tab0:checked ~ .tab, /* All Tabs */
+.stalker .tab1:checked ~ .tab1, /* Character */
+.stalker .tab2:checked ~ .tab2, /* Condition */
+.stalker .tab3:checked ~ .tab3, /* Abilities */
+.stalker .tab4:checked ~ .tab4, /* Specialities */
+.stalker .tab5:checked ~ .tab5, /* Armament */
+.stalker .tab6:checked ~ .tab6, /* Equipment */
+.stalker .tab7:checked ~ .tab7, /* Backpack */
+.stalker .tab8:checked ~ .tab8 { /* Notes */
+	display: block;
+}
+
+.stalker .tab0:checked ~ .tog,
+.stalker .tab0:checked ~ .tog + label {
+	display: none;
+}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Tabs */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .tab .header {
+	margin-bottom: 5px;
+}
+.stalker .tab .footer {
+	margin-top: 5px;
+}
+
+.stalker .tab span {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 10px;
+	color: rgba(255,255,255,.5);
+	color: forestgreen;
+	opacity: .75;
+}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # State */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .state > div {
+	display: inline-block;
+}
+.stalker .state > div > label {
+	width: 50px;
+}
+.stalker .state > div > input[type="text"] {
+	width: 100px;
+}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # History */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .history div {
+	margin-bottom: 20px;
+}
+.stalker .history label {
+	width: 100%;
+}
+.stalker .history textarea,
+.stalker .history input[type="text"] {
+	margin: 0 5px;
+	width: 125px;
+}
+.stalker .history textarea {
+	width: 400px;
+	height: 200px;
+}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Abilities */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .ability {
+	position: relative;
+	width: 450px;
+	margin: 0 auto;
+}
+.stalker .ability:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+.stalker .ability + .ability {
+	margin-top: 5px;
+}
+.stalker .ability > label {
+	float: left;
+	width: 120px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 12px;
+	text-align: center;
+	color: forestgreen;
+	opacity: .875;
+}
+.stalker .ability span.cur,
+.stalker .ability span.max,
+.stalker .ability input.max {
+	float: right;
+	height: 30px;
+	padding: 5px;
+	line-height: 18px;
+	color: white;
+	opacity: .75;
+}
+.stalker .ability span.cur {
+	width: 20px;
+	margin-right: 10px;
+}
+.stalker .ability span.max,
+.stalker .ability input.max {
+	width: 50px;
+	font-size: 14px;
+	font-weight: bold;
+	background-color: rgba(0,0,0,.5);
+	border: 1px solid white;
+	border-radius: 5px
+}
+.stalker .ability .options {
+	clear: both;
+	padding-top: 5px;
+	padding-right: 5px;
+	text-align: right;
+}
+.stalker .ability .options label {
+	width: 50px;
+}
+.stalker .ability .options-flag,
+.stalker .ability .options-flag + span {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	right: -25px;
+	top: 5px;
+}
+.stalker .ability .options-flag {
+	z-index: 1;
+}
+.stalker .ability .options-flag + span {
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: 2px;
+}
+.stalker .ability .options-flag:focus + span,
+.stalker .ability .options-flag:hover + span {
+	color: lime;
+}
+.stalker .ability .options-flag:focus + span {
+	background-color: rgba(128,255,0,.375);
+}
+.stalker .ability .options-flag:hover + span {
+	background-color: rgba(0,255,0,.5);
+}
+.stalker .ability .options-flag + span:after {
+	content: "+";
+}
+.stalker .ability .options-flag:checked + span:after {
+	content: "-";
+}
+.stalker .ability .options {
+	display: none;
+}
+.stalker .ability .options-flag:checked ~ .options {
+	display: block;
+}
+.stalker .ability-boxes {
+	float: left;
+	text-align: left;
+	width: 240px;
+	padding: 1px 0;
+}
+.stalker .ability-boxes input[type="radio"] {
+	width: 18px;
+	height: 10px;
+	opacity: 0;
+	margin-top: 2px;
+}
+.stalker .ability-boxes input[type="radio"] + span {
+	pointer-events: none;
+	display: inline-block;
+	width: 18px;
+	height: 10px;
+	margin: 2px 4px 2px -18px;
+	background-color: rgba(0,255,0,.375);
+}
+.stalker .ability-boxes input[value="0"],
+.stalker .ability-boxes input[value="0"] + span {
+	float: left;
+	width: 14px;
+	height: 24px;
+}
+.stalker .ability-boxes input[value="0"] + span {
+	margin-left: -14px;
+}
+.stalker .ability-boxes input:hover + span {
+	background-color: rgba(0,255,0,.75) !important;
+}
+.stalker .ability-boxes input:focus + span {
+	background-color: rgba(128,255,0,.75) !important;
+}
+.stalker .ability-boxes input[value="0"] + span,
+.stalker .ability-boxes input:checked ~ input + span {
+	background-color: rgba(255,255,255,.125);
+}
+.stalker .ability-boxes input[value="0"]:hover + span {
+	background-color: rgba(255,255,0,.75) !important;
+}
+.stalker .ability-boxes input[value="0"]:checked + span {
+	background-color: rgba(255,0,0,.625);
+}
+
+.stalker .ability-boxes input[type="hidden"][value="9"] ~ input[value="19"],
+.stalker .ability-boxes input[type="hidden"][value="9"] ~ input[value="20"],
+.stalker .ability-boxes input[type="hidden"][value="9"] ~ input[value="19"] + span,
+.stalker .ability-boxes input[type="hidden"][value="9"] ~ input[value="20"] + span,
+.stalker .ability-boxes input[type="hidden"][value="8"] ~ input[value="17"],
+.stalker .ability-boxes input[type="hidden"][value="8"] ~ input[value="18"],
+.stalker .ability-boxes input[type="hidden"][value="8"] ~ input[value="19"],
+.stalker .ability-boxes input[type="hidden"][value="8"] ~ input[value="20"],
+.stalker .ability-boxes input[type="hidden"][value="8"] ~ input[value="17"] + span,
+.stalker .ability-boxes input[type="hidden"][value="8"] ~ input[value="18"] + span,
+.stalker .ability-boxes input[type="hidden"][value="8"] ~ input[value="19"] + span,
+.stalker .ability-boxes input[type="hidden"][value="8"] ~ input[value="20"] + span,
+.stalker .ability-boxes input[type="hidden"][value="7"] ~ input[value="15"],
+.stalker .ability-boxes input[type="hidden"][value="7"] ~ input[value="16"],
+.stalker .ability-boxes input[type="hidden"][value="7"] ~ input[value="17"],
+.stalker .ability-boxes input[type="hidden"][value="7"] ~ input[value="18"],
+.stalker .ability-boxes input[type="hidden"][value="7"] ~ input[value="19"],
+.stalker .ability-boxes input[type="hidden"][value="7"] ~ input[value="20"],
+.stalker .ability-boxes input[type="hidden"][value="7"] ~ input[value="15"] + span,
+.stalker .ability-boxes input[type="hidden"][value="7"] ~ input[value="16"] + span,
+.stalker .ability-boxes input[type="hidden"][value="7"] ~ input[value="17"] + span,
+.stalker .ability-boxes input[type="hidden"][value="7"] ~ input[value="18"] + span,
+.stalker .ability-boxes input[type="hidden"][value="7"] ~ input[value="19"] + span,
+.stalker .ability-boxes input[type="hidden"][value="7"] ~ input[value="20"] + span,
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="13"],
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="14"],
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="15"],
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="16"],
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="17"],
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="18"],
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="19"],
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="20"],
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="13"] + span,
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="14"] + span,
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="15"] + span,
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="16"] + span,
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="17"] + span,
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="18"] + span,
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="19"] + span,
+.stalker .ability-boxes input[type="hidden"][value="6"] ~ input[value="20"] + span,
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="11"],
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="12"],
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="13"],
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="14"],
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="15"],
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="16"],
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="17"],
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="18"],
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="19"],
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="20"],
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="11"] + span,
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="12"] + span,
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="13"] + span,
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="14"] + span,
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="15"] + span,
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="16"] + span,
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="17"] + span,
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="18"] + span,
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="19"] + span,
+.stalker .ability-boxes input[type="hidden"][value="5"] ~ input[value="20"] + span,
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="9"],
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="10"],
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="11"],
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="12"],
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="13"],
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="14"],
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="15"],
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="16"],
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="17"],
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="18"],
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="19"],
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="20"],
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="9"] + span,
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="10"] + span,
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="11"] + span,
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="12"] + span,
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="13"] + span,
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="14"] + span,
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="15"] + span,
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="16"] + span,
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="17"] + span,
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="18"] + span,
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="19"] + span,
+.stalker .ability-boxes input[type="hidden"][value="4"] ~ input[value="20"] + span,
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="7"],
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="8"],
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="9"],
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="10"],
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="11"],
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="12"],
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="13"],
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="14"],
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="15"],
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="16"],
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="17"],
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="18"],
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="19"],
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="20"],
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="7"] + span,
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="8"] + span,
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="9"] + span,
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="10"] + span,
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="11"] + span,
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="12"] + span,
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="13"] + span,
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="14"] + span,
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="15"] + span,
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="16"] + span,
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="17"] + span,
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="18"] + span,
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="19"] + span,
+.stalker .ability-boxes input[type="hidden"][value="3"] ~ input[value="20"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="5"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="6"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="7"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="8"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="9"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="10"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="11"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="12"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="13"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="14"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="15"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="16"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="17"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="18"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="19"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="20"],
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="5"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="6"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="7"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="8"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="9"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="10"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="11"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="12"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="13"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="14"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="15"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="16"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="17"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="18"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="19"] + span,
+.stalker .ability-boxes input[type="hidden"][value="2"] ~ input[value="20"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="3"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="4"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="5"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="6"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="7"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="8"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="9"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="10"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="11"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="12"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="13"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="14"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="15"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="16"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="17"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="18"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="19"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="20"],
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="3"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="4"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="5"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="6"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="7"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="8"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="9"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="10"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="11"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="12"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="13"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="14"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="15"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="16"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="17"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="18"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="19"] + span,
+.stalker .ability-boxes input[type="hidden"][value="1"] ~ input[value="20"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="1"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="2"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="3"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="4"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="5"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="6"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="7"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="8"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="9"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="10"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="11"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="12"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="13"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="14"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="15"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="16"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="17"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="18"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="19"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="20"],
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="1"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="2"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="3"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="4"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="5"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="6"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="7"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="8"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="9"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="10"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="11"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="12"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="13"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="14"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="15"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="16"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="17"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="18"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="19"] + span,
+.stalker .ability-boxes input[type="hidden"][value="0"] ~ input[value="20"] + span {
+	display: none;
+}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Health */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .vitals {
+	/* display: inline-block; */
+	width: 350px;
+	margin: 0 auto;
+	text-align: left;
+}
+.stalker .vitals div {
+	display: inline-block;
+}
+.stalker .vitals div + div {
+	margin-top: 5px;
+}
+.stalker .vitals span,
+.stalker .vitals input[type="number"] {
+	height: 40px;
+	line-height: 36px;
+	font-size: 20px;
+	font-weight: normal;
+	color: white;
+	border: 2px solid rgba(255,255,255,.5);
+	border-radius: 10px;
+	background-color: rgba(128,128,128,.25);
+	opacity: .875;
+}
+.stalker .vitals span {
+	/* display: inline-block; */
+	width: 180px;
+	text-align: center;
+}
+.stalker .vitals input[type="number"] {
+	width: 80px;
+	margin-left: 5px;
+}
+.stalker .vitals .green span,
+.stalker .vitals .green input {background-color: rgba(0,255,0,.25);}
+.stalker .vitals .red span,
+.stalker .vitals .red input {background-color: rgba(255,0,0,.25);}
+.stalker .vitals .orange span,
+.stalker .vitals .orange input {background-color: rgba(255,128,0,.25);}
+.stalker .vitals .blue span,
+.stalker .vitals .blue input {background-color: rgba(0,0,255,.25);}
+.stalker .vitals .yellow span,
+.stalker .vitals .yellow input {background-color: rgba(255,255,0,.25);}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Conditions */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .conditions input[type="text"] {width: 240px;}
+.stalker .conditions input[type="number"] {margin-right: 20px;}
+.stalker .conditions .header span,
+.stalker .conditions .header span:nth-child(1) {width: 240px;}
+.stalker .conditions .header span:nth-child(2),
+.stalker .conditions .header span:nth-child(3) {width: 40px;}
+.stalker .conditions .header span:nth-child(2) {margin-right: 20px;}
+.stalker .conditions .header span:nth-child(3) {margin-right: 50px;}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Specialities */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .specialities {}
+.stalker .specialities input[type="text"] {width: 190px;}
+.stalker .specialities select {
+}
+.stalker .specialities .footer span:nth-child(1),
+.stalker .specialities .header span:nth-child(1) {width: 190px;}
+.stalker .specialities .header span:nth-child(2),
+.stalker .specialities .header span:nth-child(3) {width: 100px;}
+.stalker .specialities .header span:nth-child(3) {margin-right: 30px;}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Armament */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .armament {}
+.stalker .armament input[type="text"] {width: 120px;}
+
+.stalker .armament .footer span,
+.stalker .armament .header span {width: 120px;}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Inventory */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .inventory input[type="text"] {width: 240px;}
+.stalker .inventory .header span,
+.stalker .inventory .footer span {}
+.stalker .inventory .header span:nth-child(1) {width: 240px;}
+.stalker .inventory .header span:nth-child(2),
+.stalker .inventory .footer input:nth-child(2),
+.stalker .inventory .header span:nth-child(3),
+.stalker .inventory .header span:nth-child(4) {width: 40px; margin-right: 20px;}
+.stalker .inventory .footer input:nth-child(1) {width: 40px; margin-left: 360px;}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Footnotes */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .footnotes {
+	width: 400px;
+	height: 25px;
+	margin: 0 auto;
+	font-size: 10px;
+	text-align: left;
+	color: rgba(255,255,255,.25);
+}
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Repeated Containers */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .tab .repcontainer .repitem {
+	margin-bottom: 5px;
+}
+.stalker .tab .repcontrol,
+.stalker .tab .itemcontrol {
+	position: relative;
+	z-index: 1;
+}
+.stalker .tab .repcontrol {
+	margin-top: 10px;
+	height: 24px;
+}
+.stalker .tab .repcontrol_add,
+.stalker .tab .repcontrol_edit,
+.stalker .tab .repcontrol_move,
+.stalker .tab .repcontrol_del {
+	position: absolute;
+	padding: 0;
+	border: 0;
+	background: none;
+	text-shadow: none;
+	box-shadow: none;
+	outline: 0;
+}
+.stalker .tab .repcontrol_add,
+.stalker .tab .repcontrol_edit {
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 0;
+	color: white;
+	border-radius: 100%;
+	border: 2px solid rgba(255,255,255,.25);
+	opacity: .75;
+}
+.stalker .tab .repcontrol_add:before,
+.stalker .tab .repcontrol_edit:before {
+	display: inline-block;
+	width: inherit;
+	height: inherit;
+	font-family: "Pictos";
+	font-size: 12px;
+	border-radius: inherit;
+}
+.stalker .tab .repcontrol_add:before {
+	content: "&";
+}
+.stalker .tab .repcontrol_edit:before {
+	content: "p";
+}
+.stalker .tab .repcontrol_add:hover,
+.stalker .tab .repcontrol_edit:hover {
+	color: lime;
+	border-color: lime;
+	background: rgba(0,255,0,.5);
+}
+.stalker .tab .repcontrol_add {
+	left: calc(50% - 10px);
+}
+.stalker .tab .repcontrol_edit{
+	float: none;
+	right: 40px;
+}
+.stalker .tab .repcontrol_move,
+.stalker .tab .repcontrol_del {
+	border-radius: 3px;
+	background: rgba(224,224,224,.75);
+}
+.stalker .tab .repcontrol_move,
+.stalker .tab .repcontrol_del {
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	top: 2px;
+	font-size: 10px;
+}
+.stalker .tab .repcontrol_move {
+	background: gainsboro;
+}
+.stalker .tab .repcontrol_move:hover {
+	background: white;
+}
+.stalker .tab .repcontrol_del {
+	background: darkred;
+}
+.stalker .tab .repcontrol_del:hover {
+	background: red;
+}
+.stalker .tab .repcontainer .repitem .itemcontrol .repcontrol_move {
+	left: calc(50% - 8px);
+}
+.stalker .tab .repcontainer .repitem .itemcontrol .repcontrol_del {
+	float: none;
+	right: 44px;
+}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # DEBUG */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .debug {
+	display: block;
+	font-size: 12px;
+	color: white;
+	margin-top: 10px;
+	min-height: 10px;
+	text-align: left;
+	padding: 0 50px;
+}
+
+/*
+h1 {background-color: rgba(255,0,0,.5);}
+.character {background-color: rgba(255,0,0,.25);}
+.abilities {background-color: rgba(255,0,0,.25);}
+.status {background-color: rgba(0,255,0,.25);}
+.notes {background-color: rgba(0,255,0,.25); }
+.specialities {background-color: rgba(0,255,0,.25);}
+.armament {background-color: rgba(255,0,0,.25);}
+.inventory {background-color: rgba(0,255,0,.25);}
+.backpack {background-color: rgba(255,0,0,.25);}
+*/
