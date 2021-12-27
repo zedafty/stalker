@@ -4,20 +4,75 @@
 --------------------------------------------------------------------------------
 ================================================================================
 
-	Roll20 Character Sheet for S.T.A.L.K.E.R. Role Playing Game by Fabien « Amatsu » Gest (5th version, 2011).
+	Roll20 Character Sheet for S.T.A.L.K.E.R. SD Role Playing Game by Fabien « Amatsu » Gest (5th version, 2011).
 	Inspired by video games S.T.A.L.K.E.R.: Shadow of Chernobyl, Clear Sky & Call of Pripyat which rights are owned by GSC Game World.
-	Based upon Capitaine Red character sheet.
-	Version 2.0
+	Based upon Capitaine Red original character sheet.
+	Testing by Leon Solitaire and Pingu
 
 ================================================================================
 --------------------------------------------------------------------------------
-# Snippets
+# Structure
 --------------------------------------------------------------------------------
 ================================================================================
 
-@{Borja|repeating_sacados_$0_NomObjet}
+1) character - Personnage
+	A - state - État civil
+	B - history - Historique
+2) abilities - Caractéristiques
+3) status - État de santé
+	A - vitals - Signes vitaux
+	A - resistances - Résistances naturelles
+	B - conditions - États préjudiciables
+4) specialities - Spécialités
+	A - weapon_specialities - Spécialités martiales
+	B - common_specialities - Spécialités générales
+5) armament - Armement
+	A - weapons - Armes
+	B - suits - Tenues
+	C - artefacts - Artefacts
+6) equipment - Équipement
+7) inventory - Inventaire
+	A - backpack - Sac à dos
+	B - vehicle - Véhicule
+	C - den - Planque
+8) settings - Paramètres
 
-value="@{whisper_to_gm} &{template:default} {{name=Roll Test}} {{desc=This is a roll test.}}"
+================================================================================
+--------------------------------------------------------------------------------
+# Hit Location
+--------------------------------------------------------------------------------
+================================================================================
+
+	Roll 2d6, optionally, the first d6 can be skept.
+
+	1 = head
+	- > 1 = forehead_left
+	- > 2 = eye_left
+	- > 3 = forehead_right
+	- > 4 = eye_right
+	- > 5 = mouth
+	- > 6 = throat
+	2 = arms
+	- > 1 = hand
+	- > 2 = wrist
+	- > 3 = forearm
+	- > 4 = biceps
+	- > 5 = shoulder
+	- > 6 = elbow
+	3,4,5 = torso
+	- > 1 = heart
+	- > 2 = chest
+	- > 3 = liver
+	- > 4 = spleen
+	- > 5 = stomach
+	- > 6 = pelvis
+	6 = legs
+	- > 1 = foot
+	- > 2 = ankle
+	- > 3 = calf
+	- > 4 = thigh
+	- > 5 = groin
+	- > 6 = knee
 
 ================================================================================
 --------------------------------------------------------------------------------
@@ -25,41 +80,38 @@ value="@{whisper_to_gm} &{template:default} {{name=Roll Test}} {{desc=This is a 
 --------------------------------------------------------------------------------
 ================================================================================
 
-! Format HTML
-! Format CSS
-! Fix 'Repeating_Specialite' bug
-! Set character name read-only (i.e. All-in bug preventing)
-! Add tab names
-! Add translation file
-! Add JavaScript Webworker
+* Format HTML
+* Format CSS
+* Fix 'Repeating_Specialite' bug
+* Set character name read-only (i.e. All-in bug preventing)
+* Add tab names
+* Add translation file
+* Add JavaScript Webworker
 	> Compute inventory weight
 	> Add one-page view
-! Add Roll20 Templates
+* Add Roll20 Templates
 	> Attack
 	> Damage
-	> Armor Resistance
-! Add Character Gender Field
-! Add XP Field
-! Add Money Field
-! Add Titles Field
-! Add Reputation Field
-! Add Resistances (physical + elemental)
+	> Suit Resistance
+* Add Character Gender Field
+* Add XP Field
+* Add Money Field
+* Add Titles Field
+* Add Reputation Field
+* Add Resistances (physical + elemental)
 
-1) character - Personnage
-	A - state - État civil
-	B - history - Historique
-2) abilities - Caractéristiques
-3) status - Condition
-	A - vitals - Signes vitaux
-	B - conditions - États préjudiciables
-4) notes - Notes
-5) specialities - Spécialités
-6) armament - Armement
-7) equipment - Équipement
-8) backpack - Sac à dos
+================================================================================
+--------------------------------------------------------------------------------
+# ENHANCEMENTS
+--------------------------------------------------------------------------------
+================================================================================
 
-Questions
-- Combien de points de sang-froid utilisables au maximum en une fois ?
-- Combien de points de points de vie récupérés après un repos ? (valeur arbitraire fixée au nombre de points de vie maximum)
-- Combien de points de radiation perdus après un repos ? (valeur arbitraire fixée à 10 pts)
-- Combien de points de fatigue perdus après un repos ? (valeur arbitraire fixée à 50 pts)
+* Add reputation
+* Add number before weapon specialities
+* Add hidden translation for Modifier and Whisper to GM
+* Transfer item from equipment to backpack
+* Add faction images
+? Hide unused weapon specialities
+? Add controllers like money for experience
+? Allow direct money edit
+? Hide weapon roll button if unrollable (no spec)

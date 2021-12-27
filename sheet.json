@@ -1,8 +1,8 @@
 {
-	"html": "stalker-sheet.html",
-	"css": "stalker-sheet.css",
+	"html": "sheet.html",
+	"css": "sheet.css",
 	"authors": "Zedafty",
 	"roll20userid": "5690851",
-	"preview": "",
-	"compendium": "",
-	"instructions": "",
+	"preview": "preview.jpg",
+	"instructions": "Roll20 Character Sheet for **S.T.A.L.K.E.R. SD** Role Playing Game by *Fabien 'Amatsu' Gest* (5th version, 2011).\n\nInspired by video games S.T.A.L.K.E.R.: **Shadow of Chernobyl**, **Clear Sky** & **Call of Pripyat** which rights are owned by GSC Game World.\n\nBased upon **Capitaine Red** original character sheet.\n\nTesting by **Leon Solitaire** and **Pingu**\n\n[Github Repository](https://github.com/zedafty/stalker)"
+}

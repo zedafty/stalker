@@ -4,28 +4,79 @@
 --------------------------------------------------------------------------------
 ================================================================================
 
-	Start - 2021-04-27
+	Base - 2021-04-27
+	Beta - 2021-12-19
+	v2.0 - 2021-12-27
 
 ================================================================================
 --------------------------------------------------------------------------------
-# Alpha
+# Version 2.0 (2021/12/27)
 --------------------------------------------------------------------------------
 ================================================================================
 
-# Replaced attributes
-	Surnom          => char_fname
-	Age             => char_age
-	Taille          => char_size
-	Cheveux         => char_hair
-	Yeux            => char_eyes
-	Faction         => char_faction
-	Antecedent      => antecedent1
-	Titre           => title1
-	historique      => biography
-	PV              => hp
-	PVmax           => hp_max
-	fatigue         => exhaustion
-	nourriture      => starvation
-	soif            => thirst
-	Poids           => weighing_load
-	poidsMax        => weighing_load_max
+# Fiches
+* Automatiser le rang en fonction du nombre de points d'expérience total
+* Ajouter une case pour différencier le type de fiche (Mutants et Corrompus)
+* Ajouter les écussons des factions sur la fiche de personnage
+
+# État de santé
+* Améliorer les États préjudiciables
+
+# Armes
+* Ajouter la Cadence de tir
+* Ajouter 5 cases pour les niveaux
+
+# Inventaires
+* Séparer la catégorie sac à dos en trois (Sac à dos, Véhicule, Planque)
+* Permettre de transvaser les objets de l'équipement aux inventaires
+
+================================================================================
+--------------------------------------------------------------------------------
+# Beta Update 2 (2021/12/25)
+--------------------------------------------------------------------------------
+================================================================================
+
+# Bugs
+* La formule 4+1d6 ne fonctionne pas [CORRIGÉ]
+* Le mode Strelok n'affecte pas le Sang-froid [CORRIGÉ]
+* Les poids de l'équipement n'acceptent pas les virgules [CORRIGÉ]
+
+# État de santé
+* Radiation / Fatigue : 0 => 100 (avec seuil à 25/50/75/100)
+* Faim / Soif : 100 => 0 -- NOTE : Faim = 100% signifie être affamé, même réflexion pour la Soif ; Changer pour les termes pour réciproquement Satiété et Hydratation
+
+# Caractéristiques
+* Réarranger les caractéristiques comme sur la fiche
+
+# Combinaisons
+* Ajouter un champ protection psi
+* Ajouter les résistances naturelles aux jets
+* Ajouter une pénalité aux jets pour un État de combinaison inférieur à zéro
+
+# Artefacts
+* Retirer les colonnes (icônes avec champs) seulement champ de texte
+
+================================================================================
+--------------------------------------------------------------------------------
+# Beta Update 1 (2021/12/22)
+--------------------------------------------------------------------------------
+================================================================================
+
+# Bugs
+* Les armes n'autorise pas les jets avec des +,-,* (précision/dégâts) [CORRIGÉ]
+
+# Fonctionnalités
+* Ajout du Mode Strelok pour lancer 2d10 à chaque fois (NOTE : ajout d'une case à cocher dans les Paramètres)
+
+# Spécialités
+* Ajout des caractéristiques Agilité, Connaissances et Volonté comme base pour les Spécialités martiales
+* Extension du nombre de spécialités martiales (passé de 6 à 9)
+
+# Armes
+* Ajout des jets de dégâts et des jets de localisation de toucher des armes
+* Ajout d'un champ Type de dégâts (type menu déroulant ; Impacts, Entailles, Perforations, Brûlures, Décharges électriques, Brûlures chimiques, Explosions, Radiations)
+* Ajout d'un champ Pénétration pour les armes (type nombre ; 0 à 50)
+* Ajout d'une ligne pour les effets des armes (explosion, anti-matériel, etc.)
+* Ajout d'un menu déroulant pour choisir le type d'arme (Armes de corps à corps / Armes à feu / Armes de jet)
+* Automatisation de la Portée pour les armes de jet (Force x 1/2/3/4) (NOTE : ajout d'un champ Facteur de lancer, minimum 0, maximum 100)
+* Changement du menu déroulant États en champ nombre (positif et négatif ; +25 à -25) : négatif impactent la précision, positif à effet variable (notification Fenêtre de discussion)

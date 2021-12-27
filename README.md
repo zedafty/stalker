@@ -1,20 +1,21 @@
   ## S.T.A.L.K.E.R. Sheet
 
-  For S.T.A.L.K.E.R. by Fabien « Amatsu » Gest (5th version, 2011), inspired by video games S.T.A.L.K.E.R.: Shadow of Chernobyl, Clear Sky & Call of Pripyat which rights are owned by GSC Game World.
-  Based upon Capitaine Red character sheet.
-  Version 2.0
+  Roll20 Character Sheet for **S.T.A.L.K.E.R. SD** Role Playing Game by *Fabien 'Amatsu' Gest* (5th version, 2011).
+  Inspired by video games S.T.A.L.K.E.R.: **Shadow of Chernobyl**, **Clear Sky** & **Call of Pripyat** which rights are owned by GSC Game World.
+  Based upon **Capitaine Red** original character sheet.
+  Testing by **Leon Solitaire** and **Pingu**
 
   ### Status
 
-  * pending 2021-04-29
+  * achieved 2021-12-27
 
   ### Milestone
 
-  * beta
+  * release
 
   ### Latest
 
-  * beta
+  * 2.0
 
   ### File System
 
