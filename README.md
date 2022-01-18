@@ -17,12 +17,6 @@
 
   * 2.1
 
-  ### File System
-
-  * doc -> documents (txt)
-  * img -> images (jpg, png)
-  * src -> sources (html, js, json)
-
   ### License
 
   Roll20 is a Registered Trademark of The Orr Group, LLC.
