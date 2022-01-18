@@ -1,0 +1,3502 @@
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # SASS Variables
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+// URLs
+$img-back-rep: url("https://raw.githubusercontent.com/zedafty/stalker/master/img/background-repeat.jpg")
+$img-back-top: url("https://raw.githubusercontent.com/zedafty/stalker/master/img/background-top.png")
+$img-back-bot: url("https://raw.githubusercontent.com/zedafty/stalker/master/img/background-bottom.png")
+$img-icon: url("https://raw.githubusercontent.com/zedafty/stalker/master/img/icons.png")
+$img-icon-sml: url("https://raw.githubusercontent.com/zedafty/stalker/master/img/icons-small.png")
+$img-fact: url("https://raw.githubusercontent.com/zedafty/stalker/master/img/factions.png")
+
+// Base
+$txt-base-full: white
+$txt-base-thrd: rgba(255,255,255,.75)
+$txt-base-half: rgba(255,255,255,.5)
+$txt-base-qrtr: rgba(255,255,255,.5)
+$brd-base-full: rgba(255,255,255,.625)
+$brd-base-thrd: rgba(255,255,255,.5)
+$brd-base-half: rgba(255,255,255,.375)
+$brd-base-qrtr: rgba(255,255,255,.25)
+$bgd-base-full: rgba(255,255,255,.5)
+$bgd-base-thrd: rgba(255,255,255,.375)
+$bgd-base-half: rgba(255,255,255,.1875)
+$bgd-base-qrtr: rgba(255,255,255,.0625)
+$bgd-dark-full: rgba(0,0,0,.75)
+$bgd-dark-thrd: rgba(0,0,0,.5)
+$bgd-dark-main: rgb(12,10,8)
+
+// Caution
+$txt-caution-lite: yellow
+$txt-caution-dark: orange
+$brd-caution-lite: yellow
+$bgd-caution-hover: rgba(255,128,0,.25)
+$bgd-caution-focus: rgba(255,0,0,.1875)
+
+// Warning
+$txt-warning-lite: rgb(240,32,32)
+$brd-warning-lite: rgb(240,32,32)
+$txt-warning-dull: firebrick
+$brd-warning-dull: firebrick
+$brd-warning-dark: darkred
+$txt-warning-hover: darkorange
+$brd-warning-hover: darkorange
+$bgd-warning-hover: rgba(224,0,0,.25)
+$txt-warning-focus: gold
+$brd-warning-focus: gold
+$bgd-warning-focus: rgba(224,0,0,.125)
+$bgd-warning: rgba(255,0,0,.1875)
+$brd-warning: rgba(255,0,0,.625)
+
+// Benefit
+$txt-benefit-lite: lime
+
+// Invalid
+$bgd-input-invalid: rgba(255,48,0,.25)
+$brd-input-invalid: rgba(255,24,0,.875)
+
+// Buttons
+$txt-btn-action: rgb(24,24,24)
+$bgd-btn-action: rgb(144,144,144)
+$bgd-btn-action-focus: rgb(176,176,176)
+$bgd-btn-action-hover: rgb(192,192,192)
+$bgd-btn-action-active: rgb(128,128,128)
+$bgd-btn-red: rgb(192,24,64)
+$bgd-btn-red-active: rgb(176,24,48)
+$bgd-btn-red-hover-focus: rgb(208,40,80)
+$bgd-btn-green: rgb(24,160,96)
+$bgd-btn-green-hover-focus: rgb(40,176,112)
+$bgd-btn-green-active: rgb(24,144,80)
+$bgd-btn-sml: rgba(128,128,128,.25)
+$bgd-btn-sml-focus: rgba(128,128,128,.5)
+$bgd-btn-sml-hover: rgba(128,128,128,.75)
+
+// Scrollbar
+$bgd-scrollbar-color: rgba(255,255,255,.25)
+$bgd-scrollbar-thumb: rgba(255,255,255,.75)
+
+// Elements
+$bgd-select-hover: rgba(0,255,0,.25)
+$bgd-select-focus: rgba(128,255,0,.125)
+$bgd-leadership-focus: rgba(192,80,24,.75)
+$bgd-leadership-hover: rgba(192,24,24,.75)
+$bgd-leadership-active: rgba(192,24,24,.5)
+$bgd-selfcontrol-focus: rgba(255,192,0,.25)
+$bgd-selfcontrol-hover: rgba(255,255,0,.5)
+$bgd-ability-box: rgba(255,255,255,.125)
+$bgd-ability-box-hover: rgba(0,255,0,.75)
+$bgd-ability-box-focus: rgba(48,255,0,.9375)
+$bgd-ability-box-active: rgba(0,255,0,.375)
+$bgd-ability-box0-hover: rgba(255,255,0,.625)
+$bgd-ability-box0-focus: rgba(255,255,0,.875)
+$bgd-ability-box0-active: rgba(255,0,0,.625)
+$txt-version: rgba(0,0,0,.875)
+
+// Repeating Controllers
+$bgd-repctrl-del: darkred
+$bgd-repctrl-del-hover: red
+$bgd-repctrl-move-hover: rgba(255,240,0,.375)
+
+// Sheet Types
+$txt-pc: forestgreen
+$txt-mutant: rgb(224,96,16)
+$txt-tainted: rgb(80,144,208)
+$txt-lite-pc: lime
+$txt-lite-mutant: rgb(255,224,32)
+$txt-lite-tainted: rgb(144,216,255)
+$brd-pc: rgba(0,255,0,.375)
+$brd-mutant: rgba(224,96,16,.625)
+$brd-tainted: rgba(80,144,208,.625)
+
+// Selection
+$txt-selection-pc: rgba(128,224,0,.25)
+$txt-selection-input-pc: rgba(128,224,0,.5)
+$txt-selection-mutant: rgba(240,144,0,.25)
+$txt-selection-input-mutant: rgba(240,144,0,.5)
+$txt-selection-tainted: rgba(48,192,240,.25)
+$txt-selection-input-tainted: rgba(48,192,240,.5)
+
+// Inputs
+$txt-input-focus-pc: limegreen
+$brd-input-focus-pc: limegreen
+$bgd-input-focus-pc: rgba(128,255,0,.125)
+$txt-input-hover-pc: lime
+$brd-input-hover-pc: lime
+$bgd-input-hover-pc: rgba(128,255,0,.25)
+$bgd-input-dark-pc: darkgreen
+$bgd-input-dark-hover-pc: rgba(0,128,32,.125)
+$txt-input-focus-mutant: rgb(240,192,0)
+$brd-input-focus-mutant: rgb(240,192,0)
+$bgd-input-focus-mutant: rgba(255,128,0,.125)
+$txt-input-hover-mutant: rgb(255,208,0)
+$brd-input-hover-mutant: rgb(255,208,0)
+$bgd-input-hover-mutant: rgba(255,128,0,.25)
+$bgd-input-dark-mutant: rgb(144,48,0)
+$bgd-input-dark-hover-mutant: rgba(144,48,0,.125)
+$txt-input-focus-tainted: rgb(128,192,224)
+$brd-input-focus-tainted: rgb(128,192,224)
+$bgd-input-focus-tainted: rgba(32,192,255,.125)
+$txt-input-hover-tainted: rgb(128,208,240)
+$brd-input-hover-tainted: rgb(128,208,240)
+$bgd-input-hover-tainted: rgba(32,192,255,.125)
+$bgd-input-dark-tainted: rgb(48,80,144)
+$bgd-input-dark-hover-tainted: rgba(48,80,144,.125)
+
+// Togs
+$brd-tog-pc: rgba(0,255,0,.25)
+$brd-tog-active-pc: rgba(0,255,0,.375)
+$bgd-tog-active-pc: rgba(128,255,0,.125)
+$brd-tog-mutant: rgba(255,96,0,.25)
+$brd-tog-active-mutant: rgba(255,96,0,.375)
+$bgd-tog-active-mutant: rgba(255,160,0,.125)
+$brd-tog-tainted: rgba(32,160,255,.25)
+$brd-tog-active-tainted: rgba(32,160,255,.375)
+$bgd-tog-active-tainted: rgba(164,192,255,.125)
+
+// Options flags
+$bgd-options-flag-focus-pc: rgba(128,255,0,.375)
+$bgd-options-flag-hover-pc: rgba(0,255,0,.5)
+$bgd-options-flag-focus-mutant: rgba(255,128,0,.375)
+$bgd-options-flag-hover-mutant: rgba(255,192,0,.5)
+$bgd-options-flag-focus-tainted: rgba(32,160,255,.375)
+$bgd-options-flag-hover-tainted: rgba(32,192,255,.5)
+
+// Damages
+$bgd-damage-focus-pc: rgba(128,255,0,.1875)
+$bgd-damage-hover-pc: rgba(128,255,0,.125)
+$bgd-damage-focus-mutant: rgba(255,128,0,.25)
+$bgd-damage-hover-mutant: rgba(255,128,0,.1875)
+$bgd-damage-focus-tainted: rgba(64,160,255,.25)
+$bgd-damage-hover-tainted: rgba(64,160,255,.1875)
+
+// Weapon Numbers
+$txt-weapon-number-pc: lime
+$brd-weapon-number-pc: forestgreen
+$bgd-weapon-number-pc: rgba(24,128,48,.25)
+$txt-weapon-number-mutant: rgb(255,208,0)
+$brd-weapon-number-mutant: rgb(224,96,16)
+$bgd-weapon-number-mutant: rgba(128,48,24,.25)
+$txt-weapon-number-tainted: rgb(128,208,240)
+$brd-weapon-number-tainted: rgb(80,144,208)
+$bgd-weapon-number-tainted: rgba(32,96,128,.25)
+
+// Templates
+$txt-tmpl-label: rgb(208,208,208)
+$bgd-tmpl-href: rgba(192,0,0,.625)
+$bgd-tmpl-href-hover: rgba(0,128,0,.75)
+$bgd-tmpl-href-focus-active: rgba(192,192,0,.5)
+$txt-tmpl-href-pictos: rgb(192,0,0)
+
+// Box Shadows
+$box-shadow: 1px 1px 3px 1px $bgd-dark-full
+$box-shadow-active: 1px 1px 3px $bgd-dark-thrd inset
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # HTML (reset)
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	div,
+	span,
+	label,
+	button[type="roll"],
+	button[type="action"],
+	input[type="text"],
+	input[type="number"],
+	input[type="radio"],
+	input[type="checkbox"],
+	select,
+	textarea,
+	fieldset
+		margin: 0
+		padding: 0
+		border: 0
+		vertical-align: top
+		box-sizing: border-box
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Containers
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	position: relative
+	display: table
+	width: 600px
+	margin: 30px 0 40px
+	font-family: "Arial", sans-serif
+	font-size: 0
+	background-image: $img-back-rep
+	background-repeat: repeat-y
+	background-color: $bgd-dark-main
+.stalker::after,
+.stalker::before
+	content: ""
+	position: absolute
+	display: block
+	width: inherit
+	left: 0
+	background-repeat: no-repeat
+.stalker::before
+	top: -20px
+	height: 30px
+	background-image: $img-back-top
+.stalker::after
+	bottom: -30px
+	height: 40px
+	background-image: $img-back-bot
+
+.stalker
+	.sheet
+		display: table-cell
+		width: 500px
+		padding: 20px 50px 10px
+		text-align: center
+		box-sizing: content-box
+	.ruler
+		min-height: 10px
+	.block,
+	.line
+		position: relative
+	.block
+		width: 450px
+		margin: 0 auto
+	.header,
+	.line
+		text-align: left
+	.line
+		margin-bottom: 5px
+	.header span,
+	.line span
+		text-align: center
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Repeating Containers
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.tab
+		.repcontrol,
+		.itemcontrol
+			position: relative
+			z-index: 1
+		.repcontrol
+			margin-top: 10px
+			height: 24px
+		.repcontainer .repitem .itemcontrol
+			background-color: $bgd-base-half
+		.repcontrol_add,
+		.repcontrol_edit,
+		.repcontrol_move,
+		.repcontrol_del
+			position: absolute
+			padding: 0
+			border: 0
+			background: none
+			text-shadow: none
+			box-shadow: none
+			outline: 0
+		.repcontrol_add,
+		.repcontrol_edit
+			width: 20px
+			height: 20px
+			top: 5px
+			line-height: 20px
+			font-size: 0
+			color: $txt-base-full
+			border-radius: 100%
+			border: 2px solid $brd-base-qrtr
+			opacity: .75
+		.repcontrol_add::before,
+		.repcontrol_edit::before
+			display: inline-block
+			width: inherit
+			height: inherit
+			font-family: "Pictos"
+			font-size: 12px
+			border-radius: inherit
+		.repcontrol_add::before
+			content: "&"
+		.repcontrol_edit::before
+			content: "p"
+		.repcontrol_add:hover,
+		.repcontrol_edit:hover,
+		.repcontrol_add:focus,
+		.repcontrol_edit:focus
+			color: $txt-input-hover-pc
+			border-color: $brd-input-hover-pc
+			background: $bgd-input-hover-pc
+		.repcontrol_add
+			left: auto
+			right: calc(50% - 119px)
+		.repcontrol_edit
+			float: none
+			right: auto
+			left: calc(50% - 104px)
+		.repcontrol_add::after,
+		.repcontrol_edit::after
+			content: ""
+			position: absolute
+			display: inline-block
+			width: 80px
+			height: 26px
+			top: -17px
+			border: 1px solid $brd-base-qrtr
+			border-top: 0
+		.repcontrol_add::after
+			left: 22px
+			border-left: 0
+			border-bottom-right-radius: 20px
+		.repcontrol_edit::after
+			right: 22px
+			border-right: 0
+			border-bottom-left-radius: 20px
+		.repcontrol_add:hover::after,
+		.repcontrol_edit:hover::after,
+		.repcontrol_add:focus::after,
+		.repcontrol_edit:focus::after
+			border-color: $brd-input-hover-pc
+		.repcontrol_move,
+		.repcontrol_del
+			width: 16px
+			height: 16px
+			line-height: 16px
+			top: 2px
+			font-size: 10px
+			border-radius: 3px
+		.repcontrol_move
+			color: $txt-base-full
+			background: transparent
+		.repcontrol_move:hover
+			background: $bgd-repctrl-move-hover
+		.repcontrol_del
+			background: $bgd-repctrl-del
+		.repcontrol_del:hover
+			background: $bgd-repctrl-del-hover
+		.repcontainer .repitem .itemcontrol .repcontrol_move
+			width: 100%
+			height: 100%
+			top: 0
+			left: 0
+			border-radius: 0
+		.repcontainer .repitem .itemcontrol .repcontrol_del
+			float: none
+			right: 70px
+			z-index: 1
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Headers
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	h1
+		margin: 0 25px 20px
+		line-height: 26px
+		font-weight: bold
+		font-size: 12px
+		color: $txt-pc
+		border-width: 2px 0 2px 0
+		border-style: solid
+		border-color: $brd-pc
+		background-color: $bgd-dark-thrd
+		opacity: .75
+	h1:not(:first-child)
+		margin-top: 30px
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Selection
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	h1::selection,
+	div::selection,
+	span::selection
+		color: $txt-base-full
+		background-color: $txt-selection-pc
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Inputs
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	label
+		user-select: none
+		display: inline-block
+		width: auto
+		height: 20px
+		line-height: 20px
+		padding: 0 4px
+		font-size: 10px
+		font-weight: bold
+		text-align: center
+		color: $txt-pc
+	label[for]:hover
+		cursor: pointer
+		color: $txt-lite-pc
+	input[type="radio"],
+	input[type="checkbox"]
+		-webkit-appearance: none
+		appearance: none
+		cursor: pointer
+		margin: 0
+		outline: 0
+	select::-ms-expand
+		display: none
+	select,
+	input[type="text"],
+	input[type="number"]
+		height: 20px
+	select,
+	textarea,
+	input[type="text"],
+	input[type="number"]
+		color: $txt-base-full
+		font-family: "Arial", sans-serif
+		border: 1px solid $brd-base-full
+		border-radius: 0
+		background-color: transparent
+		opacity: .75
+		outline: 0
+	select,
+	input[type="text"],
+	input[type="number"]
+		font-size: 10px
+		text-align: center
+	select,
+	input[type="text"]
+		border-color: $brd-base-qrtr
+		border-width: 0 0 1px 0
+	textarea,
+	input[type="number"]
+		background-color: $bgd-dark-thrd
+	select
+		-webkit-appearance: none
+		-moz-appearance: none
+		width: 100px
+		line-height: 1
+		text-align-last: center
+	select option
+		color: $txt-base-thrd
+		background-color: $bgd-dark-full
+	textarea
+		resize: vertical
+		min-height: 60px
+		height: 60px
+		line-height: 1.375
+		padding: 5px
+		font-size: 12px
+		background-color: $bgd-dark-thrd
+		scrollbar-width: thin
+		scrollbar-color: $bgd-scrollbar-thumb $bgd-scrollbar-color
+	textarea::-webkit-scrollbar
+		width: 8px
+		background-color: $bgd-scrollbar-color
+	textarea::-webkit-scrollbar-thumb
+		background-color: $bgd-scrollbar-thumb
+	textarea::-webkit-scrollbar-thumb:hover
+		background-color: $bgd-input-focus-pc
+	input[type="number"]::-webkit-inner-spin-button,
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]:hover::-webkit-inner-spin-button,
+	input[type="number"]:hover::-webkit-outer-spin-button,
+	input[type="number"]:focus::-webkit-inner-spin-button,
+	input[type="number"]:focus::-webkit-outer-spin-button
+		appearance: none
+		display: none
+	input[type=number]:hover::-webkit-inner-spin-button,
+	input[type=number]:hover::-webkit-outer-spin-button
+		appearance: none
+		display: none
+	input[type="number"]
+		-webkit-appearance: auto
+		-moz-appearance: textfield
+	select:focus,
+	textarea:focus,
+	input[type="text"]:not([readonly]):focus,
+	input[type="number"]:not([readonly]):focus
+		color: $txt-input-focus-pc
+		border-color: $brd-input-focus-pc
+		background-color: $bgd-input-focus-pc
+	select:hover,
+	textarea:hover,
+	input[type="text"]:not([readonly]):hover,
+	input[type="number"]:not([readonly]):hover
+		color: $txt-input-hover-pc
+		border-color: $brd-input-hover-pc
+		background-color: $bgd-input-hover-pc
+	input[type="text"][readonly],
+	input[type="number"][readonly]
+		border: 0
+		background-color: transparent
+	input[type="text"][readonly]:hover,
+	input[type="number"][readonly]:hover
+		cursor: default
+	input[type="number"]:invalid
+		outline: 3px solid $brd-input-invalid
+		background-color: $bgd-input-invalid
+	select::selection,
+	textarea::selection,
+	input::selection
+		color: $txt-base-full
+		background-color: $txt-selection-input-pc
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Sheet Inputs
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.sheet
+		input[type="number"],
+		input[type="text"].number
+			width: 40px
+		button[type="roll"]:before
+			content: none
+		button[type="roll"],
+		button[type="action"]
+			cursor: pointer
+			height: 20px
+			font-family: "Arial", sans-serif
+			border-radius: 0
+			box-shadow: none
+			background: none
+			outline: 0
+		button[type="roll"]
+			width: 30px
+			margin: 0
+			padding: 0
+			font-size: 14px
+			color: $txt-base-full
+			border: 1px solid transparent
+			border-radius: 2px
+			background-color: $bgd-base-half
+			text-shadow: none
+		button[type="roll"]:focus
+			background-color: $bgd-base-thrd
+		button[type="roll"]:hover
+			background-color: $bgd-base-full
+		button[type="roll"].pictos
+			font-family: "Pictos"
+		button[type="roll"].dicefont
+			font-family: "dicefontd20"
+		button[type="action"]
+			padding: 0 5px
+			font-size: 12px
+			line-height: 20px
+			color: $txt-btn-action
+			border: 0
+			background-color: $bgd-btn-action
+		button[type="action"]:focus
+			background-color: $bgd-btn-action-focus
+		button[type="action"]:hover
+			background-color: $bgd-btn-action-hover
+		button[type="action"]:active
+			background-color: $bgd-btn-action-active
+
+		// Conditional number inputs color
+		.conditional:not([value="0"]) + input[type="number"]
+			color: $txt-input-hover-pc
+		.conditional[value*="-"] + input[type="number"]
+			color: $txt-warning-lite
+		.conditional[value*="-"] + input[type="number"]:hover
+			color: $txt-caution-lite
+			background-color: $bgd-caution-hover
+		.conditional[value*="-"] + input[type="number"]:focus
+			color: $txt-caution-dark
+			background-color: $bgd-caution-focus
+
+	// Conditional number inputs color
+	.roll-button
+		position: absolute
+		left: -35px
+		top: 0
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Global Modifiers
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	input[type="checkbox"].mod
+		height: 20px
+	input.mod
+		opacity: 0
+	input.mod,
+	input.mod + label
+		width: 125px
+	input.mod + label
+		position: relative
+		height: 20px
+		margin-left: -125px
+		margin-bottom: 4px
+		padding-left: 32px
+		text-align: left
+		color: $txt-base-half
+	input.mod + label::before,
+	input.mod + label::after
+		content: ""
+		position: absolute
+		display: inline-block
+		transition: left .25s, background .125s
+		opacity: .75s
+	input.mod + label::before
+		width: 22px
+		height: 12px
+		left: 4px
+		top: 4px
+		border-radius: 16px
+		background-color: $bgd-base-half
+	input.mod + label::after
+		width: 8px
+		height: 8px
+		left: 6px
+		top: 6px
+		border-radius: 100%
+		background-color: $bgd-base-thrd
+	input.mod:checked + label
+		color: $txt-pc
+	input.mod:checked + label::before
+		background-color: $txt-pc
+	input.mod:checked + label::after
+		background-color: $txt-lite-pc
+		left: 16px
+	input.mod:hover + label
+		color: $txt-lite-pc
+	input.mod:hover + label::after
+		background-color: $txt-lite-pc
+	input.mod:focus + label
+		color: $txt-caution-lite
+		opacity: .75
+	input.mod:hover + label
+		opacity: 1
+	.sheet > input.mod.tab0 + label
+		margin-right: 125px
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Tabs
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	input[type="radio"].tog
+		height: 30px
+	input.tog
+		opacity: 0
+	input.tog,
+	input.tog + label
+		width: 125px
+	input.tog + label
+		height: 30px
+		line-height: 30px
+		margin-left: -125px
+		padding: 0
+		font-size: 11px
+		border: 1px solid $brd-tog-pc
+		background-color: $bgd-dark-thrd
+	input.tog:checked + label
+		color: $txt-input-focus-pc
+		border-color: $brd-tog-active-pc
+		background-color: $bgd-tog-active-pc
+	input.tog:hover + label
+		color: $txt-input-hover-pc
+	input.tog:focus + label
+		color: $txt-input-hover-pc
+		background-color: $bgd-input-hover-pc
+
+	.tab
+		position: relative
+		display: none
+		padding: 10px 0 20px
+		.header
+			margin-bottom: 5px
+		.footer
+			margin-top: 5px
+		.header span,
+		.footer span,
+		.line span
+			color: $txt-pc
+		span
+			display: inline-block
+			width: 20px
+			height: 20px
+			line-height: 20px
+			font-size: 10px
+			opacity: .75
+		span.small
+			width: 10px
+		span.large
+			width: 40px
+		button span
+			width: auto
+			height: 100%
+			line-height: inherit
+
+	.tab0:checked ~ .tab,
+	.tab0:checked ~ .modifiers,
+	.tab0:checked ~ .money,
+	.tab1:checked ~ .tab1,
+	.tab2:checked ~ .tab2,
+	.tab2:checked ~ .modifiers,
+	.tab3:checked ~ .tab3,
+	.tab4:checked ~ .tab4,
+	.tab4:checked ~ .modifiers,
+	.tab5:checked ~ .tab5,
+	.tab5:checked ~ .modifiers,
+	.tab6:checked ~ .tab6,
+	.tab6:checked ~ .money,
+	.tab7:checked ~ .tab7,
+	.tab7:checked ~ .money,
+	.tab8:checked ~ .tab8
+		display: block
+
+	.tab0:checked ~ .tog,
+	.tab0:checked ~ .tog + label
+		display: none
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Options
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	// Options Flag
+	.options-flag,
+	.options-flag + span
+		position: absolute
+		right: 0
+		top: 0
+	.options-flag
+		z-index: 1
+	.options-flag + span
+		font-size: 14px
+		font-weight: bold
+		color: $txt-pc
+		border-radius: 2px
+		opacity: .75
+	.options-flag:focus + span,
+	.options-flag:hover + span
+		color: $txt-lite-pc
+	.options-flag:focus + span
+		background-color: $bgd-options-flag-focus-pc
+	.options-flag:hover + span
+		background-color: $bgd-options-flag-hover-pc
+		opacity: 1
+	.options-flag + span::after
+		content: "&"
+	.options-flag:checked + span::after
+		content: "_"
+	.tab
+		.options-flag,
+		.options-flag + span
+			width: 20px
+			height: 20px
+			font-family: pictos
+			font-weight: normal
+			font-size: 10px
+			text-align: center
+
+	// Options Toggle
+	.options-toggle,
+	.options-toggle + span
+		right: 0
+		top: 0
+	.options-toggle + span::after
+		content: "►"
+	.options-toggle:checked + span::after
+		content: "▼"
+
+	// Options
+	.options
+		position: relative
+		display: none
+		padding: 5px
+	.options-flag:checked ~ .options
+		display: block
+	.options-flag:checked ~ .options.inline
+		display: inline-block
+	.options.boxed
+		width: 425px
+		margin: 0 0px 10px 15px
+		padding: 15px
+		border-bottom-left-radius: 15px
+		border-bottom-right-radius: 15px
+		border: 1px solid $brd-base-qrtr
+		border-top: 0
+	.options.boxed textarea
+		width: 100%
+		font-size: 11px
+		border: 0
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Money
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.money
+		display: none
+		padding: 5px 0 7px
+		span
+			display: inline-block
+			width: 20px
+			color: $txt-pc
+			font-size: 10px
+		label
+			width: 50px
+		span,
+		label,
+		input[type="number"],
+		button[type="action"]
+			height: 24px
+			line-height: 24px
+			margin: 2px 0
+		input[type="number"]
+			font-size: 11px
+			border-radius: 4px
+		input[type="number"]:last-of-type
+			width: 60px
+			height: 28px
+			line-height: 28px
+			font-size: 12px
+			margin: 0
+		input[type="number"]:not(:last-of-type)
+			width: 40px
+			border-right: 0
+			border-top-right-radius: 0
+			border-bottom-right-radius: 0
+		input[type="number"]:not(:last-of-type):not(:hover):not(:focus)
+			border-color: $brd-base-thrd
+		button[type="action"]
+			width: 24px
+			font-family: "Pictos"
+			border-top-right-radius: 4px
+			border-bottom-right-radius: 4px
+		button[type="action"] + label
+			margin-left: 10px
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Modifiers
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.modifiers
+		display: none
+		padding: 4px 0 6px
+		.leadership,
+		.selfcontrol,
+		.selfcontrol-warning
+			display: inline-block
+			height: 30px
+			padding-top: 5px
+
+		// Leadership
+		.leadership
+			label
+				width: 100px
+			button
+				width: 14px
+				height: 14px
+				line-height: 14px
+				margin: 4px
+				padding: 0
+				font-family: "Pictos"
+				font-size: 10px
+				color: $txt-base-thrd
+				border-radius: 100%
+				background-color: transparent
+				opacity: .5
+			button:focus,
+			button:hover,
+			button:active
+				opacity: 1
+			button:focus
+				background-color: $bgd-leadership-focus
+			button:hover
+				background-color: $bgd-leadership-hover
+			button:active
+				background-color: $bgd-leadership-active
+
+		// Selfcontrol
+		.selfcontrol
+			label
+				width: 80px
+				margin-left: 10px
+				color: $txt-warning-lite !important
+				opacity: .75
+			label:hover
+				color: $txt-caution-lite
+			input
+				opacity: 0
+			input,
+			input + span
+				height: 16px
+				width: 16px
+				margin-top: 2px
+			input + span
+				pointer-events: none
+				display: inline-block
+				position: relative
+				margin-left: -16px
+				color: $txt-base-full
+				border: 1px solid $brd-base-full
+				background-color: $bgd-base-half
+				opacity: .75
+			input + span::after
+				content: ""
+				position: absolute
+				top: 0
+				left: -1px
+				width: inherit
+				height: inherit
+				line-height: 13px
+				font-size: 12px
+				font-family: "Pictos"
+				color: inherit
+				transition: opacity .125s
+			input:checked + span
+				color: $txt-warning-lite
+				border-color: $brd-warning-lite
+			input:checked + span::after
+				content: "*"
+			input:hover + span,
+			input:focus + span
+				border-color: $brd-caution-lite
+			input:focus + span
+				background-color: $bgd-selfcontrol-focus
+			input:hover + span
+				background-color: $bgd-selfcontrol-hover
+			input:hover:checked + span::after,
+			input:focus:checked + span::after
+				color: $txt-caution-lite
+			input:disabled + span
+				cursor: default
+				border-color: $brd-base-thrd
+				background-color: transparent
+
+		// Selfcontrol Warning
+		.selfcontrol-warning
+			width: 100px
+			height: 20px
+			margin: 5px
+			padding: 0 4px
+			font-size: 10px
+			font-weight: bold
+			font-style: italic
+			line-height: 18px
+			color: $txt-warning-lite
+			border-radius: 3px
+			background-color: $bgd-warning
+			opacity: .75
+
+		// Selfcontrol Toggle
+		.selfcontrol-toggle[value="0"] ~ .selfcontrol,
+		.selfcontrol-toggle[value="1"] ~ .selfcontrol-warning
+			display: none
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # State
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.state
+		position: relative
+		> div
+			display: inline-block
+		> div > label
+			width: 50px
+		> div > input[type="text"]
+			width: 100px
+		> div > span
+			width: 80px
+			margin-right: 20px
+		> div > span > span
+			width: 35px
+			color: $txt-base-full
+			opacity: 1
+		> div > span > span:nth-child(2)
+			width: 10px
+			color: $txt-pc
+		.badge + span
+			display: inline-block
+			position: relative
+			width: 150px
+			height: 150px
+			left: 25px
+			margin-top: -15px
+			margin-bottom: -40px
+			background-image: $img-fact
+			background-repeat: no-repeat
+			background-position: 150px 150px
+			transform: scale(.66666666666666666666666666666667)
+		.badge[value=""] + span
+			height: 0
+		.badge[value="loners"] + span
+			background-position: 0 0
+		.badge[value="duty"] + span
+			background-position: -150px 0
+		.badge[value="freedom"] + span
+			background-position: -300px 0
+		.badge[value="clearsky"] + span
+			background-position: -450px 0
+		.badge[value="ecologists"] + span
+			background-position: 0 -150px
+		.badge[value="mercenaries"] + span
+			background-position: -150px -150px
+		.badge[value="military_forces"] + span
+			background-position: -300px -150px
+		.badge[value="unisg"] + span
+			background-position: -450px -150px
+		.badge[value="bandits"] + span
+			background-position: 0 -300px
+		.badge[value="renegades"] + span
+			background-position: -150px -300px
+		.badge[value="monolith"] + span
+			background-position: -300px -300px
+		.badge[value="sin"] + span
+			background-position: -450px -300px
+		.xp
+			position: relative
+			width: 300px
+			margin-top: 20px
+			text-align: right
+		.xp span
+			text-align: center
+		.options-flag
+			width: 20px
+			height: 20px
+			top: 0
+			right: 0
+		.options-flag + span
+			width: 14px
+			height: 14px
+			margin-right: 0
+			line-height: 14px
+			top: 3px
+			right: 3px
+		.options
+			width: 300px
+			margin: 10px auto 0
+			padding: 0
+		.options > span
+			display: inline-block
+			width: 80px
+			height: 40px
+			margin: 0 10px
+		.options label,
+		.options input[type="number"]
+			width: 80px
+		.options textarea
+			width: 280px
+			margin: 10px 20px 0 0px
+			font-size: 10px
+			color: $txt-base-thrd
+			border-color: $bgd-input-dark-pc
+		.options textarea:hover
+			color: $txt-input-hover-pc
+		.options textarea:focus
+			color: $txt-input-focus-pc
+		.options::before
+			content: ""
+			position: absolute
+			display: inline-block
+			height: 20px
+			border: 1px solid $brd-base-qrtr
+			border-bottom: 0
+		.options::before
+			width: 110px
+			left: 50px
+			top: -20px
+			border-right: 0
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # History
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.history
+		.block
+			width: 405px
+		> div:not(:first-of-type)
+			margin-top: 20px
+		label
+			width: 100%
+			margin-bottom: 5px
+		input[type="text"]
+			width: 330px
+		.options
+			width: 380px
+		.repcontrol_add
+			right: calc(50% - 87px)
+		.repcontrol_edit
+			left: calc(50% - 81px)
+		.reputation
+			input[type="text"]
+				width: 200px
+			select
+				width: 130px
+		.biography
+			textarea
+				width: 400px
+				height: 320px
+				padding: 10px
+				border-radius: 5px
+			textarea:hover,
+			textarea:focus
+				color: $txt-base-full
+			textarea:hover
+				background-color: $bgd-input-dark-hover-pc
+			textarea:focus
+				border-color: $txt-base-full
+				background-color: $bgd-base-qrtr
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Abilities
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.abilities
+
+		// Abilities Header
+		.header
+			width: 450px
+			margin: 0 auto 5px
+			span:nth-child(1)
+				width: 110px
+				margin-right: 10px
+			span:nth-child(2)
+				width: 50px
+			span:nth-child(3)
+				width: 220px
+				margin-left: 15px
+			span:nth-child(4)
+				width: 20px
+
+		// Abilities Footer
+		.footer
+			width: 450px
+			margin: 10px auto 0
+			text-align: left
+			span
+				width: 120px
+				text-align: center
+				margin-right: 5px
+
+	// Ability Container
+	.ability
+		position: relative
+		width: 425px
+		min-height: 30px
+		margin-left: 25px
+	.ability::after
+		content: ""
+		clear: both
+		display: block
+	.ability + .ability
+		margin-top: 5px
+
+	// Ability Inputs
+	.ability
+		button[type="roll"].roll-button
+			top: 5px
+		.roll-button:hover + button,
+		.roll-button:focus + button
+			color: $txt-input-hover-pc
+		button[name^="roll_show"]
+			float: left
+			width: 110px
+			height: 30px
+			margin-right: 10px
+			color: $txt-pc
+			border-radius: 5px
+			background-color: transparent
+		button[name^="roll_show"] span
+			width: 100%
+			height: 28px
+			padding: 0
+			line-height: 30px
+			font-size: 12px
+			font-weight: bold
+			color: inherit
+			border-radius: inherit
+			opacity: .875
+		button[name^="roll_show"]:hover,
+		button[name^="roll_show"]:focus
+			color: $txt-input-focus-pc
+			border-color: $brd-input-focus-pc
+			background-color: $bgd-input-focus-pc
+		button[name^="roll_show"].red
+			color: $txt-warning-lite !important
+		button[name^="roll_show"].red:hover,
+		button[name^="roll_show"].red:focus
+			color: $txt-warning-lite !important
+			border-color: $brd-warning-dark !important
+			background-color: $bgd-warning !important
+		span.case
+			cursor: default
+			float: left
+			width: 50px
+			height: 30px
+			line-height: 28px
+			font-size: 14px
+			font-weight: bold
+			color: $txt-base-full
+			border-radius: 4px
+			border: 1px solid $brd-base-full
+			background-color: $bgd-dark-thrd
+		.usable
+			float: right
+			width: 20px
+			height: 30px
+			padding: 5px 0
+			line-height: 18px
+			color: $txt-base-full
+			opacity: .75
+
+	// Ability Boxes
+	.ability-boxes
+		float: left
+		width: 220px
+		margin-left: 15px
+		padding: 1px 0
+		text-align: left
+		input[type="radio"]
+			width: 18px
+			height: 10px
+			opacity: 0
+			margin-top: 2px
+		input[type="radio"] + span
+			pointer-events: none
+			display: inline-block
+			width: 16px
+			height: 10px
+			margin: 2px 4px 2px -18px
+			background-color: $bgd-ability-box-active
+		input[value="0"],
+		input[value="0"] + span
+			float: left
+			width: 12px
+			height: 24px
+		input[value="0"] + span
+			margin-left: -12px
+		input:hover + span
+			background-color: $bgd-ability-box-hover !important
+		input:focus + span
+			background-color: $bgd-ability-box-focus !important
+		input[value="0"] + span,
+		input:checked ~ input + span
+			background-color: $bgd-ability-box
+		input[value="0"]:hover + span
+			background-color: $bgd-ability-box0-hover !important
+		input[value="0"]:focus + span
+			background-color: $bgd-ability-box0-focus !important
+		input[value="0"]:checked + span
+			background-color: $bgd-ability-box0-active
+
+	.ability-boxes
+		input[type="hidden"][value="9"] ~ input[value="19"],
+		input[type="hidden"][value="9"] ~ input[value="20"],
+		input[type="hidden"][value="9"] ~ input[value="19"] + span,
+		input[type="hidden"][value="9"] ~ input[value="20"] + span,
+		input[type="hidden"][value="8"] ~ input[value="17"],
+		input[type="hidden"][value="8"] ~ input[value="18"],
+		input[type="hidden"][value="8"] ~ input[value="19"],
+		input[type="hidden"][value="8"] ~ input[value="20"],
+		input[type="hidden"][value="8"] ~ input[value="17"] + span,
+		input[type="hidden"][value="8"] ~ input[value="18"] + span,
+		input[type="hidden"][value="8"] ~ input[value="19"] + span,
+		input[type="hidden"][value="8"] ~ input[value="20"] + span,
+		input[type="hidden"][value="7"] ~ input[value="15"],
+		input[type="hidden"][value="7"] ~ input[value="16"],
+		input[type="hidden"][value="7"] ~ input[value="17"],
+		input[type="hidden"][value="7"] ~ input[value="18"],
+		input[type="hidden"][value="7"] ~ input[value="19"],
+		input[type="hidden"][value="7"] ~ input[value="20"],
+		input[type="hidden"][value="7"] ~ input[value="15"] + span,
+		input[type="hidden"][value="7"] ~ input[value="16"] + span,
+		input[type="hidden"][value="7"] ~ input[value="17"] + span,
+		input[type="hidden"][value="7"] ~ input[value="18"] + span,
+		input[type="hidden"][value="7"] ~ input[value="19"] + span,
+		input[type="hidden"][value="7"] ~ input[value="20"] + span,
+		input[type="hidden"][value="6"] ~ input[value="13"],
+		input[type="hidden"][value="6"] ~ input[value="14"],
+		input[type="hidden"][value="6"] ~ input[value="15"],
+		input[type="hidden"][value="6"] ~ input[value="16"],
+		input[type="hidden"][value="6"] ~ input[value="17"],
+		input[type="hidden"][value="6"] ~ input[value="18"],
+		input[type="hidden"][value="6"] ~ input[value="19"],
+		input[type="hidden"][value="6"] ~ input[value="20"],
+		input[type="hidden"][value="6"] ~ input[value="13"] + span,
+		input[type="hidden"][value="6"] ~ input[value="14"] + span,
+		input[type="hidden"][value="6"] ~ input[value="15"] + span,
+		input[type="hidden"][value="6"] ~ input[value="16"] + span,
+		input[type="hidden"][value="6"] ~ input[value="17"] + span,
+		input[type="hidden"][value="6"] ~ input[value="18"] + span,
+		input[type="hidden"][value="6"] ~ input[value="19"] + span,
+		input[type="hidden"][value="6"] ~ input[value="20"] + span,
+		input[type="hidden"][value="5"] ~ input[value="11"],
+		input[type="hidden"][value="5"] ~ input[value="12"],
+		input[type="hidden"][value="5"] ~ input[value="13"],
+		input[type="hidden"][value="5"] ~ input[value="14"],
+		input[type="hidden"][value="5"] ~ input[value="15"],
+		input[type="hidden"][value="5"] ~ input[value="16"],
+		input[type="hidden"][value="5"] ~ input[value="17"],
+		input[type="hidden"][value="5"] ~ input[value="18"],
+		input[type="hidden"][value="5"] ~ input[value="19"],
+		input[type="hidden"][value="5"] ~ input[value="20"],
+		input[type="hidden"][value="5"] ~ input[value="11"] + span,
+		input[type="hidden"][value="5"] ~ input[value="12"] + span,
+		input[type="hidden"][value="5"] ~ input[value="13"] + span,
+		input[type="hidden"][value="5"] ~ input[value="14"] + span,
+		input[type="hidden"][value="5"] ~ input[value="15"] + span,
+		input[type="hidden"][value="5"] ~ input[value="16"] + span,
+		input[type="hidden"][value="5"] ~ input[value="17"] + span,
+		input[type="hidden"][value="5"] ~ input[value="18"] + span,
+		input[type="hidden"][value="5"] ~ input[value="19"] + span,
+		input[type="hidden"][value="5"] ~ input[value="20"] + span,
+		input[type="hidden"][value="4"] ~ input[value="9"],
+		input[type="hidden"][value="4"] ~ input[value="10"],
+		input[type="hidden"][value="4"] ~ input[value="11"],
+		input[type="hidden"][value="4"] ~ input[value="12"],
+		input[type="hidden"][value="4"] ~ input[value="13"],
+		input[type="hidden"][value="4"] ~ input[value="14"],
+		input[type="hidden"][value="4"] ~ input[value="15"],
+		input[type="hidden"][value="4"] ~ input[value="16"],
+		input[type="hidden"][value="4"] ~ input[value="17"],
+		input[type="hidden"][value="4"] ~ input[value="18"],
+		input[type="hidden"][value="4"] ~ input[value="19"],
+		input[type="hidden"][value="4"] ~ input[value="20"],
+		input[type="hidden"][value="4"] ~ input[value="9"] + span,
+		input[type="hidden"][value="4"] ~ input[value="10"] + span,
+		input[type="hidden"][value="4"] ~ input[value="11"] + span,
+		input[type="hidden"][value="4"] ~ input[value="12"] + span,
+		input[type="hidden"][value="4"] ~ input[value="13"] + span,
+		input[type="hidden"][value="4"] ~ input[value="14"] + span,
+		input[type="hidden"][value="4"] ~ input[value="15"] + span,
+		input[type="hidden"][value="4"] ~ input[value="16"] + span,
+		input[type="hidden"][value="4"] ~ input[value="17"] + span,
+		input[type="hidden"][value="4"] ~ input[value="18"] + span,
+		input[type="hidden"][value="4"] ~ input[value="19"] + span,
+		input[type="hidden"][value="4"] ~ input[value="20"] + span,
+		input[type="hidden"][value="3"] ~ input[value="7"],
+		input[type="hidden"][value="3"] ~ input[value="8"],
+		input[type="hidden"][value="3"] ~ input[value="9"],
+		input[type="hidden"][value="3"] ~ input[value="10"],
+		input[type="hidden"][value="3"] ~ input[value="11"],
+		input[type="hidden"][value="3"] ~ input[value="12"],
+		input[type="hidden"][value="3"] ~ input[value="13"],
+		input[type="hidden"][value="3"] ~ input[value="14"],
+		input[type="hidden"][value="3"] ~ input[value="15"],
+		input[type="hidden"][value="3"] ~ input[value="16"],
+		input[type="hidden"][value="3"] ~ input[value="17"],
+		input[type="hidden"][value="3"] ~ input[value="18"],
+		input[type="hidden"][value="3"] ~ input[value="19"],
+		input[type="hidden"][value="3"] ~ input[value="20"],
+		input[type="hidden"][value="3"] ~ input[value="7"] + span,
+		input[type="hidden"][value="3"] ~ input[value="8"] + span,
+		input[type="hidden"][value="3"] ~ input[value="9"] + span,
+		input[type="hidden"][value="3"] ~ input[value="10"] + span,
+		input[type="hidden"][value="3"] ~ input[value="11"] + span,
+		input[type="hidden"][value="3"] ~ input[value="12"] + span,
+		input[type="hidden"][value="3"] ~ input[value="13"] + span,
+		input[type="hidden"][value="3"] ~ input[value="14"] + span,
+		input[type="hidden"][value="3"] ~ input[value="15"] + span,
+		input[type="hidden"][value="3"] ~ input[value="16"] + span,
+		input[type="hidden"][value="3"] ~ input[value="17"] + span,
+		input[type="hidden"][value="3"] ~ input[value="18"] + span,
+		input[type="hidden"][value="3"] ~ input[value="19"] + span,
+		input[type="hidden"][value="3"] ~ input[value="20"] + span,
+		input[type="hidden"][value="2"] ~ input[value="5"],
+		input[type="hidden"][value="2"] ~ input[value="6"],
+		input[type="hidden"][value="2"] ~ input[value="7"],
+		input[type="hidden"][value="2"] ~ input[value="8"],
+		input[type="hidden"][value="2"] ~ input[value="9"],
+		input[type="hidden"][value="2"] ~ input[value="10"],
+		input[type="hidden"][value="2"] ~ input[value="11"],
+		input[type="hidden"][value="2"] ~ input[value="12"],
+		input[type="hidden"][value="2"] ~ input[value="13"],
+		input[type="hidden"][value="2"] ~ input[value="14"],
+		input[type="hidden"][value="2"] ~ input[value="15"],
+		input[type="hidden"][value="2"] ~ input[value="16"],
+		input[type="hidden"][value="2"] ~ input[value="17"],
+		input[type="hidden"][value="2"] ~ input[value="18"],
+		input[type="hidden"][value="2"] ~ input[value="19"],
+		input[type="hidden"][value="2"] ~ input[value="20"],
+		input[type="hidden"][value="2"] ~ input[value="5"] + span,
+		input[type="hidden"][value="2"] ~ input[value="6"] + span,
+		input[type="hidden"][value="2"] ~ input[value="7"] + span,
+		input[type="hidden"][value="2"] ~ input[value="8"] + span,
+		input[type="hidden"][value="2"] ~ input[value="9"] + span,
+		input[type="hidden"][value="2"] ~ input[value="10"] + span,
+		input[type="hidden"][value="2"] ~ input[value="11"] + span,
+		input[type="hidden"][value="2"] ~ input[value="12"] + span,
+		input[type="hidden"][value="2"] ~ input[value="13"] + span,
+		input[type="hidden"][value="2"] ~ input[value="14"] + span,
+		input[type="hidden"][value="2"] ~ input[value="15"] + span,
+		input[type="hidden"][value="2"] ~ input[value="16"] + span,
+		input[type="hidden"][value="2"] ~ input[value="17"] + span,
+		input[type="hidden"][value="2"] ~ input[value="18"] + span,
+		input[type="hidden"][value="2"] ~ input[value="19"] + span,
+		input[type="hidden"][value="2"] ~ input[value="20"] + span,
+		input[type="hidden"][value="1"] ~ input[value="3"],
+		input[type="hidden"][value="1"] ~ input[value="4"],
+		input[type="hidden"][value="1"] ~ input[value="5"],
+		input[type="hidden"][value="1"] ~ input[value="6"],
+		input[type="hidden"][value="1"] ~ input[value="7"],
+		input[type="hidden"][value="1"] ~ input[value="8"],
+		input[type="hidden"][value="1"] ~ input[value="9"],
+		input[type="hidden"][value="1"] ~ input[value="10"],
+		input[type="hidden"][value="1"] ~ input[value="11"],
+		input[type="hidden"][value="1"] ~ input[value="12"],
+		input[type="hidden"][value="1"] ~ input[value="13"],
+		input[type="hidden"][value="1"] ~ input[value="14"],
+		input[type="hidden"][value="1"] ~ input[value="15"],
+		input[type="hidden"][value="1"] ~ input[value="16"],
+		input[type="hidden"][value="1"] ~ input[value="17"],
+		input[type="hidden"][value="1"] ~ input[value="18"],
+		input[type="hidden"][value="1"] ~ input[value="19"],
+		input[type="hidden"][value="1"] ~ input[value="20"],
+		input[type="hidden"][value="1"] ~ input[value="3"] + span,
+		input[type="hidden"][value="1"] ~ input[value="4"] + span,
+		input[type="hidden"][value="1"] ~ input[value="5"] + span,
+		input[type="hidden"][value="1"] ~ input[value="6"] + span,
+		input[type="hidden"][value="1"] ~ input[value="7"] + span,
+		input[type="hidden"][value="1"] ~ input[value="8"] + span,
+		input[type="hidden"][value="1"] ~ input[value="9"] + span,
+		input[type="hidden"][value="1"] ~ input[value="10"] + span,
+		input[type="hidden"][value="1"] ~ input[value="11"] + span,
+		input[type="hidden"][value="1"] ~ input[value="12"] + span,
+		input[type="hidden"][value="1"] ~ input[value="13"] + span,
+		input[type="hidden"][value="1"] ~ input[value="14"] + span,
+		input[type="hidden"][value="1"] ~ input[value="15"] + span,
+		input[type="hidden"][value="1"] ~ input[value="16"] + span,
+		input[type="hidden"][value="1"] ~ input[value="17"] + span,
+		input[type="hidden"][value="1"] ~ input[value="18"] + span,
+		input[type="hidden"][value="1"] ~ input[value="19"] + span,
+		input[type="hidden"][value="1"] ~ input[value="20"] + span,
+		input[type="hidden"][value="0"] ~ input[value="1"],
+		input[type="hidden"][value="0"] ~ input[value="2"],
+		input[type="hidden"][value="0"] ~ input[value="3"],
+		input[type="hidden"][value="0"] ~ input[value="4"],
+		input[type="hidden"][value="0"] ~ input[value="5"],
+		input[type="hidden"][value="0"] ~ input[value="6"],
+		input[type="hidden"][value="0"] ~ input[value="7"],
+		input[type="hidden"][value="0"] ~ input[value="8"],
+		input[type="hidden"][value="0"] ~ input[value="9"],
+		input[type="hidden"][value="0"] ~ input[value="10"],
+		input[type="hidden"][value="0"] ~ input[value="11"],
+		input[type="hidden"][value="0"] ~ input[value="12"],
+		input[type="hidden"][value="0"] ~ input[value="13"],
+		input[type="hidden"][value="0"] ~ input[value="14"],
+		input[type="hidden"][value="0"] ~ input[value="15"],
+		input[type="hidden"][value="0"] ~ input[value="16"],
+		input[type="hidden"][value="0"] ~ input[value="17"],
+		input[type="hidden"][value="0"] ~ input[value="18"],
+		input[type="hidden"][value="0"] ~ input[value="19"],
+		input[type="hidden"][value="0"] ~ input[value="20"],
+		input[type="hidden"][value="0"] ~ input[value="1"] + span,
+		input[type="hidden"][value="0"] ~ input[value="2"] + span,
+		input[type="hidden"][value="0"] ~ input[value="3"] + span,
+		input[type="hidden"][value="0"] ~ input[value="4"] + span,
+		input[type="hidden"][value="0"] ~ input[value="5"] + span,
+		input[type="hidden"][value="0"] ~ input[value="6"] + span,
+		input[type="hidden"][value="0"] ~ input[value="7"] + span,
+		input[type="hidden"][value="0"] ~ input[value="8"] + span,
+		input[type="hidden"][value="0"] ~ input[value="9"] + span,
+		input[type="hidden"][value="0"] ~ input[value="10"] + span,
+		input[type="hidden"][value="0"] ~ input[value="11"] + span,
+		input[type="hidden"][value="0"] ~ input[value="12"] + span,
+		input[type="hidden"][value="0"] ~ input[value="13"] + span,
+		input[type="hidden"][value="0"] ~ input[value="14"] + span,
+		input[type="hidden"][value="0"] ~ input[value="15"] + span,
+		input[type="hidden"][value="0"] ~ input[value="16"] + span,
+		input[type="hidden"][value="0"] ~ input[value="17"] + span,
+		input[type="hidden"][value="0"] ~ input[value="18"] + span,
+		input[type="hidden"][value="0"] ~ input[value="19"] + span,
+		input[type="hidden"][value="0"] ~ input[value="20"] + span
+			display: none
+
+	.ability-boxes.single
+		input[type="hidden"][value="9"] ~ input[value="10"],
+		input[type="hidden"][value="9"] ~ input[value="10"] + span,
+		input[type="hidden"][value="8"] ~ input[value="9"],
+		input[type="hidden"][value="8"] ~ input[value="10"],
+		input[type="hidden"][value="8"] ~ input[value="9"] + span,
+		input[type="hidden"][value="8"] ~ input[value="10"] + span,
+		input[type="hidden"][value="7"] ~ input[value="8"],
+		input[type="hidden"][value="7"] ~ input[value="9"],
+		input[type="hidden"][value="7"] ~ input[value="10"],
+		input[type="hidden"][value="7"] ~ input[value="8"] + span,
+		input[type="hidden"][value="7"] ~ input[value="9"] + span,
+		input[type="hidden"][value="7"] ~ input[value="10"] + span,
+		input[type="hidden"][value="6"] ~ input[value="7"],
+		input[type="hidden"][value="6"] ~ input[value="8"],
+		input[type="hidden"][value="6"] ~ input[value="9"],
+		input[type="hidden"][value="6"] ~ input[value="10"],
+		input[type="hidden"][value="6"] ~ input[value="7"] + span,
+		input[type="hidden"][value="6"] ~ input[value="8"] + span,
+		input[type="hidden"][value="6"] ~ input[value="9"] + span,
+		input[type="hidden"][value="6"] ~ input[value="10"] + span,
+		input[type="hidden"][value="5"] ~ input[value="6"],
+		input[type="hidden"][value="5"] ~ input[value="7"],
+		input[type="hidden"][value="5"] ~ input[value="8"],
+		input[type="hidden"][value="5"] ~ input[value="9"],
+		input[type="hidden"][value="5"] ~ input[value="10"],
+		input[type="hidden"][value="5"] ~ input[value="6"] + span,
+		input[type="hidden"][value="5"] ~ input[value="7"] + span,
+		input[type="hidden"][value="5"] ~ input[value="8"] + span,
+		input[type="hidden"][value="5"] ~ input[value="9"] + span,
+		input[type="hidden"][value="5"] ~ input[value="10"] + span,
+		input[type="hidden"][value="3"] ~ input[value="5"],
+		input[type="hidden"][value="3"] ~ input[value="6"],
+		input[type="hidden"][value="3"] ~ input[value="7"],
+		input[type="hidden"][value="3"] ~ input[value="8"],
+		input[type="hidden"][value="4"] ~ input[value="9"],
+		input[type="hidden"][value="4"] ~ input[value="10"],
+		input[type="hidden"][value="4"] ~ input[value="5"] + span,
+		input[type="hidden"][value="4"] ~ input[value="6"] + span,
+		input[type="hidden"][value="4"] ~ input[value="7"] + span,
+		input[type="hidden"][value="4"] ~ input[value="8"] + span,
+		input[type="hidden"][value="4"] ~ input[value="9"] + span,
+		input[type="hidden"][value="4"] ~ input[value="10"] + span,
+		input[type="hidden"][value="3"] ~ input[value="4"],
+		input[type="hidden"][value="3"] ~ input[value="5"],
+		input[type="hidden"][value="3"] ~ input[value="6"],
+		input[type="hidden"][value="3"] ~ input[value="7"],
+		input[type="hidden"][value="3"] ~ input[value="8"],
+		input[type="hidden"][value="3"] ~ input[value="9"],
+		input[type="hidden"][value="3"] ~ input[value="10"],
+		input[type="hidden"][value="3"] ~ input[value="4"] + span,
+		input[type="hidden"][value="3"] ~ input[value="5"] + span,
+		input[type="hidden"][value="3"] ~ input[value="6"] + span,
+		input[type="hidden"][value="3"] ~ input[value="7"] + span,
+		input[type="hidden"][value="3"] ~ input[value="8"] + span,
+		input[type="hidden"][value="3"] ~ input[value="9"] + span,
+		input[type="hidden"][value="3"] ~ input[value="10"] + span,
+		input[type="hidden"][value="2"] ~ input[value="3"],
+		input[type="hidden"][value="2"] ~ input[value="4"],
+		input[type="hidden"][value="2"] ~ input[value="5"],
+		input[type="hidden"][value="2"] ~ input[value="6"],
+		input[type="hidden"][value="2"] ~ input[value="7"],
+		input[type="hidden"][value="2"] ~ input[value="8"],
+		input[type="hidden"][value="2"] ~ input[value="9"],
+		input[type="hidden"][value="2"] ~ input[value="10"],
+		input[type="hidden"][value="2"] ~ input[value="3"] + span,
+		input[type="hidden"][value="2"] ~ input[value="4"] + span,
+		input[type="hidden"][value="2"] ~ input[value="5"] + span,
+		input[type="hidden"][value="2"] ~ input[value="6"] + span,
+		input[type="hidden"][value="2"] ~ input[value="7"] + span,
+		input[type="hidden"][value="2"] ~ input[value="8"] + span,
+		input[type="hidden"][value="2"] ~ input[value="9"] + span,
+		input[type="hidden"][value="2"] ~ input[value="10"] + span,
+		input[type="hidden"][value="1"] ~ input[value="2"],
+		input[type="hidden"][value="1"] ~ input[value="3"],
+		input[type="hidden"][value="1"] ~ input[value="4"],
+		input[type="hidden"][value="1"] ~ input[value="5"],
+		input[type="hidden"][value="1"] ~ input[value="6"],
+		input[type="hidden"][value="1"] ~ input[value="7"],
+		input[type="hidden"][value="1"] ~ input[value="8"],
+		input[type="hidden"][value="1"] ~ input[value="9"],
+		input[type="hidden"][value="1"] ~ input[value="10"],
+		input[type="hidden"][value="1"] ~ input[value="2"] + span,
+		input[type="hidden"][value="1"] ~ input[value="3"] + span,
+		input[type="hidden"][value="1"] ~ input[value="4"] + span,
+		input[type="hidden"][value="1"] ~ input[value="5"] + span,
+		input[type="hidden"][value="1"] ~ input[value="6"] + span,
+		input[type="hidden"][value="1"] ~ input[value="7"] + span,
+		input[type="hidden"][value="1"] ~ input[value="8"] + span,
+		input[type="hidden"][value="1"] ~ input[value="9"] + span,
+		input[type="hidden"][value="1"] ~ input[value="10"] + span,
+		input[type="hidden"][value="0"] ~ input[value="1"],
+		input[type="hidden"][value="0"] ~ input[value="2"],
+		input[type="hidden"][value="0"] ~ input[value="3"],
+		input[type="hidden"][value="0"] ~ input[value="4"],
+		input[type="hidden"][value="0"] ~ input[value="5"],
+		input[type="hidden"][value="0"] ~ input[value="6"],
+		input[type="hidden"][value="0"] ~ input[value="7"],
+		input[type="hidden"][value="0"] ~ input[value="8"],
+		input[type="hidden"][value="0"] ~ input[value="9"],
+		input[type="hidden"][value="0"] ~ input[value="10"],
+		input[type="hidden"][value="0"] ~ input[value="1"] + span,
+		input[type="hidden"][value="0"] ~ input[value="2"] + span,
+		input[type="hidden"][value="0"] ~ input[value="3"] + span,
+		input[type="hidden"][value="0"] ~ input[value="4"] + span,
+		input[type="hidden"][value="0"] ~ input[value="5"] + span,
+		input[type="hidden"][value="0"] ~ input[value="6"] + span,
+		input[type="hidden"][value="0"] ~ input[value="7"] + span,
+		input[type="hidden"][value="0"] ~ input[value="8"] + span,
+		input[type="hidden"][value="0"] ~ input[value="9"] + span,
+		input[type="hidden"][value="0"] ~ input[value="10"] + span
+			display: none
+
+	// Ability Options Flag
+	.abilities .options-flag,
+	.abilities .options-flag + span
+		top: 5px
+		right: -25px
+
+	// Ability Options Toggle
+	.abilities .options-toggle,
+	.abilities .options-toggle + span
+		top: 60px
+		right: 25px
+
+	// Ability Options
+	.abilities .options
+		clear: both
+		padding-left: 75px
+		text-align: left
+	.abilities .options::before,
+	.abilities .options::after
+		content: ""
+		position: absolute
+		display: inline-block
+		height: 15px
+		top: 0
+		border: 1px solid $brd-base-full
+		opacity: .25
+	.abilities .options::before
+		width: 25px
+		left: 55px
+		border-right: 0
+		border-top: 0
+	.abilities .options::after
+		width: 85px
+		right: -15px
+		border-left: 0
+		border-top: 0
+	.abilities .options label
+		width: 50px
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Vitals
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.vitals
+		width: 380px
+		margin: 0 auto
+
+		// Vitals Containers
+		> div
+			position: relative
+			display: inline-block
+		div + div
+			margin-top: 5px
+		.padrgt
+			padding-right: 85px
+
+		// Vitals Inputs
+		span.big,
+		input.big
+			height: 40px
+			line-height: 36px
+			font-size: 20px
+			font-weight: normal
+			color: $txt-base-full
+			border: 2px solid $brd-base-thrd
+			border-radius: 10px
+			opacity: .875
+		span.big
+			position: relative
+			width: 200px
+			text-align: center
+			overflow: hidden
+		span.big > span
+			position: absolute
+			height: 100%
+			width: 100%
+			top: 0
+			left: 0
+			line-height: inherit
+			font-size: inherit
+			font-weight: inherit
+			color: inherit
+			border-radius: 8px
+			opacity: 1
+		span.big > .gauge
+			transition: width .25s
+			transition-delay: .25s
+			border-radius: 0
+		input.big
+			width: 80px
+			margin-left: 5px
+
+		// Vitals Colors
+		.red span.big > .gauge,
+		.red input.big
+			background-color: rgba(255,0,0,.25)
+		.orange span.big > .gauge,
+		.orange input.big
+			background-color: rgba(255,128,0,.25)
+		.yellow span.big > .gauge,
+		.yellow input.big
+			background-color: rgba(255,255,0,.25)
+		.green span.big > .gauge,
+		.green input.big
+			background-color: rgba(0,255,0,.25)
+		.blue span.big > .gauge,
+		.blue input.big
+			background-color: rgba(0,160,255,.25)
+		.gray span.big > .gauge,
+		.gray input.big
+			background-color: rgba(128,128,128,.25)
+		input.big:not([readonly]):hover
+			background-color: rgba(0,255,0,.25)
+		input.big:not([readonly]):focus
+			background-color: rgba(128,255,0,.125)
+
+		// Vitals Warnings
+		span.big > .warning
+			display: none
+			color: $txt-warning-dull
+		input[name$="warning"][value="1"] ~ span.big
+			color: $txt-warning-focus
+		input[name$="warning"][value="2"] ~ span.big
+			border-color: $brd-warning-dull
+		input[name$="warning"][value="2"] ~ span.big > .label
+			display: none
+		input[name$="warning"][value="2"] ~ span.big > .warning
+			display: inline-block
+		input[name$="warning"][value="2"] ~ input.val
+			color: $txt-warning-dull
+			border-color: $brd-warning-dull
+			background-color: transparent
+		input[name$="warning"][value="2"] ~ input.val:not([readonly]):hover
+			color: $txt-warning-hover
+			border-color: $brd-warning-hover
+			background-color: $bgd-warning-hover
+		input[name$="warning"][value="2"] ~ input.val:not([readonly]):focus
+			color: $txt-warning-focus
+			border-color: $brd-warning-focus
+			background-color: $bgd-warning-focus
+		.gray input[name$="warning"][value="2"] ~ span.big > .gauge
+			background-color: transparent
+
+		// Vitals Gauges
+		input[value="0"] + span > .gauge
+			width: 0%
+		input[value="1"] + span > .gauge
+			width: 1%
+		input[value="2"] + span > .gauge
+			width: 2%
+		input[value="3"] + span > .gauge
+			width: 3%
+		input[value="4"] + span > .gauge
+			width: 4%
+		input[value="5"] + span > .gauge
+			width: 5%
+		input[value="6"] + span > .gauge
+			width: 6%
+		input[value="7"] + span > .gauge
+			width: 7%
+		input[value="8"] + span > .gauge
+			width: 8%
+		input[value="9"] + span > .gauge
+			width: 9%
+		input[value="10"] + span > .gauge
+			width: 10%
+		input[value="11"] + span > .gauge
+			width: 11%
+		input[value="12"] + span > .gauge
+			width: 12%
+		input[value="13"] + span > .gauge
+			width: 13%
+		input[value="14"] + span > .gauge
+			width: 14%
+		input[value="15"] + span > .gauge
+			width: 15%
+		input[value="16"] + span > .gauge
+			width: 16%
+		input[value="17"] + span > .gauge
+			width: 17%
+		input[value="18"] + span > .gauge
+			width: 18%
+		input[value="19"] + span > .gauge
+			width: 19%
+		input[value="20"] + span > .gauge
+			width: 20%
+		input[value="21"] + span > .gauge
+			width: 21%
+		input[value="22"] + span > .gauge
+			width: 22%
+		input[value="23"] + span > .gauge
+			width: 23%
+		input[value="24"] + span > .gauge
+			width: 24%
+		input[value="25"] + span > .gauge
+			width: 25%
+		input[value="26"] + span > .gauge
+			width: 26%
+		input[value="27"] + span > .gauge
+			width: 27%
+		input[value="28"] + span > .gauge
+			width: 28%
+		input[value="29"] + span > .gauge
+			width: 29%
+		input[value="30"] + span > .gauge
+			width: 30%
+		input[value="31"] + span > .gauge
+			width: 31%
+		input[value="32"] + span > .gauge
+			width: 32%
+		input[value="33"] + span > .gauge
+			width: 33%
+		input[value="34"] + span > .gauge
+			width: 34%
+		input[value="35"] + span > .gauge
+			width: 35%
+		input[value="36"] + span > .gauge
+			width: 36%
+		input[value="37"] + span > .gauge
+			width: 37%
+		input[value="38"] + span > .gauge
+			width: 38%
+		input[value="39"] + span > .gauge
+			width: 39%
+		input[value="40"] + span > .gauge
+			width: 40%
+		input[value="41"] + span > .gauge
+			width: 41%
+		input[value="42"] + span > .gauge
+			width: 42%
+		input[value="43"] + span > .gauge
+			width: 43%
+		input[value="44"] + span > .gauge
+			width: 44%
+		input[value="45"] + span > .gauge
+			width: 45%
+		input[value="46"] + span > .gauge
+			width: 46%
+		input[value="47"] + span > .gauge
+			width: 47%
+		input[value="48"] + span > .gauge
+			width: 48%
+		input[value="49"] + span > .gauge
+			width: 49%
+		input[value="50"] + span > .gauge
+			width: 50%
+		input[value="51"] + span > .gauge
+			width: 51%
+		input[value="52"] + span > .gauge
+			width: 52%
+		input[value="53"] + span > .gauge
+			width: 53%
+		input[value="54"] + span > .gauge
+			width: 54%
+		input[value="55"] + span > .gauge
+			width: 55%
+		input[value="56"] + span > .gauge
+			width: 56%
+		input[value="57"] + span > .gauge
+			width: 57%
+		input[value="58"] + span > .gauge
+			width: 58%
+		input[value="59"] + span > .gauge
+			width: 59%
+		input[value="60"] + span > .gauge
+			width: 60%
+		input[value="61"] + span > .gauge
+			width: 61%
+		input[value="62"] + span > .gauge
+			width: 62%
+		input[value="63"] + span > .gauge
+			width: 63%
+		input[value="64"] + span > .gauge
+			width: 64%
+		input[value="65"] + span > .gauge
+			width: 65%
+		input[value="66"] + span > .gauge
+			width: 66%
+		input[value="67"] + span > .gauge
+			width: 67%
+		input[value="68"] + span > .gauge
+			width: 68%
+		input[value="69"] + span > .gauge
+			width: 69%
+		input[value="70"] + span > .gauge
+			width: 70%
+		input[value="71"] + span > .gauge
+			width: 71%
+		input[value="72"] + span > .gauge
+			width: 72%
+		input[value="73"] + span > .gauge
+			width: 73%
+		input[value="74"] + span > .gauge
+			width: 74%
+		input[value="75"] + span > .gauge
+			width: 75%
+		input[value="76"] + span > .gauge
+			width: 76%
+		input[value="77"] + span > .gauge
+			width: 77%
+		input[value="78"] + span > .gauge
+			width: 78%
+		input[value="79"] + span > .gauge
+			width: 79%
+		input[value="80"] + span > .gauge
+			width: 80%
+		input[value="81"] + span > .gauge
+			width: 81%
+		input[value="82"] + span > .gauge
+			width: 82%
+		input[value="83"] + span > .gauge
+			width: 83%
+		input[value="84"] + span > .gauge
+			width: 84%
+		input[value="85"] + span > .gauge
+			width: 85%
+		input[value="86"] + span > .gauge
+			width: 86%
+		input[value="87"] + span > .gauge
+			width: 87%
+		input[value="88"] + span > .gauge
+			width: 88%
+		input[value="89"] + span > .gauge
+			width: 89%
+		input[value="90"] + span > .gauge
+			width: 90%
+		input[value="91"] + span > .gauge
+			width: 91%
+		input[value="92"] + span > .gauge
+			width: 92%
+		input[value="93"] + span > .gauge
+			width: 93%
+		input[value="94"] + span > .gauge
+			width: 94%
+		input[value="95"] + span > .gauge
+			width: 95%
+		input[value="96"] + span > .gauge
+			width: 96%
+		input[value="97"] + span > .gauge
+			width: 97%
+		input[value="98"] + span > .gauge
+			width: 98%
+		input[value="99"] + span > .gauge
+			width: 99%
+		input[value="100"] + span > .gauge
+			width: 100%
+
+		// Vitals Options Flag
+		.options-flag,
+		.options-flag + span
+			top: 10px
+			right: -25px
+
+		// Vitals Options
+		.options
+			margin-top: 5px
+			padding-right: 20px
+			text-align: right
+		.options::before,
+		.options::after
+			content: ""
+			position: absolute
+			display: inline-block
+			border: 1px solid $brd-base-full
+			opacity: .25
+		.options::before
+			width: 70px
+			left: 90px
+			height: 20px
+			top: -5px
+			border-right: 0
+			border-top: 0
+		.options::after
+			width: 35px
+			right: -15px
+			height: 25px
+			top: -10px
+			border-left: 0
+			border-top: 0
+		.options label
+			width: 45px
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Conditions
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.conditions
+		.sml
+			width: 40px
+		.med
+			width: 75px
+		.lrg
+			margin-right: 20px
+			width: 85px
+		.xxl
+			width: 125px
+		input[type="hidden"] ~ [name$="number"]
+			opacity: .375
+		input[type="hidden"] ~ [name$="name"]
+			color: $txt-base-qrtr
+		input[name$="number"]:hover,
+		input[name$="number"]:focus,
+		input[type="hidden"]:not([value="0"]) ~ [name$="number"]
+			opacity: 1
+		input[type="hidden"]:not([value="0"]) ~ [name$="name"]
+			color: $txt-base-full
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Resistances
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.resistances input[type="number"]
+		width: 35px
+		border: 0
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Specialities
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.specialities
+		.common input[type="text"],
+		.common .header span:nth-child(1)
+			width: 185px
+		.common .header span:nth-child(2),
+		.common .header span:nth-child(3),
+		.weapon .header span:nth-child(3),
+		.weapon .header span:nth-child(4)
+			width: 100px
+		.weapon .header span:nth-child(1)
+			width: 20px
+		.weapon input[type="text"],
+		.weapon .header span:nth-child(2)
+			width: 170px
+		.weapon .number
+			user-select: none
+			cursor: help
+			width: 16px
+			height: 16px
+			line-height: 14px
+			margin: 2px 4px 2px 0
+			font-weight: bold
+			font-size: 11px
+			text-align: center
+			color: $txt-weapon-number-pc
+			border-radius: 100%
+			border: 1px solid $brd-weapon-number-pc
+			background-color: $bgd-weapon-number-pc
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Armament
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.armament
+
+		// Armament Headers
+		.weapons .header span:nth-child(1),
+		.weapons .headline input[type="text"],
+		.suits .header span,
+		.suits .headline input[type="text"],
+		.artefacts .header span,
+		.artefacts .headline input[type="text"]
+			width: 185px
+		.weapons .header span:nth-child(2),
+		.weapons .header span:nth-child(3),
+		.weapons .headline input[type="number"]
+			width: 40px
+		.weapons .header span:nth-child(2)
+			margin-right: 50px
+		.weapons .header span:nth-child(3)
+			margin-right: 20px
+
+		// Armament Headline
+		.headline .feeder
+			position: relative
+			width: 200px
+			height: 10px
+			left: -10px
+			margin-top: 10px
+			border: 1px solid $brd-base-full
+			border-right-width: 0
+			border-bottom: 0
+			border-top-left-radius: 10px 10px
+			opacity: .25
+		.repcontainer .repitem:last-child .headline .feeder
+			border-right-width: 1px
+
+		// Armament Footer
+		.footer
+			text-align: right
+			padding-right: 45px
+			span
+				width: 20px
+				text-align: center
+
+		// Armament Lines
+		.suits .line
+			margin-bottom: 10px
+		.line .values,
+		.line .optioned
+			text-align: center
+
+		// Armament Labels
+		label.medium
+			margin: 0 10px
+
+		// Armament Values
+		.values:not(.levels):not(.options)
+			margin-top: 5px
+		.values
+			input,
+			label,
+			select
+				width: 35px
+				border: 0
+			input[type="number"]:not(:hover):not(:focus)
+				background-color: transparent
+			input.medium,
+			select.medium
+				width: 55px
+			select[name="attr_weapon_damage_type"]
+				opacity: 0
+			select[name="attr_weapon_damage_type"]:hover + .sheet-dmgicon + span
+				background-color: $bgd-select-hover
+			select[name="attr_weapon_damage_type"]:focus + .sheet-dmgicon + span
+				background-color: $bgd-select-focus
+
+		// Armament Details
+		.details
+			margin-top: 10px
+			text-align: left
+			> div
+				margin-top: 6px
+			label
+				width: 90px
+			input,
+			textarea
+				width: 295px
+				text-align: left
+			select
+				width: 100px
+			select:nth-of-type(2)
+				width: 105px
+			select.speciality
+				color: transparent !important
+			select.speciality + span
+				pointer-events: none
+				width: 100px
+				color: $txt-base-full
+				margin-left: -100px
+				text-align: center
+			select.speciality:hover + span,
+			select.speciality:focus + span,
+			select.speciality:active + span
+				color: $txt-input-hover-pc
+			input[type="number"]
+				width: 30px
+				height: 16px
+				text-align: center
+				border-color: transparent
+				border-bottom-color: $bgd-input-dark-pc
+			input[type="checkbox"]
+				height: 20px
+			input[type="checkbox"].margin
+				margin-left: 5px
+			input[type="checkbox"],
+			input[type="checkbox"] + span
+				width: 75px
+			input[type="checkbox"] + span
+				pointer-events: none
+				margin-left: -75px
+			input[type="checkbox"] + span
+				pointer-events: none
+				height: 16px
+				line-height: 16px
+				margin-left: -75px
+				color: $txt-base-full
+				background-color: $bgd-base-half
+				opacity: .5
+			input[type="checkbox"]:checked + span
+				background-color: $bgd-input-dark-pc
+				opacity: .75
+			input[type="checkbox"]:hover + span,
+			input[type="checkbox"]:focus + span
+				opacity: 1
+			input[type="checkbox"] + span + select
+				width: 60px
+				height: 16px
+				border-bottom-color: $bgd-input-dark-pc
+			input[type="checkbox"] + span + input[type="number"],
+			input[type="checkbox"] + span + select
+				display: none
+			input[type="checkbox"]:checked + span + input[type="number"],
+			input[type="checkbox"]:checked + span + select
+				display: initial
+
+		// Armament Options
+		.suits .options
+			padding-top: 0
+		.values.options
+			margin-bottom: 0
+			padding-bottom: 5px
+			border-bottom: 0
+			border-radius: 0
+		.optioned
+			padding-top: 5px
+		.optioned,
+		.options.levels,
+		.options.leveled
+			margin: 0 10px 0 15px
+		.options.levels,
+		.options.leveled,
+		.options-flag:checked ~ .optioned
+			border-width: 0 1px
+			border-style: solid
+			border-color: $brd-base-qrtr
+
+		// Armament Levels
+		.values.leveled
+			position: relative
+		.values.leveled .chart
+			position: absolute
+			left: -50px
+			top: 0
+			text-align: left
+			background: $bgd-base-qrtr
+		.values.leveled .chart span
+			position: relative
+			width: auto
+			color: $txt-caution-lite
+			text-indent: 5px
+		.values.leveled .chart span:first-child
+			color: $txt-base-half
+		.values.leveled .chart span::after
+			position: absolute
+			content: ""
+			top: 0
+			left: 0
+			height: 20px
+			width: 435px
+			border-top: 1px solid $brd-base-half
+			box-sizing: border-box
+		.values.leveled .chart span:last-child::after
+			border-bottom: 1px solid $brd-base-half
+		.values.leveled > div
+			display: inline-block
+			width: 35px
+		.values.leveled > div.medium
+			width: 55px
+		.values.leveled > div > input
+			width: 100%
+		.values.leveled .lvl
+			display: none
+		.values.leveled .lvl:not(:hover):not(:focus)
+			opacity: .5
+		.values.levels select
+			opacity: .375
+		.values.levels .padder
+			margin-left: 35px
+
+		// Armament Weapons
+		.weapons
+
+			// Armament Weapons Levels Visibility
+			input[name="attr_weapon_accuracy_level"][value="1"] ~ .leveled input[name="attr_weapon_accuracy"],
+			input[name="attr_weapon_accuracy_level"][value="2"] ~ .leveled input[name="attr_weapon_accuracy_2"],
+			input[name="attr_weapon_accuracy_level"][value="3"] ~ .leveled input[name="attr_weapon_accuracy_3"],
+			input[name="attr_weapon_accuracy_level"][value="4"] ~ .leveled input[name="attr_weapon_accuracy_4"],
+			input[name="attr_weapon_accuracy_level"][value="5"] ~ .leveled input[name="attr_weapon_accuracy_5"],
+			input[name="attr_weapon_damage_level"][value="1"] ~ .leveled input[name="attr_weapon_damage"],
+			input[name="attr_weapon_damage_level"][value="2"] ~ .leveled input[name="attr_weapon_damage_2"],
+			input[name="attr_weapon_damage_level"][value="3"] ~ .leveled input[name="attr_weapon_damage_3"],
+			input[name="attr_weapon_damage_level"][value="4"] ~ .leveled input[name="attr_weapon_damage_4"],
+			input[name="attr_weapon_damage_level"][value="5"] ~ .leveled input[name="attr_weapon_damage_5"],
+			input[name="attr_weapon_penetration_level"][value="1"] ~ .leveled input[name="attr_weapon_penetration"],
+			input[name="attr_weapon_penetration_level"][value="2"] ~ .leveled input[name="attr_weapon_penetration_2"],
+			input[name="attr_weapon_penetration_level"][value="3"] ~ .leveled input[name="attr_weapon_penetration_3"],
+			input[name="attr_weapon_penetration_level"][value="4"] ~ .leveled input[name="attr_weapon_penetration_4"],
+			input[name="attr_weapon_penetration_level"][value="5"] ~ .leveled input[name="attr_weapon_penetration_5"],
+			input[name="attr_weapon_range_level"][value="1"] ~ .leveled input[name="attr_weapon_range"],
+			input[name="attr_weapon_range_level"][value="2"] ~ .leveled input[name="attr_weapon_range_2"],
+			input[name="attr_weapon_range_level"][value="3"] ~ .leveled input[name="attr_weapon_range_3"],
+			input[name="attr_weapon_range_level"][value="4"] ~ .leveled input[name="attr_weapon_range_4"],
+			input[name="attr_weapon_range_level"][value="5"] ~ .leveled input[name="attr_weapon_range_5"],
+			input[name="attr_weapon_thrown_level"][value="1"] ~ .leveled input[name="attr_weapon_thrown"],
+			input[name="attr_weapon_thrown_level"][value="2"] ~ .leveled input[name="attr_weapon_thrown_2"],
+			input[name="attr_weapon_thrown_level"][value="3"] ~ .leveled input[name="attr_weapon_thrown_3"],
+			input[name="attr_weapon_thrown_level"][value="4"] ~ .leveled input[name="attr_weapon_thrown_4"],
+			input[name="attr_weapon_thrown_level"][value="5"] ~ .leveled input[name="attr_weapon_thrown_5"],
+			input[name="attr_weapon_ammo_type_level"][value="1"] ~ .leveled input[name="attr_weapon_ammo_type"],
+			input[name="attr_weapon_ammo_type_level"][value="2"] ~ .leveled input[name="attr_weapon_ammo_type_2"],
+			input[name="attr_weapon_ammo_type_level"][value="3"] ~ .leveled input[name="attr_weapon_ammo_type_3"],
+			input[name="attr_weapon_ammo_type_level"][value="4"] ~ .leveled input[name="attr_weapon_ammo_type_4"],
+			input[name="attr_weapon_ammo_type_level"][value="5"] ~ .leveled input[name="attr_weapon_ammo_type_5"],
+			input[name="attr_weapon_ammo_max_level"][value="1"] ~ .leveled input[name="attr_weapon_ammo_max"],
+			input[name="attr_weapon_ammo_max_level"][value="2"] ~ .leveled input[name="attr_weapon_ammo_max_2"],
+			input[name="attr_weapon_ammo_max_level"][value="3"] ~ .leveled input[name="attr_weapon_ammo_max_3"],
+			input[name="attr_weapon_ammo_max_level"][value="4"] ~ .leveled input[name="attr_weapon_ammo_max_4"],
+			input[name="attr_weapon_ammo_max_level"][value="5"] ~ .leveled input[name="attr_weapon_ammo_max_5"],
+			input[name="attr_weapon_status_level"][value="1"] ~ .leveled input[name="attr_weapon_status"],
+			input[name="attr_weapon_status_level"][value="2"] ~ .leveled input[name="attr_weapon_status_2"],
+			input[name="attr_weapon_status_level"][value="3"] ~ .leveled input[name="attr_weapon_status_3"],
+			input[name="attr_weapon_status_level"][value="4"] ~ .leveled input[name="attr_weapon_status_4"],
+			input[name="attr_weapon_status_level"][value="5"] ~ .leveled input[name="attr_weapon_status_5"],
+			input[name="attr_weapon_weight_level"][value="1"] ~ .leveled input[name="attr_weapon_weight"],
+			input[name="attr_weapon_weight_level"][value="2"] ~ .leveled input[name="attr_weapon_weight_2"],
+			input[name="attr_weapon_weight_level"][value="3"] ~ .leveled input[name="attr_weapon_weight_3"],
+			input[name="attr_weapon_weight_level"][value="4"] ~ .leveled input[name="attr_weapon_weight_4"],
+			input[name="attr_weapon_weight_level"][value="5"] ~ .leveled input[name="attr_weapon_weight_5"]
+				display: inline-block
+				opacity: .9375
+
+			// Armament Weapons Levels Colors
+			input[name="attr_weapon_accuracy_level"]:not([value="1"]) ~ .levels select[name="attr_weapon_accuracy_level"],
+			input[name="attr_weapon_damage_level"]:not([value="1"]) ~ .levels select[name="attr_weapon_damage_level"],
+			input[name="attr_weapon_penetration_level"]:not([value="1"]) ~ .levels select[name="attr_weapon_penetration_level"],
+			input[name="attr_weapon_range_level"]:not([value="1"]) ~ .levels select[name="attr_weapon_range_level"],
+			input[name="attr_weapon_thrown_level"]:not([value="1"]) ~ .levels select[name="attr_weapon_thrown_level"],
+			input[name="attr_weapon_ammo_type_level"]:not([value="1"]) ~ .levels select[name="attr_weapon_ammo_type_level"],
+			input[name="attr_weapon_ammo_max_level"]:not([value="1"]) ~ .levels select[name="attr_weapon_ammo_max_level"],
+			input[name="attr_weapon_status_level"]:not([value="1"]) ~ .levels select[name="attr_weapon_status_level"],
+			input[name="attr_weapon_weight_level"]:not([value="1"]) ~ .levels select[name="attr_weapon_weight_level"]
+				opacity: .625
+				color: $txt-caution-lite
+
+			// Armament Weapons Visibility
+			.not-melee,
+			.not-thrown,
+			.not-trap
+				display: inline-block
+			.options .only-thrown,
+			input[name="attr_weapon_type"]:not([value="melee"]) ~ div .only-melee,
+			input[name="attr_weapon_type"][value="melee"] ~ div .not-melee,
+			input[name="attr_weapon_type"][value="melee"] ~ div .not-thrown,
+			input[name="attr_weapon_type"][value="thrown"] ~ div .not-thrown,
+			input[name="attr_weapon_type"][value="explosive"] ~ div .not-thrown,
+			input[name="attr_weapon_type"][value="trap"] ~ div .not-trap
+				display: none !important
+			input[name="attr_weapon_type"][value="thrown"] ~ .options .only-thrown,
+			input[name="attr_weapon_type"][value="explosive"] ~ .options .only-thrown
+				display: inline-block !important
+			input[name="attr_weapon_type"][value="melee"] ~ .options .spacer,
+			input[name="attr_weapon_type"][value="trap"] ~ .options .spacer
+				margin-left: 125px
+			input[name="attr_weapon_type"][value="thrown"] ~ .options .spacer,
+			input[name="attr_weapon_type"][value="explosive"] ~ .options .spacer
+				margin-left: 55px
+			input[name="attr_weapon_type"][value="thrown"] ~ .options .gapper,
+			input[name="attr_weapon_type"][value="explosive"] ~ .options .gapper
+				margin-left: 35px
+			input[name="attr_weapon_type"]:not([value="melee"]) ~ .headline .feeder
+				display: none
+
+		// Armament Suits
+		.suits
+			.damage
+				input
+					width: 35px
+					transition: width .125s
+				input[type="radio"]
+					height: 35px
+				label
+					pointer-events: none
+					margin-left: -35px
+					margin-right: 0
+					border-radius: 3px
+					opacity: .375
+					transition: margin .125s
+				input[type="radio"]:focus + label
+					background-color: $bgd-damage-focus-pc
+				input[type="radio"]:hover + label
+					background-color: $bgd-damage-hover-pc
+					opacity: .75
+				input[type="radio"]:checked + label
+					opacity: 1
+			.options-flag:checked ~ .damage label
+				margin-left: -40px
+				margin-right: 5px
+			.damage.levels select,
+			.damage.leveled > div:not(.chart),
+			.options-flag:checked ~ .damage input
+				width: 45px
+			.location
+				input,
+				button
+					width: 50px
+					margin: 0 5px
+				button span
+					color: $txt-base-full
+			.location.levels select,
+			.location.leveled > div:not(.chart)
+				width: 50px
+				margin: 0 5px
+			.location.leveled input
+				margin: 0
+			.damage.leveled .chart,
+			.location.leveled .chart
+				left: -35px
+			.damage.options,
+			.location.options
+				padding-bottom: 0
+			.damage.options.levels,
+			.location.options.levels
+				padding-bottom: 10px
+			.options .spacer
+				margin-left: 215px
+
+			// Armament Suits Levels Visibility
+			input[name="attr_suit_blow_level"][value="1"] ~ .leveled input[name="attr_suit_blow"],
+			input[name="attr_suit_blow_level"][value="2"] ~ .leveled input[name="attr_suit_blow_2"],
+			input[name="attr_suit_blow_level"][value="3"] ~ .leveled input[name="attr_suit_blow_3"],
+			input[name="attr_suit_blow_level"][value="4"] ~ .leveled input[name="attr_suit_blow_4"],
+			input[name="attr_suit_blow_level"][value="5"] ~ .leveled input[name="attr_suit_blow_5"],
+			input[name="attr_suit_cut_level"][value="1"] ~ .leveled input[name="attr_suit_cut"],
+			input[name="attr_suit_cut_level"][value="2"] ~ .leveled input[name="attr_suit_cut_2"],
+			input[name="attr_suit_cut_level"][value="3"] ~ .leveled input[name="attr_suit_cut_3"],
+			input[name="attr_suit_cut_level"][value="4"] ~ .leveled input[name="attr_suit_cut_4"],
+			input[name="attr_suit_cut_level"][value="5"] ~ .leveled input[name="attr_suit_cut_5"],
+			input[name="attr_suit_bullet_level"][value="1"] ~ .leveled input[name="attr_suit_bullet"],
+			input[name="attr_suit_bullet_level"][value="2"] ~ .leveled input[name="attr_suit_bullet_2"],
+			input[name="attr_suit_bullet_level"][value="3"] ~ .leveled input[name="attr_suit_bullet_3"],
+			input[name="attr_suit_bullet_level"][value="4"] ~ .leveled input[name="attr_suit_bullet_4"],
+			input[name="attr_suit_bullet_level"][value="5"] ~ .leveled input[name="attr_suit_bullet_5"],
+			input[name="attr_suit_burn_level"][value="1"] ~ .leveled input[name="attr_suit_burn"],
+			input[name="attr_suit_burn_level"][value="2"] ~ .leveled input[name="attr_suit_burn_2"],
+			input[name="attr_suit_burn_level"][value="3"] ~ .leveled input[name="attr_suit_burn_3"],
+			input[name="attr_suit_burn_level"][value="4"] ~ .leveled input[name="attr_suit_burn_4"],
+			input[name="attr_suit_burn_level"][value="5"] ~ .leveled input[name="attr_suit_burn_5"],
+			input[name="attr_suit_shock_level"][value="1"] ~ .leveled input[name="attr_suit_shock"],
+			input[name="attr_suit_shock_level"][value="2"] ~ .leveled input[name="attr_suit_shock_2"],
+			input[name="attr_suit_shock_level"][value="3"] ~ .leveled input[name="attr_suit_shock_3"],
+			input[name="attr_suit_shock_level"][value="4"] ~ .leveled input[name="attr_suit_shock_4"],
+			input[name="attr_suit_shock_level"][value="5"] ~ .leveled input[name="attr_suit_shock_5"],
+			input[name="attr_suit_chemical_level"][value="1"] ~ .leveled input[name="attr_suit_chemical"],
+			input[name="attr_suit_chemical_level"][value="2"] ~ .leveled input[name="attr_suit_chemical_2"],
+			input[name="attr_suit_chemical_level"][value="3"] ~ .leveled input[name="attr_suit_chemical_3"],
+			input[name="attr_suit_chemical_level"][value="4"] ~ .leveled input[name="attr_suit_chemical_4"],
+			input[name="attr_suit_chemical_level"][value="5"] ~ .leveled input[name="attr_suit_chemical_5"],
+			input[name="attr_suit_blast_level"][value="1"] ~ .leveled input[name="attr_suit_blast"],
+			input[name="attr_suit_blast_level"][value="2"] ~ .leveled input[name="attr_suit_blast_2"],
+			input[name="attr_suit_blast_level"][value="3"] ~ .leveled input[name="attr_suit_blast_3"],
+			input[name="attr_suit_blast_level"][value="4"] ~ .leveled input[name="attr_suit_blast_4"],
+			input[name="attr_suit_blast_level"][value="5"] ~ .leveled input[name="attr_suit_blast_5"],
+			input[name="attr_suit_radiation_level"][value="1"] ~ .leveled input[name="attr_suit_radiation"],
+			input[name="attr_suit_radiation_level"][value="2"] ~ .leveled input[name="attr_suit_radiation_2"],
+			input[name="attr_suit_radiation_level"][value="3"] ~ .leveled input[name="attr_suit_radiation_3"],
+			input[name="attr_suit_radiation_level"][value="4"] ~ .leveled input[name="attr_suit_radiation_4"],
+			input[name="attr_suit_radiation_level"][value="5"] ~ .leveled input[name="attr_suit_radiation_5"],
+			input[name="attr_suit_head_level"][value="1"] ~ .leveled input[name="attr_suit_head"],
+			input[name="attr_suit_head_level"][value="2"] ~ .leveled input[name="attr_suit_head_2"],
+			input[name="attr_suit_head_level"][value="3"] ~ .leveled input[name="attr_suit_head_3"],
+			input[name="attr_suit_head_level"][value="4"] ~ .leveled input[name="attr_suit_head_4"],
+			input[name="attr_suit_head_level"][value="5"] ~ .leveled input[name="attr_suit_head_5"],
+			input[name="attr_suit_arms_level"][value="1"] ~ .leveled input[name="attr_suit_arms"],
+			input[name="attr_suit_arms_level"][value="2"] ~ .leveled input[name="attr_suit_arms_2"],
+			input[name="attr_suit_arms_level"][value="3"] ~ .leveled input[name="attr_suit_arms_3"],
+			input[name="attr_suit_arms_level"][value="4"] ~ .leveled input[name="attr_suit_arms_4"],
+			input[name="attr_suit_arms_level"][value="5"] ~ .leveled input[name="attr_suit_arms_5"],
+			input[name="attr_suit_torso_level"][value="1"] ~ .leveled input[name="attr_suit_torso"],
+			input[name="attr_suit_torso_level"][value="2"] ~ .leveled input[name="attr_suit_torso_2"],
+			input[name="attr_suit_torso_level"][value="3"] ~ .leveled input[name="attr_suit_torso_3"],
+			input[name="attr_suit_torso_level"][value="4"] ~ .leveled input[name="attr_suit_torso_4"],
+			input[name="attr_suit_torso_level"][value="5"] ~ .leveled input[name="attr_suit_torso_5"],
+			input[name="attr_suit_legs_level"][value="1"] ~ .leveled input[name="attr_suit_legs"],
+			input[name="attr_suit_legs_level"][value="2"] ~ .leveled input[name="attr_suit_legs_2"],
+			input[name="attr_suit_legs_level"][value="3"] ~ .leveled input[name="attr_suit_legs_3"],
+			input[name="attr_suit_legs_level"][value="4"] ~ .leveled input[name="attr_suit_legs_4"],
+			input[name="attr_suit_legs_level"][value="5"] ~ .leveled input[name="attr_suit_legs_5"],
+			input[name="attr_suit_psi_level"][value="1"] ~ .leveled input[name="attr_suit_psi"],
+			input[name="attr_suit_psi_level"][value="2"] ~ .leveled input[name="attr_suit_psi_2"],
+			input[name="attr_suit_psi_level"][value="3"] ~ .leveled input[name="attr_suit_psi_3"],
+			input[name="attr_suit_psi_level"][value="4"] ~ .leveled input[name="attr_suit_psi_4"],
+			input[name="attr_suit_psi_level"][value="5"] ~ .leveled input[name="attr_suit_psi_5"],
+			input[name="attr_suit_pocket_level"][value="1"] ~ .leveled input[name="attr_suit_pocket"],
+			input[name="attr_suit_pocket_level"][value="2"] ~ .leveled input[name="attr_suit_pocket_2"],
+			input[name="attr_suit_pocket_level"][value="3"] ~ .leveled input[name="attr_suit_pocket_3"],
+			input[name="attr_suit_pocket_level"][value="4"] ~ .leveled input[name="attr_suit_pocket_4"],
+			input[name="attr_suit_pocket_level"][value="5"] ~ .leveled input[name="attr_suit_pocket_5"],
+			input[name="attr_suit_status_level"][value="1"] ~ .leveled input[name="attr_suit_status"],
+			input[name="attr_suit_status_level"][value="2"] ~ .leveled input[name="attr_suit_status_2"],
+			input[name="attr_suit_status_level"][value="3"] ~ .leveled input[name="attr_suit_status_3"],
+			input[name="attr_suit_status_level"][value="4"] ~ .leveled input[name="attr_suit_status_4"],
+			input[name="attr_suit_status_level"][value="5"] ~ .leveled input[name="attr_suit_status_5"],
+			input[name="attr_suit_weight_level"][value="1"] ~ .leveled input[name="attr_suit_weight"],
+			input[name="attr_suit_weight_level"][value="2"] ~ .leveled input[name="attr_suit_weight_2"],
+			input[name="attr_suit_weight_level"][value="3"] ~ .leveled input[name="attr_suit_weight_3"],
+			input[name="attr_suit_weight_level"][value="4"] ~ .leveled input[name="attr_suit_weight_4"],
+			input[name="attr_suit_weight_level"][value="5"] ~ .leveled input[name="attr_suit_weight_5"]
+				display: inline-block
+				opacity: .9375
+
+			// Armament Suits Levels Colors
+			input[name="attr_suit_blow_level"]:not([value="1"]) ~ .levels select[name="attr_suit_blow_level"],
+			input[name="attr_suit_cut_level"]:not([value="1"]) ~ .levels select[name="attr_suit_cut_level"],
+			input[name="attr_suit_bullet_level"]:not([value="1"]) ~ .levels select[name="attr_suit_bullet_level"],
+			input[name="attr_suit_burn_level"]:not([value="1"]) ~ .levels select[name="attr_suit_burn_level"],
+			input[name="attr_suit_shock_level"]:not([value="1"]) ~ .levels select[name="attr_suit_shock_level"],
+			input[name="attr_suit_chemical_level"]:not([value="1"]) ~ .levels select[name="attr_suit_chemical_level"],
+			input[name="attr_suit_blast_level"]:not([value="1"]) ~ .levels select[name="attr_suit_blast_level"],
+			input[name="attr_suit_radiation_level"]:not([value="1"]) ~ .levels select[name="attr_suit_radiation_level"],
+			input[name="attr_suit_head_level"]:not([value="1"]) ~ .levels select[name="attr_suit_head_level"],
+			input[name="attr_suit_arms_level"]:not([value="1"]) ~ .levels select[name="attr_suit_arms_level"],
+			input[name="attr_suit_torso_level"]:not([value="1"]) ~ .levels select[name="attr_suit_torso_level"],
+			input[name="attr_suit_legs_level"]:not([value="1"]) ~ .levels select[name="attr_suit_legs_level"],
+			input[name="attr_suit_psi_level"]:not([value="1"]) ~ .levels select[name="attr_suit_psi_level"],
+			input[name="attr_suit_pocket_level"]:not([value="1"]) ~ .levels select[name="attr_suit_pocket_level"],
+			input[name="attr_suit_status_level"]:not([value="1"]) ~ .levels select[name="attr_suit_status_level"],
+			input[name="attr_suit_weight_level"]:not([value="1"]) ~ .levels select[name="attr_suit_weight_level"]
+				opacity: .625
+				color: $txt-caution-lite
+
+		// Armament Artefacts
+		.artefacts textarea
+			width: 100%
+			font-size: 11px
+			border: 0
+
+	// Armament Levels Visibility
+	.sheet
+		input[name="attr_armament_levels"][value="0"] ~ .armament .levels,
+		input[name="attr_armament_levels"][value="0"] ~ .armament .leveled .chart,
+		input[name="attr_armament_levels"][value="1"] ~ .armament .leveled .chart
+			display: none
+		input[name="attr_armament_levels"][value="2"] ~ .armament .leveled .lvl
+			display: inline-block
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Inventory
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.inventory
+		.line input[name="attr_item_name"],
+		.header span:nth-child(1)
+				width: 185px
+		.header
+			span:nth-child(2),
+			span:nth-child(3),
+			span:nth-child(4)
+				width: 40px
+			span:not(:first-child)
+				margin-right: 20px
+		.footer
+			text-align: right
+			padding-right: 25px
+			span
+				text-align: center
+		button.sml
+			display: none
+			position: absolute
+			width: 70px
+			top: calc(100% - 35px)
+			font-size: 10px
+			font-weight: bold
+			color: $txt-base-full
+			border-radius: 3px
+			background-color: $bgd-btn-sml
+			opacity: .75
+			z-index: 1
+		button.sml:focus
+			background-color: $bgd-btn-sml-focus
+		button.sml:hover
+			background-color: $bgd-btn-sml-hover
+		button.sml:nth-of-type(1)
+			left: 135px
+		button.sml:nth-of-type(2)
+			left: 215px
+		button.sml:nth-of-type(3)
+			left: 295px
+		.options-flag:checked ~ button.sml
+			display: inline-block
+		.options
+			textarea
+				margin-bottom: 10px
+			.details
+				text-align: left
+				label
+					width: 80px
+					text-align: center
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Settings
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.settings
+		> div
+			width: 450px
+			margin: 0 auto
+
+		// Settings Containers
+		.buttonbar
+			margin-bottom: 20px
+			padding-bottom: 20px
+			border-bottom: 2px solid $brd-pc
+		.choicebox
+			margin-bottom: 5px
+			text-align: left
+		.choicelist
+			margin-top: 20px
+			padding-top: 20px
+			border-top: 2px solid $brd-pc
+
+		// Settings Buttonbar
+		.buttonbar
+			button
+				width: 80px
+				font-weight: bold
+				opacity: .875
+			button.pictos::before
+				content: "J"
+				margin-right: 4px
+				font-size: 12px
+				font-family: "Pictos"
+			button.big
+				height: 30px
+				padding: 0 12px
+				color: $txt-base-full
+				border-radius: 4px
+			button.sml
+				float: right
+				width: 80px
+				height: 24px
+				margin-left: -80px
+				margin-top: 3px
+				padding: 0 4px
+				font-size: 10px
+				color: $txt-base-full
+				border-radius: 3px
+				border: 1px solid $brd-base-full
+				background-color: transparent
+				opacity: .5
+			button + button
+				margin-left: 10px
+			button.sml:first-child
+				position: absolute
+				right: 25px
+			button.red
+				background-color: $bgd-btn-red
+			button.red:hover,
+			button.red:focus
+				background-color: $bgd-btn-red-hover-focus
+			button.red:active
+				background-color: $bgd-btn-red-active
+			button.green
+				background-color: $bgd-btn-green
+			button.green:hover,
+			button.green:focus
+				background-color: $bgd-btn-green-hover-focus
+			button.green:active
+				background-color: $bgd-btn-green-active
+			button:hover,
+			button:focus
+				opacity: 1
+			button:active
+				opacity: .875
+
+		// Settings Choiceboxes
+		.choicebox
+			label
+				width: 125px
+			select
+				width: 190px
+				margin-left: 5px
+
+		// Settings Choicelists
+		.choicelist
+			div + div
+				margin-top: 10px
+			span
+				width: 325px
+				height: auto
+				padding: 2px 0
+				line-height: 16px
+				text-align: left
+				font-size: 11px
+				color: $txt-base-full
+				opacity: .625
+
+		// Settings Version
+		.version
+			display: inline-block
+			width: auto
+			height: 20px
+			margin-top: 20px
+			text-align: center
+			border: 1px solid $bgd-input-dark-pc
+			border-radius: 4px
+			overflow: hidden
+			span
+				width: auto
+				line-height: 18px
+				font-weight: bold
+				color: $txt-pc
+			span:first-child
+				margin-left: 5px
+			span:last-child
+				margin-right: 5px
+		.version::before
+			content: "l"
+			display: inline-block
+			width: 20px
+			height: inherit
+			line-height: 20px
+			font-size: 14px
+			font-family: "Pictos"
+			color: $txt-version
+			background-color: $bgd-input-dark-pc
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Formatting
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.sheet
+		.hidden
+			display: none
+		.tab
+			.red
+				color: red
+			.grey
+				color: gray
+			.white
+				color: white
+			.left
+				text-align: left
+			.right
+				text-align: right
+			.center
+				text-align: center
+			.mlft
+				margin-left: 40px
+			.mrgt
+				margin-right: 10px
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Visibility
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.sheet
+		.has-vehicle,
+		.has-den,
+		input[name="attr_show_vehicle"][value="0"] ~ div button.has-vehicle.sml,
+		input[name="attr_show_den"][value="0"] ~ div button.has-den.sml,
+		input[name="attr_sheet_type"]:not([value="pc"]) ~ .tab .history .titles,
+		input[name="attr_sheet_type"]:not([value="pc"]) ~ .tab .history .reputation
+			display: none
+		input[name="attr_show_vehicle"][value="1"] ~ div h1.has-vehicle,
+		input[name="attr_show_den"][value="1"] ~ div h1.has-den
+			display: block
+		input[name="attr_show_vehicle"][value="1"] ~ div div.has-vehicle,
+		input[name="attr_show_den"][value="1"] ~ div div.has-den
+			display: block
+		input[name="attr_show_vehicle"][value="1"] ~ div ~ .options-flag:checked button.has-vehicle,
+		input[name="attr_show_den"][value="1"] ~ div ~ .options-flag:checked button.has-den
+			display: inline-block
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Sheet Types
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+
+	// Mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ label,
+	input[name="attr_sheet_type"][value="mutant"] ~ div h1,
+	input[name="attr_sheet_type"][value="mutant"] ~ div label,
+	input[name="attr_sheet_type"][value="mutant"] ~ input.mod:checked + label,
+	input[name="attr_sheet_type"][value="mutant"] ~ div input.mod:checked + label,
+	input[name="attr_sheet_type"][value="mutant"] ~ .tab .header span,
+	input[name="attr_sheet_type"][value="mutant"] ~ .tab .footer span,
+	input[name="attr_sheet_type"][value="mutant"] ~ .tab .line > span,
+	input[name="attr_sheet_type"][value="mutant"] ~ div .options-flag + span,
+	input[name="attr_sheet_type"][value="mutant"] ~ .money span,
+	input[name="attr_sheet_type"][value="mutant"] ~ div .state > div > span > span:nth-child(2),
+	input[name="attr_sheet_type"][value="mutant"] ~ .abilities .ability button[name^="roll_show"],
+	input[name="attr_sheet_type"][value="mutant"] ~ .settings .version span
+		color: $txt-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ div label[for]:hover,
+	input[name="attr_sheet_type"][value="mutant"] ~ input.mod:hover + label,
+	input[name="attr_sheet_type"][value="mutant"] ~ div input.mod:hover + label,
+	input[name="attr_sheet_type"][value="mutant"] ~ div .options-flag:focus + span,
+	input[name="attr_sheet_type"][value="mutant"] ~ div .options-flag:hover + span
+		color: $txt-lite-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ input.mod:checked + label::before,
+	input[name="attr_sheet_type"][value="mutant"] ~ div input.mod:checked + label::before
+		background-color: $txt-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ input.mod:checked + label::after,
+	input[name="attr_sheet_type"][value="mutant"] ~ input.mod:hover + label::after,
+	input[name="attr_sheet_type"][value="mutant"] ~ div input.mod:checked + label::after,
+	input[name="attr_sheet_type"][value="mutant"] ~ div input.mod:hover + label::after
+		background-color: $txt-lite-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ div h1,
+	input[name="attr_sheet_type"][value="mutant"] ~ .settings .buttonbar,
+	input[name="attr_sheet_type"][value="mutant"] ~ .settings .choicelist
+		border-color: $brd-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ div .options-flag:focus + span
+		background-color: $bgd-options-flag-focus-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ div .options-flag:hover + span
+		background-color: $bgd-options-flag-hover-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ .armament .suits .damage input[type="radio"]:focus + label
+		background-color: $bgd-damage-focus-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ .armament .suits .damage input[type="radio"]:hover + label
+		background-color: $bgd-damage-hover-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ input.tog + label
+		border-color: $brd-tog-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ input.tog:checked + label
+		color: $txt-input-focus-mutant
+		border-color: $brd-tog-active-mutant
+		background-color: $bgd-tog-active-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ input.tog:hover + label
+		color: $txt-input-hover-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ input.tog:focus + label,
+	input[name="attr_sheet_type"][value="mutant"] ~ div select:hover + .dmgicon + span,
+	input[name="attr_sheet_type"][value="mutant"] ~ div select:focus + .dmgicon + span
+		color: $txt-input-hover-mutant
+		background-color: $bgd-input-hover-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ div textarea::-webkit-scrollbar-thumb:hover
+		background-color: $bgd-input-focus-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ div select:focus,
+	input[name="attr_sheet_type"][value="mutant"] ~ div textarea:focus,
+	input[name="attr_sheet_type"][value="mutant"] ~ div input[type="text"]:not([readonly]):focus,
+	input[name="attr_sheet_type"][value="mutant"] ~ div input[type="number"]:not([readonly]):focus
+		color: $txt-input-focus-mutant
+		border-color: $brd-input-focus-mutant
+		background-color: $bgd-input-focus-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ div select:hover,
+	input[name="attr_sheet_type"][value="mutant"] ~ div textarea:hover,
+	input[name="attr_sheet_type"][value="mutant"] ~ div input[type="text"]:not([readonly]):hover,
+	input[name="attr_sheet_type"][value="mutant"] ~ div input[type="number"]:not([readonly]):hover
+		color: $txt-input-hover-mutant
+		border-color: $brd-input-hover-mutant
+		background-color: $bgd-input-hover-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ .abilities .ability .roll-button:hover + button,
+	input[name="attr_sheet_type"][value="mutant"] ~ .abilities .ability .roll-button:focus + button
+		color: $txt-input-hover-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ .abilities .ability button[name^="roll_show"]:hover,
+	input[name="attr_sheet_type"][value="mutant"] ~ .abilities .ability button[name^="roll_show"]:focus
+		color: $txt-input-focus-mutant
+		border-color: $brd-input-focus-mutant
+		background-color: $bgd-input-focus-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ .history .block textarea:hover
+		background-color: $bgd-input-dark-hover-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ .armament .details input[type="number"],
+	input[name="attr_sheet_type"][value="mutant"] ~ .armament .details input[type="checkbox"] + span + select
+		border-bottom-color: $bgd-input-dark-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ div .state .options textarea,
+	input[name="attr_sheet_type"][value="mutant"] ~ .settings .version
+		border-color: $bgd-input-dark-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ .armament .details input[type="checkbox"]:checked + span,
+	input[name="attr_sheet_type"][value="mutant"] ~ .settings .version::before
+		background-color: $bgd-input-dark-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ .specialities .weapon .number
+		color: $txt-weapon-number-mutant
+		border: 1px solid $brd-weapon-number-mutant
+		background-color: $bgd-weapon-number-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ .tab .repcontrol_add:hover,
+	input[name="attr_sheet_type"][value="mutant"] ~ .tab .repcontrol_edit:hover,
+	input[name="attr_sheet_type"][value="mutant"] ~ .tab .repcontrol_add:focus,
+	input[name="attr_sheet_type"][value="mutant"] ~ .tab .repcontrol_edit:focus
+		color: $txt-input-hover-mutant
+		border-color: $brd-input-hover-mutant
+		background: $bgd-input-hover-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ .tab .repcontrol_add:hover::after,
+	input[name="attr_sheet_type"][value="mutant"] ~ .tab .repcontrol_edit:hover::after,
+	input[name="attr_sheet_type"][value="mutant"] ~ .tab .repcontrol_add:focus::after,
+	input[name="attr_sheet_type"][value="mutant"] ~ .tab .repcontrol_edit:focus::after
+		border-color: $brd-input-hover-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ div h1::selection,
+	input[name="attr_sheet_type"][value="mutant"] ~ div div::selection,
+	input[name="attr_sheet_type"][value="mutant"] ~ div span::selection
+		background-color: $txt-selection-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ div select::selection,
+	input[name="attr_sheet_type"][value="mutant"] ~ div textarea::selection,
+	input[name="attr_sheet_type"][value="mutant"] ~ div input::selection
+		background-color: $txt-selection-input-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ div select.speciality:hover + span,
+	input[name="attr_sheet_type"][value="mutant"] ~ div select.speciality:focus + span,
+	input[name="attr_sheet_type"][value="mutant"] ~ div select.speciality:active + span,
+	input[name="attr_sheet_type"][value="mutant"] ~ div .state .options textarea:hover
+		color: $txt-input-hover-mutant
+	input[name="attr_sheet_type"][value="mutant"] ~ div .state .options textarea:focus,
+	input[name="attr_sheet_type"][value="mutant"] ~ div .state .options textarea:active
+		color: $txt-input-focus-mutant
+
+	// Tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ label,
+	input[name="attr_sheet_type"][value="tainted"] ~ div h1,
+	input[name="attr_sheet_type"][value="tainted"] ~ div label,
+	input[name="attr_sheet_type"][value="tainted"] ~ input.mod:checked + label,
+	input[name="attr_sheet_type"][value="tainted"] ~ div input.mod:checked + label,
+	input[name="attr_sheet_type"][value="tainted"] ~ .tab .header span,
+	input[name="attr_sheet_type"][value="tainted"] ~ .tab .footer span,
+	input[name="attr_sheet_type"][value="tainted"] ~ .tab .line > span,
+	input[name="attr_sheet_type"][value="tainted"] ~ div .options-flag + span,
+	input[name="attr_sheet_type"][value="tainted"] ~ .money span,
+	input[name="attr_sheet_type"][value="tainted"] ~ div .state > div > span > span:nth-child(2),
+	input[name="attr_sheet_type"][value="tainted"] ~ .abilities .ability button[name^="roll_show"],
+	input[name="attr_sheet_type"][value="tainted"] ~ .settings .version span
+		color: $txt-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ div label[for]:hover,
+	input[name="attr_sheet_type"][value="tainted"] ~ input.mod:hover + label,
+	input[name="attr_sheet_type"][value="tainted"] ~ div input.mod:hover + label,
+	input[name="attr_sheet_type"][value="tainted"] ~ div .options-flag:focus + span,
+	input[name="attr_sheet_type"][value="tainted"] ~ div .options-flag:hover + span
+		color: $txt-lite-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ input.mod:checked + label::before,
+	input[name="attr_sheet_type"][value="tainted"] ~ div input.mod:checked + label::before
+		background-color: $txt-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ input.mod:checked + label::after,
+	input[name="attr_sheet_type"][value="tainted"] ~ input.mod:hover + label::after,
+	input[name="attr_sheet_type"][value="tainted"] ~ div input.mod:checked + label::after,
+	input[name="attr_sheet_type"][value="tainted"] ~ div input.mod:hover + label::after
+		background-color: $txt-lite-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ div h1,
+	input[name="attr_sheet_type"][value="tainted"] ~ .settings .buttonbar,
+	input[name="attr_sheet_type"][value="tainted"] ~ .settings .choicelist
+		border-color: $brd-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ div .options-flag:focus + span
+		background-color: $bgd-options-flag-focus-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ div .options-flag:hover + span
+		background-color: $bgd-options-flag-hover-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ .armament .suits .damage input[type="radio"]:focus + label
+		background-color: $bgd-damage-focus-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ .armament .suits .damage input[type="radio"]:hover + label
+		background-color: $bgd-damage-hover-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ input.tog + label
+		border-color: $brd-tog-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ input.tog:checked + label
+		color: $txt-input-focus-tainted
+		border-color: $brd-tog-active-tainted
+		background-color: $bgd-tog-active-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ input.tog:hover + label
+		color: $txt-input-hover-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ input.tog:focus + label
+	input[name="attr_sheet_type"][value="tainted"] ~ div select:hover + .dmgicon + span,
+	input[name="attr_sheet_type"][value="tainted"] ~ div select:focus + .dmgicon + span
+		color: $txt-input-hover-tainted
+		background-color: $bgd-input-hover-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ div textarea::-webkit-scrollbar-thumb:hover
+		background-color: $bgd-input-focus-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ div select:focus,
+	input[name="attr_sheet_type"][value="tainted"] ~ div textarea:focus,
+	input[name="attr_sheet_type"][value="tainted"] ~ div input[type="text"]:not([readonly]):focus,
+	input[name="attr_sheet_type"][value="tainted"] ~ div input[type="number"]:not([readonly]):focus
+		color: $txt-input-focus-tainted
+		border-color: $brd-input-focus-tainted
+		background-color: $bgd-input-focus-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ div select:hover,
+	input[name="attr_sheet_type"][value="tainted"] ~ div textarea:hover,
+	input[name="attr_sheet_type"][value="tainted"] ~ div input[type="text"]:not([readonly]):hover,
+	input[name="attr_sheet_type"][value="tainted"] ~ div input[type="number"]:not([readonly]):hover
+		color: $txt-input-hover-tainted
+		border-color: $brd-input-hover-tainted
+		background-color: $bgd-input-hover-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ .abilities .ability .roll-button:hover + button,
+	input[name="attr_sheet_type"][value="tainted"] ~ .abilities .ability .roll-button:focus + button
+		color: $txt-input-hover-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ .abilities .ability button[name^="roll_show"]:hover,
+	input[name="attr_sheet_type"][value="tainted"] ~ .abilities .ability button[name^="roll_show"]:focus
+		color: $txt-input-focus-tainted
+		border-color: $brd-input-focus-tainted
+		background-color: $bgd-input-focus-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ .history .block textarea:hover
+		background-color: $bgd-input-dark-hover-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ .armament .details input[type="number"],
+	input[name="attr_sheet_type"][value="tainted"] ~ .armament .details input[type="checkbox"] + span + select
+		border-bottom-color: $bgd-input-dark-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ div .state .options textarea,
+	input[name="attr_sheet_type"][value="tainted"] ~ .settings .version
+		border-color: $bgd-input-dark-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ .armament .details input[type="checkbox"]:checked + span,
+	input[name="attr_sheet_type"][value="tainted"] ~ .settings .version::before
+		background-color: $bgd-input-dark-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ .specialities .weapon .number
+		color: $txt-weapon-number-tainted
+		border: 1px solid $brd-weapon-number-tainted
+		background-color: $bgd-weapon-number-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ .tab .repcontrol_add:hover,
+	input[name="attr_sheet_type"][value="tainted"] ~ .tab .repcontrol_edit:hover,
+	input[name="attr_sheet_type"][value="tainted"] ~ .tab .repcontrol_add:focus,
+	input[name="attr_sheet_type"][value="tainted"] ~ .tab .repcontrol_edit:focus
+		color: $txt-input-hover-tainted
+		border-color: $brd-input-hover-tainted
+		background: $bgd-input-hover-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ .tab .repcontrol_add:hover::after,
+	input[name="attr_sheet_type"][value="tainted"] ~ .tab .repcontrol_edit:hover::after,
+	input[name="attr_sheet_type"][value="tainted"] ~ .tab .repcontrol_add:focus::after,
+	input[name="attr_sheet_type"][value="tainted"] ~ .tab .repcontrol_edit:focus::after
+		border-color: $brd-input-hover-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ div h1::selection,
+	input[name="attr_sheet_type"][value="tainted"] ~ div div::selection,
+	input[name="attr_sheet_type"][value="tainted"] ~ div span::selection
+		background-color: $txt-selection-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ div select::selection,
+	input[name="attr_sheet_type"][value="tainted"] ~ div textarea::selection,
+	input[name="attr_sheet_type"][value="tainted"] ~ div input::selection
+		background-color: $txt-selection-input-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ div select.speciality:hover + span,
+	input[name="attr_sheet_type"][value="tainted"] ~ div select.speciality:focus + span,
+	input[name="attr_sheet_type"][value="tainted"] ~ div select.speciality:active + span,
+	input[name="attr_sheet_type"][value="tainted"] ~ div .state .options textarea:hover
+		color: $txt-input-hover-tainted
+	input[name="attr_sheet_type"][value="tainted"] ~ div .state .options textarea:focus,
+	input[name="attr_sheet_type"][value="tainted"] ~ div .state .options textarea:active
+		color: $txt-input-focus-tainted
+
+	// Fixes
+	input[name="attr_sheet_type"]:not([value="pc"]) ~ div input.mod + label
+		color: $txt-base-half
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Icons
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.stalker
+	.sheet
+		.icon
+			display: inline-block
+			width: 35px
+			height: 35px
+			background-image: $img-icon
+			background-repeat: no-repeat
+			background-position: 35px 35px
+		.icon.wpn-accuracy
+			background-position: 0 0
+		.icon.wpn-damage
+			background-position: -35px 0
+		.icon.wpn-dmgtype
+			background-position: -70px 0
+		.icon.wpn-penetration
+			background-position: -105px 0
+		.icon.wpn-range
+			background-position: -140px 0
+		.icon.wpn-thrown
+			background-position: -175px 0
+		.icon.wpn-ammo
+			background-position: -210px 0
+		.icon.wpn-mag
+			background-position: -245px 0
+		.icon.eqp-addon
+			background-position: 0 -35px
+		.icon.eqp-pocket
+			background-position: -35px -35px
+		.icon.eqp-status
+			background-position: -70px -35px
+		.icon.eqp-weight
+			background-position: -105px -35px
+		.icon.eqp-psi
+			background-position: -140px -35px
+		.icon.eqp-bleeding
+			background-position: -175px -35px
+		.icon.eqp-health
+			background-position: -210px -35px
+		.icon.eqp-endurance
+			background-position: -245px -35px
+		.icon.pic-blow
+			background-position: 0 -70px
+		.icon.pic-cut
+			background-position: -35px -70px
+		.icon.pic-bullet
+			background-position: -70px -70px
+		.icon.pic-burn
+			background-position: -105px -70px
+		.icon.pic-shock
+			background-position: -140px -70px
+		.icon.pic-chemical
+			background-position: -175px -70px
+		.icon.pic-blast
+			background-position: -210px -70px
+		.icon.pic-radiation
+			background-position: -245px -70px
+
+.stalker .sheet .condicon,
+.stalker .sheet .dmgicon + span,
+.sheet-rolltemplate-stalker .sheet-condicon,
+.sheet-rolltemplate-stalker .sheet-dmgicon
+	display: inline-block
+	width: 20px
+	height: 20px
+	background-image: $img-icon-sml
+	background-repeat: no-repeat
+	background-position: 20px 0
+.sheet-rolltemplate-stalker .sheet-condicon
+	margin-left: -25px
+	margin-right: 5px
+	vertical-align: top
+.stalker .sheet .dmgicon + span
+	pointer-events: none
+	position: relative
+	left: -7.5px
+	margin-left: -20px
+	color: $txt-base-full
+.sheet-rolltemplate-stalker .sheet-dmgicon
+	position: absolute
+	left: calc(50% + 20px)
+	top: 7px
+
+.stalker .sheet select:hover + .dmgicon + span,
+.stalker .sheet select:focus + .dmgicon + span
+	color: $txt-input-hover-pc
+	background-color: $bgd-input-hover-pc
+.stalker .sheet .dmgicon[value=""] + span::before
+	content: "—"
+
+.stalker .sheet .dmgicon[value="blow"] + span,
+.sheet-rolltemplate-stalker .sheet-dmgicon.sheet-blow
+	background-position: 0 0
+.stalker .sheet .dmgicon[value="cut"] + span,
+.sheet-rolltemplate-stalker .sheet-dmgicon.sheet-cut
+	background-position: -20px 0
+.stalker .sheet .dmgicon[value="bullet"] + span,
+.sheet-rolltemplate-stalker .sheet-dmgicon.sheet-bullet
+	background-position: -40px 0
+.stalker .sheet .dmgicon[value="burn"] + span,
+.sheet-rolltemplate-stalker .sheet-dmgicon.sheet-burn
+	background-position: -60px 0
+.stalker .sheet .dmgicon[value="shock"] + span,
+.sheet-rolltemplate-stalker .sheet-dmgicon.sheet-shock
+	background-position: -80px 0
+.stalker .sheet .dmgicon[value="chemical"] + span,
+.sheet-rolltemplate-stalker .sheet-dmgicon.sheet-chemical
+	background-position: -100px 0
+.stalker .sheet .dmgicon[value="blast"] + span,
+.sheet-rolltemplate-stalker .sheet-dmgicon.sheet-blast
+	background-position: -120px 0
+.stalker .sheet .dmgicon[value="radiation"] + span,
+.sheet-rolltemplate-stalker .sheet-dmgicon.sheet-radiation
+	background-position: -140px 0
+.stalker .sheet .condicon.bleeding,
+.sheet-rolltemplate-stalker .sheet-condicon.sheet-bleeding
+	background-position: -160px 0
+.stalker .sheet .condicon.stunned,
+.sheet-rolltemplate-stalker .sheet-condicon.sheet-stunned
+	background-position: -180px 0
+.stalker .sheet .condicon.deafened,
+.sheet-rolltemplate-stalker .sheet-condicon.sheet-deafened
+	background-position: -200px 0
+.stalker .sheet .condicon.blinded,
+.sheet-rolltemplate-stalker .sheet-condicon.sheet-blinded
+	background-position: -220px 0
+
+// =============================================================================
+// -----------------------------------------------------------------------------
+// # Templates
+// -----------------------------------------------------------------------------
+// =============================================================================
+
+.sheet-rolltemplate-stalker
+	font-size: 12px
+
+	.sheet-rollcontent
+		padding: 5px 10px
+		color: $txt-base-thrd
+		border-radius: 3px
+		background-color: $bgd-dark-main
+
+	.sheet-rollcontent strong
+		color: $txt-base-full
+
+	.sheet-lower
+		text-transform: lowercase
+
+	.sheet-fonticon
+		display: inline-block
+		width: 20px
+		height: 20px
+		font-size: 12px
+		font-weight: normal
+		font-family: "Pictos"
+		text-align: center
+		opacity: .5
+	.sheet-fonticon.sheet-three
+		font-family: "Pictos Three"
+		text-transform: none
+
+	.sheet-name
+		margin-bottom: 4px
+		line-height: 20px
+		font-size: 11px
+		font-weight: bold
+		text-transform: uppercase
+		color: $txt-base-full
+
+	.sheet-header
+		margin: 0 0 5px
+		line-height: 20px
+		font-weight: bold
+		text-align: center
+		border-width: 2px 0 2px 0
+		border-style: solid
+
+	.sheet-header
+		color: $txt-lite-pc
+		border-color: $brd-pc
+	.sheet-npc-mutant .sheet-header
+		color: $txt-lite-mutant
+		border-color: $brd-mutant
+	.sheet-npc-tainted .sheet-header
+		color: $txt-lite-tainted
+		border-color: $brd-tainted
+
+	.sheet-subheader
+		margin-bottom: 5px
+		line-height: 20px
+		font-size: 10px
+		font-weight: bold
+		text-align: center
+		text-transform: uppercase
+		color: $txt-caution-lite
+		opacity: .875
+
+	.sheet-detail
+		line-height: 16px
+		font-size: 11px
+		font-weight: bold
+		color: $txt-pc
+	.sheet-npc-mutant .sheet-detail
+		color: $txt-mutant
+	.sheet-npc-tainted .sheet-detail
+		color: $txt-tainted
+	.sheet-detail + .sheet-detail
+		border-top: 1px solid $brd-base-qrtr
+
+	.sheet-label,
+	.sheet-entry
+		display: inline-block
+		vertical-align: top
+	.sheet-label
+		width: 80px
+		color: $txt-tmpl-label
+		font-size: 10px
+		opacity: .5
+
+	.sheet-red,
+	.sheet-red .sheet-label
+		color: $txt-warning-lite !important
+	.sheet-green,
+	.sheet-green .sheet-label
+		color: $txt-benefit-lite !important
+	.sheet-yellow,
+	.sheet-yellow .sheet-label
+		color: $txt-caution-lite
+	.sheet-red .sheet-label,
+	.sheet-green .sheet-label,
+	.sheet-yellow .sheet-label
+		opacity: .75
+
+	.sheet-hint
+		margin-left: 4px
+		font-size: 10px
+		font-weight: normal
+		opacity: .75
+
+	.sheet-ability
+		color: $txt-base-half
+
+	.sheet-ability,
+	.sheet-result
+		text-align: center
+
+	a:focus
+		outline: none
+
+	a[href^="~"]
+		margin: 0 4px
+		padding: 0 3px
+		line-height: 14px
+		font-size: 10px
+		font-weight: bold
+		text-decoration: none
+		text-transform: uppercase
+		color: $txt-base-full
+		border: 0
+		border-radius: 3px
+		background-color: $bgd-tmpl-href
+
+	.sheet-normal a[href^="~"]
+		margin-left: -4px
+		margin-right: 0
+		font-size: 11px
+		text-transform: none
+		color: $txt-pc
+		background-color: transparent
+	.sheet-npc-mutant .sheet-normal a[href^="~"]
+		color: $txt-mutant
+	.sheet-npc-tainted .sheet-normal a[href^="~"]
+		color: $txt-tainted
+
+	.sheet-pictos a[href^="~"]
+		width: 10px
+		font-size: 12px
+		font-family: "Pictos"
+		font-weight: normal
+		text-align: center
+		text-transform: none
+		vertical-align: top
+		line-height: 16px
+		color: $txt-tmpl-href-pictos
+		background-color: transparent
+
+	.sheet-button
+		position: absolute
+		display: inline-block
+		top: 6px
+	.sheet-button.sheet-left
+		left: 6px
+	.sheet-button.sheet-right
+		right: 6px
+	.sheet-button a[href^="~"]
+		width: 22px
+		height: 22px
+		margin: 0
+		padding: 0
+		line-height: 22px
+		font-size: 20px
+		font-weight: normal
+		font-family: "Pictos Custom"
+		text-transform: none
+		box-shadow: $box-shadow
+	.sheet-blue a[href^="~"]
+		background-color: $bgd-base-half
+	.sheet-button a[href^="~"]:focus
+		box-shadow: none
+	.sheet-button a[href^="~"]:active
+		box-shadow: $box-shadow-active
+
+	a[href^="~"]:hover,
+	a[href^="~"]:focus,
+	a[href^="~"]:active
+		color: $txt-base-full !important
+	a[href^="~"]:hover
+		background-color: $bgd-tmpl-href-hover
+	a[href^="~"]:focus,
+	a[href^="~"]:active
+		background-color: $bgd-tmpl-href-focus-active
+
+	.sheet-value a,
+	.inlinerollresult
+		display: inline-block
+		min-width: 20px
+		padding: 0 4px
+		line-height: 22px
+		font-size: 14px
+		font-weight: normal
+		text-align: center
+		color: $txt-base-full
+
+	.sheet-value a
+		margin: 0 4px
+		border-radius: 3px
+		border: 1px solid $brd-base-full
+		background-color: $bgd-dark-full
+
+	.sheet-location
+		position: relative
+		margin: 8px 0 4px
+		padding: 6px
+		background-color: $bgd-base-qrtr
+	.sheet-location a
+		display: inline-block
+		height: 24px
+		padding: 0
+		line-height: 24px
+		text-align: center
+		background-color: $bgd-base-half
+		box-shadow: $box-shadow
+	.sheet-location a:focus
+		box-shadow: none
+	.sheet-location a:active
+		box-shadow: $box-shadow-active
+	.sheet-location a:not(:first-of-type)
+		width: 48%
+		margin: 4% 0 0
+	.sheet-location a:nth-child(even)
+		margin-right: 4%
+	.sheet-location a:first-of-type
+		width: 100%
+		margin: 0
+
+	.sheet-result
+		position: relative
+		margin: 4px 0
+		padding: 4px
+		background-color: $bgd-base-qrtr
+
+	.inlinerollresult,
+	.inlinerollresult.fullcrit,
+	.inlinerollresult.fullfail,
+	.inlinerollresult.importantroll
+		font-size: 16px
+		border-color: $brd-base-full
+		background-color: $bgd-base-half
+	.sheet-result.sheet-damage .inlinerollresult
+		border-color: $brd-warning
+		background-color: $bgd-warning
+
+	.sheet-warning
+		margin-bottom: 5px
+		padding-bottom: 2px
+		text-align: center
+		font-size: 11px
+		font-style: italic
+		font-weight: bold
+		color: $txt-warning-lite
+		background-color: $bgd-warning
+		opacity: .875
+
+	.sheet-desc
+		font-size: 11px
+
+	.sheet-notes
+		margin-top: 10px
+		padding-top: 10px
+		line-height: 1.25
+		font-size: 10px
+		border-top: 1px solid $brd-base-qrtr
+		opacity: .75
