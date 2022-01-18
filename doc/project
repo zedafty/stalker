@@ -4,10 +4,10 @@
 --------------------------------------------------------------------------------
 ================================================================================
 
-	Roll20 Character Sheet for S.T.A.L.K.E.R. SD Role Playing Game by Fabien « Amatsu » Gest (5th version, 2011).
+	Roll20 character sheet for S.T.A.L.K.E.R. SD role-playing game by Fabien « Amatsu » Gest (5th version, 2011).
 	Inspired by video games S.T.A.L.K.E.R.: Shadow of Chernobyl, Clear Sky & Call of Pripyat which rights are owned by GSC Game World.
 	Based upon Capitaine Red original character sheet.
-	Testing by Leon Solitaire and Pingu
+	Testing and management by Leon Solitaire and Pingu.
 
 ================================================================================
 --------------------------------------------------------------------------------
@@ -21,8 +21,8 @@
 2) abilities - Caractéristiques
 3) status - État de santé
 	A - vitals - Signes vitaux
-	A - resistances - Résistances naturelles
 	B - conditions - États préjudiciables
+	C - resistances - Résistances naturelles
 4) specialities - Spécialités
 	A - weapon_specialities - Spécialités martiales
 	B - common_specialities - Spécialités générales
@@ -76,42 +76,13 @@
 
 ================================================================================
 --------------------------------------------------------------------------------
-# TODO
+# Left-overs
 --------------------------------------------------------------------------------
 ================================================================================
 
-* Format HTML
-* Format CSS
-* Fix 'Repeating_Specialite' bug
-* Set character name read-only (i.e. All-in bug preventing)
-* Add tab names
-* Add translation file
-* Add JavaScript Webworker
-	> Compute inventory weight
-	> Add one-page view
-* Add Roll20 Templates
-	> Attack
-	> Damage
-	> Suit Resistance
-* Add Character Gender Field
-* Add XP Field
-* Add Money Field
-* Add Titles Field
-* Add Reputation Field
-* Add Resistances (physical + elemental)
-
-================================================================================
---------------------------------------------------------------------------------
-# ENHANCEMENTS
---------------------------------------------------------------------------------
-================================================================================
-
-* Add reputation
-* Add number before weapon specialities
-* Add hidden translation for Modifier and Whisper to GM
-* Transfer item from equipment to backpack
-* Add faction images
-? Hide unused weapon specialities
-? Add controllers like money for experience
-? Allow direct money edit
-? Hide weapon roll button if unrollable (no spec)
+* Hide unused weapon specialities
+* Hide weapon roll button if unrollable (no spec)
+* Add controllers like money for experience
+* Allow direct money edit
+* Add initiative button
+* Add critical and fumble hits

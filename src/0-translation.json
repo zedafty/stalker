@@ -54,6 +54,7 @@
 	"expand_reduce_options" : "Étendre/Réduire options",
 	"base" : "Base",
 	"mod" : "Mod.",
+	"aug" : "Aug.",
 
 	// Character
 	"char_surname" : "Surnom",
@@ -83,14 +84,14 @@
 	"loners" : "Solitaires",
 	"duty" : "Devoir",
 	"freedom" : "Liberté",
-	"clearsky" : "Clear Sky",
+	"clearsky" : "ClearSky",
 	"ecologists" : "Écologistes",
 	"mercenaries" : "Mercenaires",
 	"military_forces" : "Forces militaires",
 	"unisg" : "UNISG",
 	"bandits" : "Bandits",
 	"renegades" : "Renégats",
-	"monoliths" : "Monolithes",
+	"monolith" : "Monolith",
 	"sin" : "Sin",
 
 	// Ranks
@@ -98,10 +99,16 @@
 	"stalker" : "Stalker",
 	"veteran" : "Vétéran",
 	"master" : "Maître",
+	"rank_0" : "—",
+	"rank_1d4" : "Bleu",
+	"rank_1d6" : "Stalker",
+	"rank_1d8" : "Vétéran",
+	"rank_1d10" : "Maître",
 
 	// History
+	"traits" : "Traits",
 	"antecedents" : "Antécédents",
-	"antecedent_pl" : "Antécédent …",
+	"antecedent_pl" : "Antécédent ou trait …",
 	"antecedent_desc_pl" : "Description de l’antécédent …",
 	"titles" : "Titres",
 	"title_pl" : "Titre …",
@@ -145,13 +152,24 @@
 	"radiation" : "Radiation",
 	"weighing_load" : "Charge portable",
 
-	// Resistances
-	"resistance" : "Résistance naturelle",
-	"resistances" : "Résistances naturelles",
-
 	// Conditions
+	"no_condition" : "Pas d’état",
 	"knock_out" : "Hors-combat",
-	"overburdened" : "Surchargé",
+	"overburdened_m" : "Surchargé",
+	"overburdened_f" : "Surchargée",
+	"overburdened_c" : "Surchargé·e",
+	"bleeding_m" : "Saignement",
+	"bleeding_f" : "Saignement",
+	"bleeding_c" : "Saignement",
+	"stunned_m" : "Étourdi",
+	"stunned_f" : "Étourdie",
+	"stunned_c" : "Étourdi·e",
+	"deafened_m" : "Assourdi",
+	"deafened_f" : "Assourdie",
+	"deafened_c" : "Assourdi·e",
+	"blinded_m" : "Aveuglé",
+	"blinded_f" : "Aveuglée",
+	"blinded_c" : "Aveuglé·e",
 
 	// Units
 	"unit" : "Unité",
@@ -170,7 +188,12 @@
 	"unit_year" : "Année",
 	"unit_year_p" : "Années",
 
+	// Resistances
+	"resistance" : "Résistance naturelle",
+	"resistances" : "Résistances naturelles",
+
 	// Common Specialities
+	"spec_desc_pl" : "Description de la spécialité …",
 
 	// Armament Ranks
 	"lvl_1" :"Base",
@@ -202,6 +225,8 @@
 	// Weapon Types
 	"weapon_melee" : "Corps à corps",
 	"weapon_thrown" : "Arme de jet",
+	"weapon_explosive" : "Explosif",
+	"weapon_trap" : "Piège",
 	"weapon_firearm" : "Arme à feu",
 
 	// Weapons
@@ -220,21 +245,28 @@
 	"weapon_effect" : "Effet",
 	"weapon_effect_pl" : "Effet …",
 	"weapon_addon" : "Ajout",
-	"weapon_addon_pl" : "Ajout …",
+	"weapon_addon_pl" : "Ajouts …",
 	"weapon_spec" : "Spécialité",
 	"weapon_type" : "Type d’arme",
+	"weapon_prop" : "Propriétés",
+	"weapon_bleed" : "Saignement",
+	"weapon_bleed_1" : "Léger",
+	"weapon_bleed_2" : "Modéré",
+	"weapon_bleed_3" : "Grave",
 	"weapon_rate" : "Cadence",
-	"weapon_rate_pl" : "Cadence de tir …",
+	"weapon_rate_1" : "Coup par coup",
+	"weapon_rate_2" : "Semi-auto",
+	"weapon_rate_3" : "Automatique",
 
 	// Damage
-	"dmg_blow" : "Impacts",
-	"dmg_cut" : "Entailles",
-	"dmg_bullet" : "Perforations",
 	"dmg_burn" : "Brûlures",
 	"dmg_shock" : "Décharges électriques",
+	"dmg_blow" : "Impacts",
+	"dmg_cut" : "Entailles",
+	"dmg_radiation" : "Radiations",
 	"dmg_chemical" : "Brûlures chimiques",
 	"dmg_blast" : "Explosions",
-	"dmg_radiation" : "Radiations",
+	"dmg_bullet" : "Perforations",
 
 	// Hit Location
 	"location" : "Localisation",
@@ -285,20 +317,20 @@
 	"suit_name_pl" : "Combinaison …",
 	"suit_protection" : "Protection",
 	"suit_location" : "Localisation",
-	"suit_blow" : "Impacts",
-	"suit_cut" : "Entailles",
-	"suit_bullet" : "Perforations",
 	"suit_burn" : "Brûlures",
 	"suit_shock" : "Décharges électriques",
+	"suit_blow" : "Impacts",
+	"suit_cut" : "Entailles",
+	"suit_radiation" : "Radiations",
 	"suit_chemical" : "Brûlures chimiques",
 	"suit_blast" : "Explosions",
-	"suit_radiation" : "Radiations",
+	"suit_bullet" : "Perforations",
 	"suit_psi" : "Protection psi",
 	"suit_pocket" : "Poches",
 	"suit_status" : "État",
 	"suit_weight" : "Poids (kg)",
 	"suit_addon" : "Ajout",
-	"suit_addon_pl" : "Ajout …",
+	"suit_addon_pl" : "Ajouts …",
 
 	// Artefacts
 	"artefact_name" : "Artefact",
@@ -335,6 +367,7 @@
 	"damage" : "Dégâts",
 	"ammo" : "Munition",
 	"penetration" : "Pénétration",
+	"bleeding" : "Saignement",
 	"accuracy" : "Précision",
 	"rank" : "Rang",
 	"show" : "Montrer",
@@ -347,7 +380,7 @@
 	"level" : "Niveau",
 
 	// Hints
-	"weapon_number_hint" : "Numéro à choisir dans le menu déroulant Spécialité des Armes",
+	"weapon_number_hint" : "Numéro à choisir dans le menu déroulant Spécialité des armes",
 	"weapon_status_pos_hint" : "(Bonus variable)",
 	"weapon_status_neg_hint" : "(Précision décrue)",
 	"suit_status_pos_hint" : "(Bonus variable)",
@@ -377,7 +410,7 @@
 	"never_whisper" : "Ne jamais murmurer au MJ",
 	"ask_whisper" : "Demander pour murmurer au MJ",
 	"always_whisper" : "Toujours murmurer au MJ",
-	"armament_levels" : "Niveaux d’armament",
+	"armament_levels" : "Niveaux d’armement",
 	"armament_none" : "Aucun (pas d’affichage)",
 	"armament_line" : "Ligne (niveau actuel)",
 	"armament_grid" : "Grille (tout visible)",
@@ -387,13 +420,15 @@
 	"sheet_tainted" : "Corrompu (PNJ)",
 
 	// Roll Titles
+	"show_abi" : "Voir la caractéristique",
+	"roll_abi" : "Jet de caractéristique",
 	"roll_dmg" : "Jet de dégâts",
 	"roll_loc" : "Jet de localisation des dégâts",
 
 	// Roll Templates
 	"r_uses" : "utilisations",
 	"r_ability" : "Carac.",
-	"r_condition" : "Condition",
+	"r_condition" : "État préj.",
 	"r_effect" : "Effet",
 	"r_duration" : "Durée",
 	"r_speciality" : "Spéc.",
@@ -403,7 +438,7 @@
 	"r_modifier" : "Modificateur",
 	"t_empty_pool" : "Réserve vide",
 	"draw_ability" : "Puiser",
-	"draw_selfcontrol" : "Puiser du sang-froid",
+	"draw_selfcontrol" : "Puiser du Sang-froid",
 	"t_no_weapon_speciality" : "Pas de spécialité martiale",
 
 	// Version

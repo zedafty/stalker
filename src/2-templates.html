@@ -16,7 +16,7 @@
 			<div class="header">{{header}}</div>
 		{{/header}}
 		{{#cond}}
-			<div class="condition"><span data-i18n="condition">Condition</span></div>
+			<div class="header">{{#cond_icon}}<span class="condicon {{cond_icon}}"></span>{{/cond_icon}}<span data-i18n="condition">Condition</span></div>
 		{{/cond}}
 		{{#subheader}}
 			<div class="subheader">{{subheader}}</div>
@@ -30,9 +30,9 @@
 		<!-- END STATE -->
 
 		<!-- BEGIN ABILITY -->
-		{{#rollLess() ability_warn 1}}
+		{{#rollLess() showability 1}}
 			<div class="warning"><span data-i18n="t_empty_pool">Empty pool</span></div>
-		{{/rollLess() ability_warn 1}}
+		{{/rollLess() showability 1}}
 		{{#ability_val}}
 			<div class="ability"><span class="value">{{ability_val}}</span> ({{ability_use}}&nbsp;<span data-i18n="r_uses">uses</span>){{#button}}{{button}}{{/button}}</div>
 		{{/ability_val}}
@@ -40,7 +40,7 @@
 
 		<!-- BEGIN VITALS -->
 		{{#cond_name}}
-			<div class="detail"><span class="label" data-i18n="r_condition">Condition</span>{{#rollGreater() cond_num_r 0}}<span class="green">{{cond_num}}</span>&nbsp;&times;&nbsp;{{/rollGreater() cond_num_r 0}}<span class="green">{{cond_name}}</span></div>
+			<div class="detail"><span class="label" data-i18n="r_condition">Condition</span>{{#rollLess() cond_num_r 1}}<span class="yellow" data-i18n="no_condition">No condition</span>&nbsp;{{/rollLess() cond_num_r 1}}{{#rollGreater() cond_num_r 0}}<span class="yellow">{{cond_num}}</span>&nbsp;&times;&nbsp;{{/rollGreater() cond_num_r 0}}<span class="yellow">{{cond_name}}</span></div>
 		{{/cond_name}}
 		{{#cond_eff}}
 			<div class="detail"><span class="label" data-i18n="r_effect">Effect</span>{{cond_eff}}</div>
@@ -54,9 +54,11 @@
 		{{#r_speciality}}
 			<div class="detail"><span class="label" data-i18n="r_speciality">Speciality</span>{{r_speciality}}</div>
 		{{/r_speciality}}
-		{{#r_ability}}
-			<div class="detail"><span class="label" data-i18n="r_ability">Ability</span><span class="normal">{{r_ability}}</span><span class="pictos" data-i18n-title="draw_ability" title="Draw Ability">{{draw_ability}}</span></div>
-		{{/r_ability}}
+		{{#rollGreater() showability 0}}
+			{{#r_ability}}
+				<div class="detail"><span class="label" data-i18n="{{^r_ability_name}}r_ability{{/r_ability_name}}{{#r_ability_name}}{{r_ability_name}}{{/r_ability_name}}">Ability</span><span class="normal">{{r_ability}}</span><span class="pictos" data-i18n-title="draw_ability" title="Draw Ability">{{draw_ability}}</span></div>
+			{{/r_ability}}
+		{{/rollGreater() showability 0}}
 		{{#rollGreater() showrank 0}}
 			{{#r_rank}}
 				<div class="detail"><span class="label" data-i18n="r_rank">Rank</span>{{r_rank}}</div>
@@ -96,7 +98,7 @@
 			<div class="detail red"><span class="label" data-i18n="weapon_status">Status</span>{{wpn_stt}}&nbsp;<span class="hint" data-i18n="weapon_status_neg_hint"></span></div>
 		{{/rollLess() wpn_stt_r 0}}
 		{{#wpn_rate}}
-			<div class="detail"><span class="label" data-i18n="weapon_rate">Rate</span>{{wpn_rate}}</div>
+			<div class="detail"><span class="label" data-i18n="weapon_rate">Rate</span><span class="entry">{{wpn_rate}}</span></div>
 		{{/wpn_rate}}
 		<!-- END WEAPON-->
 
@@ -107,9 +109,12 @@
 		{{#ammo_type}}
 			<div class="detail"><span class="label" data-i18n="ammo">Ammo</span>{{ammo_type}}</div>
 		{{/ammo_type}}
-		{{#rollGreater() r_penetration 0}}
+		{{#rollGreater() penetration_r 0}}
 			<div class="detail"><span class="label" data-i18n="penetration">Penetration</span><span class="green">{{penetration}}</span></div>
-		{{/rollGreater() r_penetration 0}}
+		{{/rollGreater() penetration_r 0}}
+		{{#rollGreater() bleeding_r 0}}
+			<div class="detail"><span class="label" data-i18n="bleeding">Saignement</span><span class="red" data-i18n="weapon_bleed_{{bleeding}}"></span></div>
+		{{/rollGreater() bleeding_r 0}}
 		<!-- END DAMAGE -->
 
 		<!-- BEGIN SUIT -->
@@ -180,20 +185,25 @@
 		<!-- END HIT LOCATION-->
 
 		<!-- BEGIN ITEM -->
-		{{#rollGreater() itm_num_r 1}}
+		{{#rollGreater() itm_num_r 0}}
 			<div class="detail"><span class="label" data-i18n="number">Number</span>{{itm_num}}</div>
-		{{/rollGreater() itm_num_r 1}}
+		{{/rollGreater() itm_num_r 0}}
 		{{#rollGreater() itm_wgt_r 0}}
 			<div class="detail"><span class="label" data-i18n="weight">Weight</span>{{itm_wgt}}&nbsp;kg</div>
-			{{#rollGreater() itm_num_r 1}}
+			{{#rollGreater() itm_num_r 0}}
 				<div class="detail"><span class="label" data-i18n="total">Total</span>{{itm_wgt_tot}}&nbsp;kg</div>
-			{{/rollGreater() itm_num_r 1}}
+			{{/rollGreater() itm_num_r 0}}
 		{{/rollGreater() itm_wgt_r 0}}
 		<!-- END ITEM -->
 
 		<!-- BEGIN BODY -->
 		{{#roll}}
-			<div class="result{{#roll_loc_btn}} damage{{/roll_loc_btn}}">{{#roll_dmg_btn}}<span class="button" data-i18n-title="roll_dmg">{{roll_dmg_btn}}</span>{{/roll_dmg_btn}}{{#roll_loc_btn}}<span class="button blue" data-i18n-title="roll_loc">{{roll_loc_btn}}</span>{{/roll_loc_btn}}{{roll}}{{#damage_type}}<span class="sheet-dmgicon {{damage_type}}"></span>{{/damage_type}}</div>
+			<div class="result{{#damage_roll}} damage{{/damage_roll}}">
+			{{#roll_dmg_btn}}<span class="button left" data-i18n-title="roll_dmg">{{roll_dmg_btn}}</span>{{/roll_dmg_btn}}
+			{{#roll_loc_btn}}<span class="button right blue" data-i18n-title="roll_loc">{{roll_loc_btn}}</span>{{/roll_loc_btn}}
+			{{roll}}
+			{{#damage_type}}<span class="sheet-dmgicon {{damage_type}}"></span>{{/damage_type}}
+			</div>
 		{{/roll}}
 		<!-- END BODY -->
 

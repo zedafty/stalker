@@ -25,7 +25,7 @@
 
 /* ========================================================================== */
 /* -------------------------------------------------------------------------- */
-/* # Wrappers */
+/* # Containers */
 /* -------------------------------------------------------------------------- */
 /* ========================================================================== */
 
@@ -40,8 +40,8 @@
 	background-repeat: repeat-y;
 	background-color: rgb(12,10,8);
 }
-.stalker:after,
-.stalker:before {
+.stalker::after,
+.stalker::before {
 	content: "";
 	position: absolute;
 	display: block;
@@ -49,12 +49,12 @@
 	left: 0;
 	background-repeat: no-repeat;
 }
-.stalker:before {
+.stalker::before {
 	top: -20px;
 	height: 30px;
 	background-image: url("https://raw.githubusercontent.com/zedafty/stalker/master/img/background-top.png");
 }
-.stalker:after {
+.stalker::after {
 	bottom: -30px;
 	height: 40px;
 	background-image: url("https://raw.githubusercontent.com/zedafty/stalker/master/img/background-bottom.png");
@@ -63,12 +63,161 @@
 .stalker .sheet {
 	display: table-cell;
 	width: 500px;
-	padding: 20px 50px 0;
+	padding: 20px 50px 10px;
 	text-align: center;
 	box-sizing: content-box;
 }
-.stalker .sheet .ruler {
+.stalker .ruler {
 	min-height: 10px;
+}
+.stalker .block,
+.stalker .line {
+	position: relative;
+}
+.stalker .block {
+	width: 450px;
+	margin: 0 auto;
+}
+.stalker .header,
+.stalker .line {
+	text-align: left;
+}
+.stalker .line {
+	margin-bottom: 5px;
+}
+.stalker .header span,
+.stalker .line span {
+	text-align: center;
+}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Repeating Containers */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .tab .repcontrol,
+.stalker .tab .itemcontrol {
+	position: relative;
+	z-index: 1;
+}
+.stalker .tab .repcontrol {
+	margin-top: 10px;
+	height: 24px;
+}
+.stalker .tab .repcontainer .repitem .itemcontrol {
+	background-color: rgba(255,255,255,.1875);
+}
+.stalker .tab .repcontrol_add,
+.stalker .tab .repcontrol_edit,
+.stalker .tab .repcontrol_move,
+.stalker .tab .repcontrol_del {
+	position: absolute;
+	padding: 0;
+	border: 0;
+	background: none;
+	text-shadow: none;
+	box-shadow: none;
+	outline: 0;
+}
+.stalker .tab .repcontrol_add,
+.stalker .tab .repcontrol_edit {
+	width: 20px;
+	height: 20px;
+	top: 5px;
+	line-height: 20px;
+	font-size: 0;
+	color: white;
+	border-radius: 100%;
+	border: 2px solid rgba(255,255,255,.25);
+	opacity: .75;
+}
+.stalker .tab .repcontrol_add::before,
+.stalker .tab .repcontrol_edit::before {
+	display: inline-block;
+	width: inherit;
+	height: inherit;
+	font-family: "Pictos";
+	font-size: 12px;
+	border-radius: inherit;
+}
+.stalker .tab .repcontrol_add::before {
+	content: "&";
+}
+.stalker .tab .repcontrol_edit::before {
+	content: "p";
+}
+.stalker .tab .repcontrol_add:hover,
+.stalker .tab .repcontrol_edit:hover,
+.stalker .tab .repcontrol_add:focus,
+.stalker .tab .repcontrol_edit:focus {
+	color: lime;
+	border-color: lime;
+	background: rgba(0,255,0,.5);
+}
+.stalker .tab .repcontrol_add {
+	left: auto;
+	right: calc(50% - 119px);
+}
+.stalker .tab .repcontrol_edit {
+	float: none;
+	right: auto;
+	left: calc(50% - 104px);
+}
+.stalker .tab .repcontrol_add::after,
+.stalker .tab .repcontrol_edit::after {
+	content: "";
+	position: absolute;
+	display: inline-block;
+	width: 80px;
+	height: 26px;
+	top: -17px;
+	border: 1px solid rgba(255,255,255,.25);
+	border-top: 0;
+}
+.stalker .tab .repcontrol_add::after {left: 22px; border-left: 0; border-bottom-right-radius: 20px;}
+.stalker .tab .repcontrol_edit::after {right: 22px; border-right: 0; border-bottom-left-radius: 20px;}
+.stalker .tab .repcontrol_add:hover::after,
+.stalker .tab .repcontrol_edit:hover::after,
+.stalker .tab .repcontrol_add:focus::after,
+.stalker .tab .repcontrol_edit:focus::after {border-color: lime;}
+.stalker .tab .repcontrol_move,
+.stalker .tab .repcontrol_del {
+	border-radius: 3px;
+	background: rgba(224,224,224,.75);
+}
+.stalker .tab .repcontrol_move,
+.stalker .tab .repcontrol_del {
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	top: 2px;
+	font-size: 10px;
+}
+.stalker .tab .repcontrol_move {
+	color: white;
+	background: transparent;
+}
+.stalker .tab .repcontrol_move:hover {
+	background: rgba(255,240,0,.375);
+}
+.stalker .tab .repcontrol_del {
+	background: darkred;
+}
+.stalker .tab .repcontrol_del:hover {
+	background: red;
+}
+.stalker .tab .repcontainer .repitem .itemcontrol .repcontrol_move {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	border-radius: 0;
+}
+.stalker .tab .repcontainer .repitem .itemcontrol .repcontrol_del {
+	float: none;
+	right: 70px;
+	z-index: 1;
 }
 
 /* ========================================================================== */
@@ -164,7 +313,7 @@
 }
 .stalker select,
 .stalker input[type="text"] {
-	border-color: rgba(255,255,255,.5);
+	border-color: rgba(255,255,255,.25);
 	border-width: 0 0 1px 0;
 }
 .stalker textarea,
@@ -311,9 +460,6 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	border: 0;
 	background-color: rgb(144,144,144);
 }
-.stalker .sheet button[type="action"] + button {
-	margin-left: 10px;
-}
 .stalker .sheet button[type="action"]:focus {
 	background-color: rgb(176,176,176);
 }
@@ -322,6 +468,13 @@ input[type=number]:hover::-webkit-outer-spin-button {
 }
 .stalker .sheet button[type="action"]:active {
 	background-color: rgb(128,128,128);
+}
+
+/* Conditional number inputs color */
+.stalker .roll-button {
+	position: absolute;
+	left: -35px;
+	top: 0;
 }
 
 /* Conditional number inputs color */
@@ -385,16 +538,23 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .sheet .icon.pic-blast {background-position: -210px -70px}
 .stalker .sheet .icon.pic-radiation {background-position: -245px -70px}
 
-.stalker .sheet .sheet-dmgicon + span,
+.stalker .sheet .condicon,
+.stalker .sheet .dmgicon + span,
+.sheet-rolltemplate-stalker .sheet-condicon,
 .sheet-rolltemplate-stalker .sheet-dmgicon {
 	display: inline-block;
 	width: 20px;
 	height: 20px;
-	background-image: url("https://raw.githubusercontent.com/zedafty/stalker/master/img/icons-damage.png");
+	background-image: url("https://raw.githubusercontent.com/zedafty/stalker/master/img/icons-small.png");
 	background-repeat: no-repeat;
 	background-position: 20px 0;
 }
-.stalker .sheet .sheet-dmgicon + span {
+.sheet-rolltemplate-stalker .sheet-condicon {
+	margin-left: -25px;
+	margin-right: 5px;
+	vertical-align: top;
+}
+.stalker .sheet .dmgicon + span {
 	pointer-events: none;
 	position: relative;
 	left: -7.5px;
@@ -409,24 +569,32 @@ input[type=number]:hover::-webkit-outer-spin-button {
 
 .stalker .sheet select:hover + .sheet-dmgicon + span,
 .stalker .sheet select:focus + .sheet-dmgicon + span {color: lime;}
-.stalker .sheet .sheet-dmgicon[value=""] + span::before {content: "—";}
+.stalker .sheet .dmgicon[value=""] + span::before {content: "—";}
 
-.stalker .sheet .sheet-dmgicon[value="blow"] + span,
+.stalker .sheet .dmgicon[value="blow"] + span,
 .sheet-rolltemplate-stalker .sheet-dmgicon.sheet-blow {background-position: 0 0;}
-.stalker .sheet .sheet-dmgicon[value="cut"] + span,
+.stalker .sheet .dmgicon[value="cut"] + span,
 .sheet-rolltemplate-stalker .sheet-dmgicon.sheet-cut {background-position: -20px 0;}
-.stalker .sheet .sheet-dmgicon[value="bullet"] + span,
+.stalker .sheet .dmgicon[value="bullet"] + span,
 .sheet-rolltemplate-stalker .sheet-dmgicon.sheet-bullet {background-position: -40px 0}
-.stalker .sheet .sheet-dmgicon[value="burn"] + span,
+.stalker .sheet .dmgicon[value="burn"] + span,
 .sheet-rolltemplate-stalker .sheet-dmgicon.sheet-burn {background-position: -60px 0}
-.stalker .sheet .sheet-dmgicon[value="shock"] + span,
+.stalker .sheet .dmgicon[value="shock"] + span,
 .sheet-rolltemplate-stalker .sheet-dmgicon.sheet-shock {background-position: -80px 0}
-.stalker .sheet .sheet-dmgicon[value="chemical"] + span,
+.stalker .sheet .dmgicon[value="chemical"] + span,
 .sheet-rolltemplate-stalker .sheet-dmgicon.sheet-chemical {background-position: -100px 0}
-.stalker .sheet .sheet-dmgicon[value="blast"] + span,
+.stalker .sheet .dmgicon[value="blast"] + span,
 .sheet-rolltemplate-stalker .sheet-dmgicon.sheet-blast {background-position: -120px 0}
-.stalker .sheet .sheet-dmgicon[value="radiation"] + span,
+.stalker .sheet .dmgicon[value="radiation"] + span,
 .sheet-rolltemplate-stalker .sheet-dmgicon.sheet-radiation {background-position: -140px 0}
+.stalker .sheet .condicon.bleeding,
+.sheet-rolltemplate-stalker .sheet-condicon.sheet-bleeding {background-position: -160px 0;}
+.stalker .sheet .condicon.stunned,
+.sheet-rolltemplate-stalker .sheet-condicon.sheet-stunned {background-position: -180px 0;}
+.stalker .sheet .condicon.deafened,
+.sheet-rolltemplate-stalker .sheet-condicon.sheet-deafened {background-position: -200px 0;}
+.stalker .sheet .condicon.blinded,
+.sheet-rolltemplate-stalker .sheet-condicon.sheet-blinded {background-position: -220px 0;}
 
 /* ========================================================================== */
 /* -------------------------------------------------------------------------- */
@@ -453,15 +621,15 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	text-align: left;
 	color:rgba(255,255,255,.5);
 }
-.stalker input.mod + label:before,
-.stalker input.mod + label:after {
+.stalker input.mod + label::before,
+.stalker input.mod + label::after {
 	content: "";
 	position: absolute;
 	display: inline-block;
 	transition: left .25s, background .125s;
 	opacity: .75s;
 }
-.stalker input.mod + label:before {
+.stalker input.mod + label::before {
 	width: 22px;
 	height: 12px;
 	left: 4px;
@@ -469,7 +637,7 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	border-radius: 16px;
 	background-color: rgba(255,255,255,.25);
 }
-.stalker input.mod + label:after {
+.stalker input.mod + label::after {
 	width: 8px;
 	height: 8px;
 	left: 6px;
@@ -480,17 +648,17 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker input.mod:checked + label {
 	color: forestgreen;
 }
-.stalker input.mod:checked + label:before {
+.stalker input.mod:checked + label::before {
 	background-color: forestgreen;
 }
-.stalker input.mod:checked + label:after {
+.stalker input.mod:checked + label::after {
 	background-color: lime;
 	left: 16px;
 }
 .stalker input.mod:hover + label {
 	color: lime;
 }
-.stalker input.mod:hover + label:after {
+.stalker input.mod:hover + label::after {
 	background-color: lime;
 }
 .stalker input.mod:focus + label {
@@ -566,6 +734,9 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .tab span.small {
 	width: 10px;
 }
+.stalker .tab span.large {
+	width: 40px;
+}
 .stalker .tab button span {
 	width: auto;
 	height: 100%;
@@ -577,6 +748,7 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .tab0:checked ~ .money,
 .stalker .tab1:checked ~ .tab1, /* Character */
 .stalker .tab2:checked ~ .tab2, /* Abilities */
+.stalker .tab2:checked ~ .modifiers,
 .stalker .tab3:checked ~ .tab3, /* Condition */
 .stalker .tab4:checked ~ .tab4, /* Specialities */
 .stalker .tab4:checked ~ .modifiers,
@@ -609,6 +781,7 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	font-family: pictos;
 	font-weight: normal;
 	font-size: 10px;
+	text-align: center;
 }
 .stalker .options-flag,
 .stalker .options-flag + span {
@@ -636,10 +809,10 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	background-color: rgba(0,255,0,.5);
 	opacity: 1;
 }
-.stalker .options-flag + span:after {
+.stalker .options-flag + span::after {
 	content: "&";
 }
-.stalker .options-flag:checked + span:after {
+.stalker .options-flag:checked + span::after {
 	content: "_";
 }
 
@@ -647,12 +820,12 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .options-toggle,
 .stalker .options-toggle + span {
 	right: 0;
-	top: 15px;
+	top: 0;
 }
-.stalker .options-toggle + span:after {
+.stalker .options-toggle + span::after {
 	content: "►";
 }
-.stalker .options-toggle:checked + span:after {
+.stalker .options-toggle:checked + span::after {
 	content: "▼";
 }
 
@@ -667,6 +840,20 @@ input[type=number]:hover::-webkit-outer-spin-button {
 }
 .stalker .options-flag:checked ~ .options.inline {
 	display: inline-block;
+}
+.stalker .options.boxed {
+	width: 425px;
+	margin: 0 0px 10px 15px;
+	padding: 15px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	border: 1px solid rgba(255,255,255,.25);
+	border-top: 0;
+}
+.stalker .options.boxed textarea {
+	width: 100%;
+	font-size: 11px;
+	border: 0;
 }
 
 /* ========================================================================== */
@@ -793,7 +980,7 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	background-color: rgba(255,255,255,.125);
 	opacity: .75;
 }
-.stalker .modifiers .selfcontrol input + span:after {
+.stalker .modifiers .selfcontrol input + span::after {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -810,7 +997,7 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	color: red;
 	border-color: red;
 }
-.stalker .modifiers .selfcontrol input:checked + span:after {
+.stalker .modifiers .selfcontrol input:checked + span::after {
 	content: "*";
 }
 .stalker .modifiers .selfcontrol input:hover + span,
@@ -823,8 +1010,8 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .modifiers .selfcontrol input:hover + span {
 	background-color: rgba(255,255,0,.5);
 }
-.stalker .modifiers .selfcontrol input:hover:checked + span:after,
-.stalker .modifiers .selfcontrol input:focus:checked + span:after {
+.stalker .modifiers .selfcontrol input:hover:checked + span::after,
+.stalker .modifiers .selfcontrol input:focus:checked + span::after {
 	color: yellow;
 }
 .stalker .modifiers .selfcontrol input:disabled + span {
@@ -908,7 +1095,7 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .state .badge[value="unisg"] + span {background-position: -450px -150px;}
 .stalker .state .badge[value="bandits"] + span {background-position: 0 -300px;}
 .stalker .state .badge[value="renegades"] + span {background-position: -150px -300px;}
-.stalker .state .badge[value="monoliths"] + span {background-position: -300px -300px;}
+.stalker .state .badge[value="monolith"] + span {background-position: -300px -300px;}
 .stalker .state .badge[value="sin"] + span {background-position: -450px -300px;}
 .stalker .state .xp {
 	position: relative;
@@ -934,8 +1121,6 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	right: 3px;
 }
 .stalker .state .options {
-	position: relative;
-	display: none;
 	width: 300px;
 	margin: 10px auto 0;
 	padding: 0;
@@ -953,7 +1138,6 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .state .options textarea {
 	width: 280px;
 	margin: 10px 20px 0 0px;
-	font-size: 11px;
 	border-color: darkgreen;
 }
 .stalker .state .options::before {
@@ -977,10 +1161,8 @@ input[type=number]:hover::-webkit-outer-spin-button {
 /* -------------------------------------------------------------------------- */
 /* ========================================================================== */
 
-.stalker .history > div {
-	position: relative;
-	width: 400px;
-	margin: 0 auto;
+.stalker .history .block {
+	width: 405px;
 }
 .stalker .history > div:not(:first-of-type) {
 	margin-top: 20px;
@@ -992,32 +1174,8 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .history input[type="text"] {
 	width: 330px;
 }
-.stalker .history .row {
-	position: relative;
-	width: 400px;
-	margin: 0 auto 5px;
-}
-.stalker .history .row button[type="roll"] {
-	position: absolute;
-	left: -5px;
-}
-.stalker .history .options-toggle,
-.stalker .history .options-toggle + span {
-	top: 0;
-}
 .stalker .history .options {
 	width: 380px;
-	margin: 0 auto 10px;
-	padding: 15px;
-	border-bottom-left-radius: 15px;
-	border-bottom-right-radius: 15px;
-	border: 1px solid rgba(255,255,255,.25);
-	border-top: 0;
-}
-.stalker .history .options textarea {
-	width: 100%;
-	font-size: 11px;
-	border: 0;
 }
 .stalker .history .reputation input[type="text"] {
 	width: 200px;
@@ -1043,6 +1201,13 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	background-color: rgba(255,255,255,.0625);
 }
 
+.stalker .history .repcontrol_add {
+	right: calc(50% - 87px);
+}
+.stalker .history .repcontrol_edit {
+	left: calc(50% - 81px);
+}
+
 /* ========================================================================== */
 /* -------------------------------------------------------------------------- */
 /* # Abilities */
@@ -1050,9 +1215,8 @@ input[type=number]:hover::-webkit-outer-spin-button {
 /* ========================================================================== */
 
 /* Abilities Header */
-.stalker .abilities .header {width: 450px; margin: 0 auto 5px; text-align: left;}
-.stalker .abilities .header span {text-align: center;}
-.stalker .abilities .header span:nth-child(1) {width: 120px;}
+.stalker .abilities .header {width: 450px; margin: 0 auto 5px;}
+.stalker .abilities .header span:nth-child(1) {width: 110px; margin-right: 10px;}
 .stalker .abilities .header span:nth-child(2) {width: 50px;}
 .stalker .abilities .header span:nth-child(3) {width: 220px; margin-left: 15px;}
 .stalker .abilities .header span:nth-child(4) {width: 20px;}
@@ -1073,9 +1237,10 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .ability {
 	position: relative;
 	width: 425px;
+	min-height: 30px;
 	margin-left: 25px;
 }
-.stalker .ability:after {
+.stalker .ability:;after {
 	content: "";
 	clear: both;
 	display: block;
@@ -1085,54 +1250,69 @@ input[type=number]:hover::-webkit-outer-spin-button {
 }
 
 /* Ability Inputs */
-.stalker .ability > label {
+.stalker .ability button[type="roll"].roll-button {
+	top: 5px;
+}
+.stalker .ability .roll-button:hover + button,
+.stalker .ability .roll-button:focus + button {
+	color: lime;
+}
+.stalker .ability button[name^="roll_show"] {
 	float: left;
-	width: 120px;
+	width: 110px;
 	height: 30px;
+	margin-right: 10px;
+	color: forestgreen;
+	border-radius: 5px;
+	background-color: transparent;
+}
+.stalker .ability button[name^="roll_show"] span {
+	width: 100%;
+	height: 28px;
+	padding: 0;
 	line-height: 30px;
 	font-size: 12px;
-	text-align: center;
-	color: forestgreen;
+	font-weight: bold;
+	color: inherit;
+	border-radius: inherit;
 	opacity: .875;
 }
-.stalker .ability button[type="roll"],
+.stalker .ability button[name^="roll_show"]:hover,
+.stalker .ability button[name^="roll_show"]:focus {
+	color: limegreen;
+	border-color: forestgreen;
+	background-color: rgba(128,255,0,.125);
+}
+.stalker .ability button[name^="roll_show"].red {
+	color: red;
+}
+.stalker .ability button[name^="roll_show"].red:hover,
+.stalker .ability button[name^="roll_show"].red:focus {
+	color: red;
+	border-color: darkred;
+	background-color: rgba(255,0,0,.125);
+}
+.stalker .ability span.case {
+	cursor: default;
+	float: left;
+	width: 50px;
+	height: 30px;
+	line-height: 28px;
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+	border-radius: 4px;
+	border: 1px solid white;
+	background-color: rgba(0,0,0,.5);
+}
 .stalker .ability .usable {
+	float: right;
+	width: 20px;
 	height: 30px;
 	padding: 5px 0;
 	line-height: 18px;
 	color: white;
 	opacity: .75;
-}
-.stalker .ability button[type="roll"] {
-	float: left;
-	width: 50px;
-	margin: 0;
-	text-shadow: none;
-	background-color: rgba(0,0,0,.5);
-	border: 1px solid white;
-	border-radius: 5px
-}
-.stalker .ability button[type="roll"] span {
-	font-size: 14px;
-	font-weight: bold;
-	color: inherit;
-	opacity: 1;
-}
-.stalker .ability button[type="roll"]:hover {
-	background-color: rgba(0,255,0,.25);
-}
-.stalker .ability button[type="roll"]:focus {
-	color: limegreen;
-	border-color: limegreen;
-	background-color: rgba(128,255,0,.125);
-}
-.stalker .ability button[type="roll"]:hover {
-	color: lime;
-	border-color: lime;
-}
-.stalker .ability .usable {
-	float: right;
-	width: 20px;
 }
 
 /* Ability Boxes */
@@ -1535,8 +1715,8 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	padding-left: 75px;
 	text-align: left;
 }
-.stalker .abilities .options:before,
-.stalker .abilities .options:after {
+.stalker .abilities .options::before,
+.stalker .abilities .options::after {
 	content: "";
 	position: absolute;
 	display: inline-block;
@@ -1545,14 +1725,14 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	border: 1px solid white;
 	opacity: .25;
 }
-.stalker .abilities .options:before {
-	width: 20px;
-	left: 60px;
+.stalker .abilities .options::before {
+	width: 25px;
+	left: 55px;
 	border-right: 0;
 	border-top: 0;
 }
-.stalker .abilities .options:after {
-	width: 185px;
+.stalker .abilities .options::after {
+	width: 85px;
 	right: -15px;
 	border-left: 0;
 	border-top: 0;
@@ -1573,7 +1753,7 @@ input[type=number]:hover::-webkit-outer-spin-button {
 }
 
 /* Vitals Containers */
-.stalker .vitals div {
+.stalker .vitals > div {
 	position: relative;
 	display: inline-block;
 }
@@ -1764,20 +1944,19 @@ input[type=number]:hover::-webkit-outer-spin-button {
 
 /* Vitals Options */
 .stalker .vitals .options {
-	display: none;
 	margin-top: 5px;
 	padding-right: 20px;
 	text-align: right;
 }
-.stalker .vitals .options:before,
-.stalker .vitals .options:after {
+.stalker .vitals .options::before,
+.stalker .vitals .options::after {
 	content: "";
 	position: absolute;
 	display: inline-block;
 	border: 1px solid white;
 	opacity: .25;
 }
-.stalker .vitals .options:before {
+.stalker .vitals .options::before {
 	width: 70px;
 	left: 90px;
 	height: 20px;
@@ -1785,7 +1964,7 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	border-right: 0;
 	border-top: 0;
 }
-.stalker .vitals .options:after {
+.stalker .vitals .options::after {
 	width: 35px;
 	right: -15px;
 	height: 25px;
@@ -1795,6 +1974,27 @@ input[type=number]:hover::-webkit-outer-spin-button {
 }
 .stalker .vitals .options label {
 	width: 45px;
+}
+
+/* ========================================================================== */
+/* -------------------------------------------------------------------------- */
+/* # Conditions */
+/* -------------------------------------------------------------------------- */
+/* ========================================================================== */
+
+.stalker .conditions .sml {width: 40px;}
+.stalker .conditions .med {width: 75px;}
+.stalker .conditions .lrg {margin-right: 20px; width: 85px;}
+.stalker .conditions .xxl {width: 125px;}
+.stalker .conditions input[type="hidden"] ~ [name$="number"],
+.stalker .conditions input[type="hidden"] ~ [name$="name"] {
+	opacity: .375;
+}
+.stalker .conditions input[name$="number"]:hover,
+.stalker .conditions input[name$="number"]:focus,
+.stalker .conditions input[type="hidden"]:not([value="0"]) ~ [name$="number"],
+.stalker .conditions input[type="hidden"]:not([value="0"]) ~ [name$="name"] {
+	opacity: 1;
 }
 
 /* ========================================================================== */
@@ -1810,31 +2010,19 @@ input[type=number]:hover::-webkit-outer-spin-button {
 
 /* ========================================================================== */
 /* -------------------------------------------------------------------------- */
-/* # Conditions */
-/* -------------------------------------------------------------------------- */
-/* ========================================================================== */
-
-.stalker .conditions .sml {width: 40px;}
-.stalker .conditions .med {width: 60px;}
-.stalker .conditions .lrg {width: 180px;}
-
-/* ========================================================================== */
-/* -------------------------------------------------------------------------- */
 /* # Specialities */
 /* -------------------------------------------------------------------------- */
 /* ========================================================================== */
 
-.stalker .specialities .row {margin-bottom: 5px;}
-
 .stalker .specialities .common input[type="text"],
-.stalker .specialities .common .header span:nth-child(1) {width: 210px;}
+.stalker .specialities .common .header span:nth-child(1) {width: 185px;}
 .stalker .specialities .common .header span:nth-child(2),
 .stalker .specialities .common .header span:nth-child(3),
 .stalker .specialities .weapon .header span:nth-child(3),
 .stalker .specialities .weapon .header span:nth-child(4) {width: 100px;}
 .stalker .specialities .weapon .header span:nth-child(1) {width: 20px;}
 .stalker .specialities .weapon input[type="text"],
-.stalker .specialities .weapon .header span:nth-child(2) {width: 190px;}
+.stalker .specialities .weapon .header span:nth-child(2) {width: 170px;}
 .stalker .specialities .weapon .number {
 	user-select: none;
 	cursor: help;
@@ -1857,30 +2045,35 @@ input[type=number]:hover::-webkit-outer-spin-button {
 /* -------------------------------------------------------------------------- */
 /* ========================================================================== */
 
-/* Armament Containers */
-.stalker .armament .weapons,
-.stalker .armament .suits,
-.stalker .armament .artefacts {
-	position: relative;
-}
-
 /* Armament Headers */
-.stalker .armament .weapons .header span:nth-child(1) {width: 250px;}
-.stalker .armament .weapons .header span:nth-child(2) {width: 40px; margin-right: 40px}
-.stalker .armament .weapons .header span:nth-child(3) {width: 40px; margin-right: 10px;}
+.stalker .armament .weapons .header span:nth-child(1),
+.stalker .armament .weapons .headline input[type="text"],
 .stalker .armament .suits .header span,
-.stalker .armament .artefacts .header span {width: 370px;}
-
-/* Armament Healines */
-.stalker .armament .headline button[type="roll"] {position: absolute; left: -5px;}
-.stalker .armament .weapons .headline {text-align: left; padding-left: 30px;}
-.stalker .armament .weapons .headline span {text-align: center;}
-.stalker .armament .weapons .headline input[type="text"] {width: 245px; margin-left: 5px;}
-.stalker .armament .weapons .headline input[type="number"] {width: 40px;}
-.stalker .armament .weapons .headline input[type="number"]:last-child {margin-left: 10px;}
-.stalker .armament .suits .headline {margin-bottom: 5px;}
 .stalker .armament .suits .headline input[type="text"],
-.stalker .armament .artefacts .headline input[type="text"] {width: 370px;}
+.stalker .armament .artefacts .header span,
+.stalker .armament .artefacts .headline input[type="text"] {width: 185px;}
+.stalker .armament .weapons .header span:nth-child(2),
+.stalker .armament .weapons .header span:nth-child(3),
+.stalker .armament .weapons .headline input[type="number"] {width: 40px;}
+.stalker .armament .weapons .header span:nth-child(2) {margin-right: 50px}
+.stalker .armament .weapons .header span:nth-child(3) {margin-right: 20px}
+
+/* Armament Headline */
+.stalker .armament .headline .feeder {
+	position: relative;
+	width: 200px;
+	height: 10px;
+	left: -10px;
+	margin-top: 10px;
+	border: 1px solid white;
+	border-right-width: 0;
+	border-bottom: 0;
+	border-top-left-radius: 10px 10px;
+	opacity: .25;
+}
+.stalker .armament .repcontainer .repitem:last-child .headline .feeder {
+	border-right-width: 1px;
+}
 
 /* Armament Footer */
 .stalker .armament .footer {
@@ -1892,14 +2085,13 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	text-align: center;
 }
 
-/* Armament Row */
-.stalker .armament .row {
-	position: relative;
-	width: 440px;
-	margin: 0 auto;
-}
-.stalker .armament .suits .row {
+/* Armament Line */
+.stalker .armament .suits .line {
 	margin-bottom: 10px;
+}
+.stalker .armament .line .values,
+.stalker .armament .line .optioned {
+	text-align: center;
 }
 
 /* Armament Values */
@@ -1938,12 +2130,11 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	text-align: left;
 }
 .stalker .armament .details label {width: 90px;}
-.stalker .armament .details input {width: 295px; text-align: left;}
+.stalker .armament .details input,
+.stalker .armament .details textarea {width: 295px; text-align: left;}
 .stalker .armament .details select {width: 100px;}
 .stalker .armament .details select:nth-of-type(2) {width: 105px;}
-.stalker .armament .details select.speciality {
-	color: transparent;
-}
+.stalker .armament .details select.speciality {color: transparent;}
 .stalker .armament .details select.speciality + span {
 	pointer-events: none;
 	width: 100px;
@@ -1953,20 +2144,53 @@ input[type=number]:hover::-webkit-outer-spin-button {
 }
 .stalker .armament .details select.speciality:hover + span,
 .stalker .armament .details select.speciality:focus + span,
-.stalker .armament .details select.speciality:active + span {
-	color: lime;
+.stalker .armament .details select.speciality:active + span {color: lime;}
+.stalker .armament .details input[type="number"] {
+	width: 30px;
+	height: 16px;
+	text-align: center;
+	border-color: transparent;
+	border-bottom-color: darkgreen;
+}
+.stalker .armament .details input[type="checkbox"] {
+	height: 20px;
+}
+.stalker .armament .details input[type="checkbox"].margin {
+	margin-left: 5px;
+}
+.stalker .armament .details input[type="checkbox"],
+.stalker .armament .details input[type="checkbox"] + span {
+	width: 75px;
+}
+.stalker .armament .details input[type="checkbox"] + span {
+	pointer-events: none;
+	margin-left: -75px;
+}
+.stalker .armament .details input[type="checkbox"] + span {
+	pointer-events: none;
+	height: 16px;
+	line-height: 16px;
+	margin-left: -75px;
+	color: white;
+	background-color: rgba(255,255,255,.125);
+	opacity: .5;
+}
+.stalker .armament .details input[type="checkbox"]:checked + span {
+	background-color: darkgreen;
+	opacity: .75;
+}
+.stalker .armament .details input[type="checkbox"]:hover + span,
+.stalker .armament .details input[type="checkbox"]:focus + span {
+	opacity: 1;
+}
+.stalker .armament .details input[type="checkbox"] + span + input[type="number"] {
+	display: none;
+}
+.stalker .armament .details input[type="checkbox"]:checked + span + input[type="number"] {
+	display: initial;
 }
 
 /* Armament Options */
-.stalker .armament .options {
-	width: 420px;
-	margin: 0 auto 10px;
-	padding: 15px;
-	border-bottom-left-radius: 15px;
-	border-bottom-right-radius: 15px;
-	border: 1px solid rgba(255,255,255,.25);
-	border-top: 0;
-}
 .stalker .armament .suits .options {
 	padding-top: 0;
 }
@@ -1977,24 +2201,19 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	border-radius: 0;
 }
 .stalker .armament .optioned {
-	margin: 0 10px;
 	padding-top: 5px;
 }
+.stalker .armament .optioned,
+.stalker .armament .options.levels,
+.stalker .armament .options.leveled {
+	margin: 0 10px 0 15px;
+}
+.stalker .armament .options.levels,
+.stalker .armament .options.leveled,
 .stalker .armament .options-flag:checked ~ .optioned {
 	border-width: 0 1px;
 	border-style: solid;
 	border-color: rgba(255,255,255,.25);
-}
-
-/* Armament Options Toggle */
-.stalker .armament .weapons .options-toggle,
-.stalker .armament .suits .options-toggle,
-.stalker .armament .artefacts .options-toggle,
-.stalker .armament .weapons .options-toggle + span,
-.stalker .armament .suits .options-toggle + span,
-.stalker .armament .artefacts .options-toggle + span {
-	top: 0;
-	right: 30px;
 }
 
 /* Armament Levels */
@@ -2034,7 +2253,6 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .armament .values.leveled .lvl {display: none;}
 .stalker .armament .values.leveled .lvl:not(:hover):not(:focus) {opacity: .5;}
 .stalker .armament .values.levels select {opacity: .375;}
-.stalker .armament .values.levels .spacer,
 .stalker .armament .values.levels .padder {margin-left: 35px;}
 
 /* Armament Weapons Levels Visibility */
@@ -2073,6 +2291,11 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .armament .weapons input[name="attr_weapon_ammo_max_level"][value="3"] ~ .leveled input[name="attr_weapon_ammo_max_3"],
 .stalker .armament .weapons input[name="attr_weapon_ammo_max_level"][value="4"] ~ .leveled input[name="attr_weapon_ammo_max_4"],
 .stalker .armament .weapons input[name="attr_weapon_ammo_max_level"][value="5"] ~ .leveled input[name="attr_weapon_ammo_max_5"],
+.stalker .armament .weapons input[name="attr_weapon_status_level"][value="1"] ~ .leveled input[name="attr_weapon_status"],
+.stalker .armament .weapons input[name="attr_weapon_status_level"][value="2"] ~ .leveled input[name="attr_weapon_status_2"],
+.stalker .armament .weapons input[name="attr_weapon_status_level"][value="3"] ~ .leveled input[name="attr_weapon_status_3"],
+.stalker .armament .weapons input[name="attr_weapon_status_level"][value="4"] ~ .leveled input[name="attr_weapon_status_4"],
+.stalker .armament .weapons input[name="attr_weapon_status_level"][value="5"] ~ .leveled input[name="attr_weapon_status_5"],
 .stalker .armament .weapons input[name="attr_weapon_weight_level"][value="1"] ~ .leveled input[name="attr_weapon_weight"],
 .stalker .armament .weapons input[name="attr_weapon_weight_level"][value="2"] ~ .leveled input[name="attr_weapon_weight_2"],
 .stalker .armament .weapons input[name="attr_weapon_weight_level"][value="3"] ~ .leveled input[name="attr_weapon_weight_3"],
@@ -2087,6 +2310,7 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .armament .weapons input[name="attr_weapon_thrown_level"]:not([value="1"]) ~ .levels select[name="attr_weapon_thrown_level"],
 .stalker .armament .weapons input[name="attr_weapon_ammo_type_level"]:not([value="1"]) ~ .levels select[name="attr_weapon_ammo_type_level"],
 .stalker .armament .weapons input[name="attr_weapon_ammo_max_level"]:not([value="1"]) ~ .levels select[name="attr_weapon_ammo_max_level"],
+.stalker .armament .weapons input[name="attr_weapon_status_level"]:not([value="1"]) ~ .levels select[name="attr_weapon_status_level"],
 .stalker .armament .weapons input[name="attr_weapon_weight_level"]:not([value="1"]) ~ .levels select[name="attr_weapon_weight_level"] {opacity: .625; color: yellow;}
 
 /* Armament Weapons Visibility */
@@ -2108,9 +2332,8 @@ input[type=number]:hover::-webkit-outer-spin-button {
 }
 .stalker .armament .weapons input[name="attr_weapon_type"][value="melee"] ~ .options .spacer {margin-left: 125px;}
 .stalker .armament .weapons input[name="attr_weapon_type"][value="thrown"] ~ .options .spacer {margin-left: 55px;}
-.stalker .armament .weapons input[name="attr_weapon_type"][value="thrown"] ~ .options .spader {margin-left: 35px;}
-.stalker .armament .weapons input[name="attr_weapon_type"][value="melee"] ~ .options .levels .spacer {margin-left: 160px;}
-.stalker .armament .weapons input[name="attr_weapon_type"][value="thrown"] ~ .options .levels .spacer {margin-left: 90px;}
+.stalker .armament .weapons input[name="attr_weapon_type"][value="thrown"] ~ .options .gapper {margin-left: 35px;}
+.stalker .armament .weapons input[name="attr_weapon_type"]:not([value="melee"]) ~ .headline .feeder {display: none;}
 
 /* Armament Suits */
 .stalker .armament .suits .damage input {
@@ -2175,7 +2398,6 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .armament .suits .location.options.levels {
 	padding-bottom: 10px;
 }
-
 .stalker .armament .suits .options .spacer {
 	margin-left: 215px;
 }
@@ -2251,6 +2473,11 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .armament .suits input[name="attr_suit_pocket_level"][value="3"] ~ .leveled input[name="attr_suit_pocket_3"],
 .stalker .armament .suits input[name="attr_suit_pocket_level"][value="4"] ~ .leveled input[name="attr_suit_pocket_4"],
 .stalker .armament .suits input[name="attr_suit_pocket_level"][value="5"] ~ .leveled input[name="attr_suit_pocket_5"],
+.stalker .armament .suits input[name="attr_suit_status_level"][value="1"] ~ .leveled input[name="attr_suit_status"],
+.stalker .armament .suits input[name="attr_suit_status_level"][value="2"] ~ .leveled input[name="attr_suit_status_2"],
+.stalker .armament .suits input[name="attr_suit_status_level"][value="3"] ~ .leveled input[name="attr_suit_status_3"],
+.stalker .armament .suits input[name="attr_suit_status_level"][value="4"] ~ .leveled input[name="attr_suit_status_4"],
+.stalker .armament .suits input[name="attr_suit_status_level"][value="5"] ~ .leveled input[name="attr_suit_status_5"],
 .stalker .armament .suits input[name="attr_suit_weight_level"][value="1"] ~ .leveled input[name="attr_suit_weight"],
 .stalker .armament .suits input[name="attr_suit_weight_level"][value="2"] ~ .leveled input[name="attr_suit_weight_2"],
 .stalker .armament .suits input[name="attr_suit_weight_level"][value="3"] ~ .leveled input[name="attr_suit_weight_3"],
@@ -2272,6 +2499,7 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .armament .suits input[name="attr_suit_legs_level"]:not([value="1"]) ~ .levels select[name="attr_suit_legs_level"],
 .stalker .armament .suits input[name="attr_suit_psi_level"]:not([value="1"]) ~ .levels select[name="attr_suit_psi_level"],
 .stalker .armament .suits input[name="attr_suit_pocket_level"]:not([value="1"]) ~ .levels select[name="attr_suit_pocket_level"],
+.stalker .armament .suits input[name="attr_suit_status_level"]:not([value="1"]) ~ .levels select[name="attr_suit_status_level"],
 .stalker .armament .suits input[name="attr_suit_weight_level"]:not([value="1"]) ~ .levels select[name="attr_suit_weight_level"] {opacity: .625; color: yellow;}
 
 /* Armament Artefacts */
@@ -2297,65 +2525,35 @@ input[type=number]:hover::-webkit-outer-spin-button {
 /* -------------------------------------------------------------------------- */
 /* ========================================================================== */
 
-.stalker .inventory .header {text-align: left;}
-.stalker .inventory .header span {text-align: center;}
-.stalker .inventory .header span:nth-child(1) {width: 200px; margin-left: 65px;}
+.stalker .inventory .line input[name="attr_item_name"],
+.stalker .inventory .header span:nth-child(1) {width: 185px;}
 .stalker .inventory .header span:nth-child(2),
 .stalker .inventory .header span:nth-child(3),
 .stalker .inventory .header span:nth-child(4) {width: 40px}
 .stalker .inventory .header span:not(:first-child) {margin-right: 20px;}
 .stalker .inventory .footer {text-align: right; padding-right: 25px;}
 .stalker .inventory .footer span {text-align: center;}
-.stalker .inventory .block {position: relative;}
-.stalker .inventory .block .options-toggle,
-.stalker .inventory .block .options-toggle + span {
-	top: 0;
-	right: 30px;
-}
-
-.stalker .inventory .repitem {
-	width: 470px;
-	padding-right: 10px;
-}
-.stalker .inventory .repitem input[name="attr_item_name"] {
-	width: 200px;
-}
-.stalker .inventory .repitem button.sml {
+.stalker .inventory button.sml {
 	display: none;
 	position: absolute;
-	width: 80px;
-	top: 105px;
+	width: 70px;
+	top: calc(100% - 35px);
 	font-size: 10px;
 	font-weight: bold;
+	color: white;
 	border-radius: 3px;
+	background-color: rgba(128,128,128,.25);
 	opacity: .75;
 	z-index: 1;
 }
-.stalker .inventory .repitem button.sml:nth-of-type(1) {left: 135px;}
-.stalker .inventory .repitem button.sml:nth-of-type(2) {left: 215px;}
-.stalker .inventory .repitem button.sml:nth-of-type(3) {left: 305px;}
-.stalker .inventory .repitem .options-flag:checked ~ button.sml {display: inline-block;}
-.stalker .inventory .options {
-	width: 420px;
-	margin: 0 0 15px 40px;
-	padding: 15px;
-	border-bottom-left-radius: 15px;
-	border-bottom-right-radius: 15px;
-	border: 1px solid rgba(255,255,255,.25);
-	border-top-color: rgba(255, 255, 255, 0.25);
-	border-top-style: solid;
-	border-top-width: 1px;
-	border-top: 0;
-}
-.stalker .inventory .options textarea {
-	resize: none;
-	font-size: 11px;
-	margin-bottom: 10px;
-	border-color: transparent;
-}
-.stalker .inventory .options .details {
-	text-align: left;
-}
+.stalker .inventory button.sml:focus {background-color: rgba(128,128,128,.5);}
+.stalker .inventory button.sml:hover {background-color: rgba(128,128,128,.75);}
+.stalker .inventory button.sml:nth-of-type(1) {left: 135px;}
+.stalker .inventory button.sml:nth-of-type(2) {left: 215px;}
+.stalker .inventory button.sml:nth-of-type(3) {left: 295px;}
+.stalker .inventory .options-flag:checked ~ button.sml {display: inline-block;}
+.stalker .inventory .options textarea {margin-bottom: 10px;}
+.stalker .inventory .options .details {text-align: left;}
 .stalker .inventory .options .details label {
 	width: 80px;
 	text-align: center;
@@ -2402,11 +2600,21 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	border-radius: 4px;
 }
 .stalker .settings .buttonbar button.sml {
+	float: right;
+	width: 80px;
 	height: 24px;
+	margin-left: -80px;
 	margin-top: 3px;
 	padding: 0 4px;
 	font-size: 10px;
+	color: white;
 	border-radius: 3px;
+	border: 1px solid white;
+	background-color: transparent;
+	opacity: .5;
+}
+.stalker .settings .buttonbar button + button {
+	margin-left: 10px;
 }
 .stalker .settings .buttonbar button.sml:first-child {position: absolute; right: 25px;}
 .stalker .settings .buttonbar button.red {background-color: rgb(192,24,64);}
@@ -2468,138 +2676,6 @@ input[type=number]:hover::-webkit-outer-spin-button {
 
 /* ========================================================================== */
 /* -------------------------------------------------------------------------- */
-/* # Repeating Containers */
-/* -------------------------------------------------------------------------- */
-/* ========================================================================== */
-
-.stalker .tab .repcontainer .repitem {
-	margin-bottom: 5px;
-}
-.stalker .tab .repcontrol,
-.stalker .tab .itemcontrol {
-	position: relative;
-	z-index: 1;
-}
-.stalker .tab .repcontrol {
-	margin-top: 10px;
-	height: 24px;
-}
-.stalker .tab .repcontainer .repitem .itemcontrol {
-	background-color: rgba(255,255,255,.1875);
-}
-.stalker .tab .repcontrol_add,
-.stalker .tab .repcontrol_edit,
-.stalker .tab .repcontrol_move,
-.stalker .tab .repcontrol_del {
-	position: absolute;
-	padding: 0;
-	border: 0;
-	background: none;
-	text-shadow: none;
-	box-shadow: none;
-	outline: 0;
-}
-.stalker .tab .repcontrol_add,
-.stalker .tab .repcontrol_edit {
-	width: 20px;
-	height: 20px;
-	line-height: 20px;
-	font-size: 0;
-	color: white;
-	border-radius: 100%;
-	border: 2px solid rgba(255,255,255,.25);
-	opacity: .75;
-}
-.stalker .tab .repcontrol_add:before,
-.stalker .tab .repcontrol_edit:before {
-	display: inline-block;
-	width: inherit;
-	height: inherit;
-	font-family: "Pictos";
-	font-size: 12px;
-	border-radius: inherit;
-}
-.stalker .tab .repcontrol_add:before {
-	content: "&";
-}
-.stalker .tab .repcontrol_edit:before {
-	content: "p";
-}
-.stalker .tab .repcontrol_add:hover,
-.stalker .tab .repcontrol_edit:hover,
-.stalker .tab .repcontrol_add:focus,
-.stalker .tab .repcontrol_edit:focus {
-	color: lime;
-	border-color: lime;
-	background: rgba(0,255,0,.5);
-}
-.stalker .tab .repcontrol_add {
-	left: auto;
-	right: calc(50% - 120px);
-}
-.stalker .tab .repcontrol_edit {
-	float: none;
-	right: auto;
-	left: calc(50% - 120px);
-}
-.stalker .tab .repcontrol_add:after,
-.stalker .tab .repcontrol_edit:after {
-	content: "";
-	position: absolute;
-	display: inline-block;
-	width: 80px;
-	height: 14px;
-	top: -4px;
-	border: 2px solid rgba(255,255,255,.25);
-	border-top: 0;
-}
-.stalker .tab .repcontrol_add:after {left: -84px; border-right: 0;}
-.stalker .tab .repcontrol_edit:after {right: -84px; border-left: 0;}
-.stalker .tab .repcontrol_add:hover:after,
-.stalker .tab .repcontrol_edit:hover:after,
-.stalker .tab .repcontrol_add:focus:after,
-.stalker .tab .repcontrol_edit:focus:after {border-color: lime;}
-.stalker .tab .repcontrol_move,
-.stalker .tab .repcontrol_del {
-	border-radius: 3px;
-	background: rgba(224,224,224,.75);
-}
-.stalker .tab .repcontrol_move,
-.stalker .tab .repcontrol_del {
-	width: 16px;
-	height: 16px;
-	line-height: 16px;
-	top: 2px;
-	font-size: 10px;
-}
-.stalker .tab .repcontrol_move {
-	color: white;
-	background: transparent;
-}
-.stalker .tab .repcontrol_move:hover {
-	background: rgba(255,240,0,.375);
-}
-.stalker .tab .repcontrol_del {
-	background: darkred;
-}
-.stalker .tab .repcontrol_del:hover {
-	background: red;
-}
-.stalker .tab .repcontainer .repitem .itemcontrol .repcontrol_move {
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	border-radius: 0;
-}
-.stalker .tab .repcontainer .repitem .itemcontrol .repcontrol_del {
-	float: none;
-	right: 70px;
-	z-index: 1;
-}
-
-/* ========================================================================== */
-/* -------------------------------------------------------------------------- */
 /* # Formatting */
 /* -------------------------------------------------------------------------- */
 /* ========================================================================== */
@@ -2610,6 +2686,7 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .sheet .white {color: white;}
 .stalker .sheet .left {text-align: left;}
 .stalker .sheet .right {text-align: right;}
+.stalker .sheet .center {text-align: center;}
 .stalker .sheet .tab .mlft {margin-left: 40px;}
 .stalker .sheet .tab .mrgt {margin-right: 10px;}
 
@@ -2622,7 +2699,9 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .stalker .sheet .has-vehicle,
 .stalker .sheet .has-den,
 .stalker .sheet input[name="attr_show_vehicle"][value="0"] ~ div button.has-vehicle.sml,
-.stalker .sheet input[name="attr_show_den"][value="0"] ~ div button.has-den.sml {display: none;}
+.stalker .sheet input[name="attr_show_den"][value="0"] ~ div button.has-den.sml,
+.stalker .sheet input[name="attr_sheet_type"]:not([value="pc"]) ~ .tab .history .titles,
+.stalker .sheet input[name="attr_sheet_type"]:not([value="pc"]) ~ .tab .history .reputation {display: none;}
 .stalker .sheet input[name="attr_show_vehicle"][value="1"] ~ div h1.has-vehicle,
 .stalker .sheet input[name="attr_show_den"][value="1"] ~ div h1.has-den {display: block;}
 .stalker .sheet input[name="attr_show_vehicle"][value="1"] ~ div div.has-vehicle,
@@ -2682,8 +2761,7 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .sheet-rolltemplate-stalker .sheet-header,
 .sheet-rolltemplate-stalker .sheet-condition {
 	margin: 0 0 5px;
-	padding: 4px 0;
-	line-height: 1;
+	line-height: 20px;
 	font-weight: bold;
 	text-align: center;
 	border-width: 2px 0 2px 0;
@@ -2726,8 +2804,12 @@ input[type=number]:hover::-webkit-outer-spin-button {
 	border-top: 1px solid rgba(255,255,255,.125);
 }
 
-.sheet-rolltemplate-stalker .sheet-label {
+.sheet-rolltemplate-stalker .sheet-label,
+.sheet-rolltemplate-stalker .sheet-entry {
 	display: inline-block;
+	vertical-align: top;
+}
+.sheet-rolltemplate-stalker .sheet-label {
 	width: 80px;
 	color: rgb(208,208,208);
 	font-size: 10px;
@@ -2787,6 +2869,9 @@ input[type=number]:hover::-webkit-outer-spin-button {
 }
 
 .sheet-rolltemplate-stalker .sheet-normal a[href^="~"] {
+	margin-left: -4px;
+	margin-right: 0;
+	font-size: 11px;
 	text-transform: none;
 	color: forestgreen;
 	background-color: transparent;
@@ -2810,9 +2895,10 @@ input[type=number]:hover::-webkit-outer-spin-button {
 .sheet-rolltemplate-stalker .sheet-button {
 	position: absolute;
 	display: inline-block;
-	left: 6px;
 	top: 6px;
 }
+.sheet-rolltemplate-stalker .sheet-button.sheet-left {left: 6px;}
+.sheet-rolltemplate-stalker .sheet-button.sheet-right {right: 6px;}
 .sheet-rolltemplate-stalker .sheet-button a[href^="~"] {
 	width: 22px;
 	height: 22px;

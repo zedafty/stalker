@@ -9,6 +9,8 @@
 
 	on("sheet:opened", (e) => {
 		stalker.checkVersion();
+		stalker.updateGender();
+		stalker.updateCharacterType();
 		stalker.setupTranslations();
 	});
 
@@ -17,7 +19,7 @@
 	//////////////////////////////////////////////////////////////////////////////
 
 	on("change:ask_rollmodifier", (e) => {
-		let v = e.newValue == "0" ? "0" : "?{@{modifier}|0}";
+		let v = e.newValue == "0" ? "" : "?{@{modifier_tra}|0}";
 		setAttrs({"rollmodifier" : v}, {silent: true});
 	});
 
@@ -64,42 +66,31 @@
 	// * Abilities
 	//////////////////////////////////////////////////////////////////////////////
 
-	on("change:strength_base change:endurance_base change:agility_base change:accuracy_base change:reflexes_base change:knowledge_base change:perception_base change:will_base change:empathy_base change:persuasion_base change:psychology_base change:health_base change:strength_mod change:endurance_mod change:agility_mod change:accuracy_mod change:reflexes_mod change:knowledge_mod change:perception_mod change:will_mod change:empathy_mod change:persuasion_mod change:psychology_mod change:selfcontrol_mod change:health_mod", (e) => {
+	on("change:strength_base change:endurance_base change:agility_base change:accuracy_base change:reflexes_base change:knowledge_base change:perception_base change:will_base change:empathy_base change:persuasion_base change:psychology_base change:health_base change:strength_aug change:endurance_aug change:agility_aug change:accuracy_aug change:reflexes_aug change:knowledge_aug change:perception_aug change:will_aug change:empathy_aug change:persuasion_aug change:psychology_aug change:selfcontrol_aug change:health_aug change:strength_mod change:endurance_mod change:agility_mod change:accuracy_mod change:reflexes_mod change:knowledge_mod change:perception_mod change:will_mod change:empathy_mod change:persuasion_mod change:psychology_mod change:selfcontrol_mod change:health_mod", (e) => {
 		let s = e.sourceAttribute.split("_");
 		stalker.updateAbilities(false, s[0], s[1], e.previousValue);
 	});
 
-	on("change:selfcontrol_use", (e) => {
-		let u = {};
-		let n = parseInt(e.newValue) == 0 ? "0" : "1";
-		u["selfcontrol_toggle"] = n;
-		if (n == 0) u["selfcontrol_ctrl"] = n;
-		setAttrs(u, {silent: true});
+	on("change:strength_use change:endurance_use change:agility_use change:accuracy_use change:reflexes_use change:knowledge_use change:perception_use change:will_use change:empathy_use change:persuasion_use change:psychology_use change:selfcontrol_use change:health_use", (e) => {
+		stalker.checkAbilities(e.sourceAttribute.split("_")[0]);
+	});
+
+	on("change:selfcontrol_strl", (e) => {
+		stalker.checkAbilities("selfcontrol");
 	});
 
 	on("clicked:use_strength clicked:use_endurance clicked:use_agility clicked:use_accuracy clicked:use_reflexes clicked:use_knowledge clicked:use_perception clicked:use_will clicked:use_empathy clicked:use_persuasion clicked:use_psychology clicked:use_selfcontrol clicked:use_health", (e) => {
 		let k = e.triggerName.substr(12);
-		let s = k + "_use";
-		getAttrs(["opt_strelok", s], (v) => {
-			let u = {};
-			let c = v["opt_strelok"] == "1" ? true : false;
-			let n = Math.max(parseInt(v[s]) - (c ? 2 : 1), 0);
-			u[s] = n;
-			if (k == "selfcontrol" && n == 0) {
-				u["selfcontrol_toggle"] = n.toString();
-				u["selfcontrol_ctrl"] = n.toString();
-			}
-			setAttrs(u, {silent: true});
-		});
+		stalker.checkAbilities(k, true);
 	});
 
 	//////////////////////////////////////////////////////////////////////////////
 	// * Vitals
 	//////////////////////////////////////////////////////////////////////////////
 
-	on("change:hp change:hp_mod", () => {
+	on("change:hp change:hp_aug change:hp_aug change:hp_mod", () => {
 		let k = "hp";
-		let a = ["health", k, k + "_base", k + "_mod", k + "_max"];
+		let a = ["health", k, k + "_base", k + "_aug", k + "_mod", k + "_max"];
 		getAttrs(a, (v) => {
 			setAttrs(stalker.updateHitPoints(v), {silent: true});
 		});
@@ -117,8 +108,9 @@
 		});
 	});
 
-	on("change:repeating_conditions:cond_number change:repeating_conditions:cond_duration", (e) => {
-		stalker.clampAttribute(e.sourceAttribute, e.newValue, null, null, e.sourceAttribute.substr(42,8));
+	on("change:bleeding_number change:bleeding_duration change:stunned_number change:stunned_duration change:deafened_number change:deafened_duration change:blinded_number change:blinded_duration change:repeating_conditions:cond_number change:repeating_conditions:cond_duration", (e) => {
+		let s = e.sourceAttribute.endsWith("number") ? "num" : "dur";
+		stalker.clampAttribute(e.sourceAttribute, e.newValue, null, null, "cond_" + s);
 	});
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -141,45 +133,60 @@
 		stalker.updateArmamentWeight(e.sourceAttribute.split("_")[1], e.sourceAttribute);
 	});
 
-	on("change:repeating_weapons:weapon_name change:repeating_weapons:weapon_spec change:repeating_weapons:weapon_accuracy change:repeating_weapons:weapon_accuracy_2 change:repeating_weapons:weapon_accuracy_3 change:repeating_weapons:weapon_accuracy_4 change:repeating_weapons:weapon_accuracy_5 change:repeating_weapons:weapon_accuracy_level change:repeating_weapons:weapon_damage change:repeating_weapons:weapon_damage_2 change:repeating_weapons:weapon_damage_3 change:repeating_weapons:weapon_damage_4 change:repeating_weapons:weapon_damage_5 change:repeating_weapons:weapon_damage_level change:repeating_weapons:weapon_status change:repeating_weapons:weapon_type change:repeating_weapons:weapon_rate", (e) => {
+	on("remove:repeating_weapons remove:repeating_suits", (e) => {
+		stalker.recalcWeight();
+	});
+
+	on("change:repeating_weapons:weapon_name change:repeating_weapons:weapon_spec change:repeating_weapons:weapon_accuracy change:repeating_weapons:weapon_accuracy_2 change:repeating_weapons:weapon_accuracy_3 change:repeating_weapons:weapon_accuracy_4 change:repeating_weapons:weapon_accuracy_5 change:repeating_weapons:weapon_accuracy_level change:repeating_weapons:weapon_damage change:repeating_weapons:weapon_damage_2 change:repeating_weapons:weapon_damage_3 change:repeating_weapons:weapon_damage_4 change:repeating_weapons:weapon_damage_5 change:repeating_weapons:weapon_damage_level change:repeating_weapons:weapon_status change:repeating_weapons:weapon_status_2 change:repeating_weapons:weapon_status_3 change:repeating_weapons:weapon_status_4 change:repeating_weapons:weapon_status_5 change:repeating_weapons:weapon_status_level change:repeating_weapons:weapon_type change:repeating_weapons:weapon_rate_1 change:repeating_weapons:weapon_rate_2 change:repeating_weapons:weapon_rate_2_val change:repeating_weapons:weapon_rate_3 change:repeating_weapons:weapon_rate_3_val", (e) => {
 		let s = undefined;
-		let k = e.sourceAttribute.substr(46);
-		if (stalker.Stat.weapon.accuracy.includes(k) || stalker.Stat.weapon.damage.includes(k)) s = typeof e.newValue !== "undefined" ? stalker.formatFormula(e.newValue) : "0"; // force format +ndn+s
-		if (!stalker.Stat.weapon.damage.includes(k) && k !== "damage_level") stalker.updateWeapons(e.sourceAttribute.substr(18,20), s, null, k == "status");
+		let k = e.sourceAttribute.substr(46).replace(/_(\d+|level)$/, "");
+		if (k == "accuracy" || k == "damage") s = typeof e.newValue !== "undefined" ? stalker.formatFormula(e.newValue) : "0"; // force format +ndn+s
+		if (k != "damage" && k != "damage_level") stalker.updateWeapons(e.sourceAttribute, s, null, (k == "status" ? e.sourceAttribute : false));
 		else stalker.updateWeaponDamage(e.sourceAttribute, s, e.newValue); // damage
 	});
 
-	on("change:repeating_weapons:weapon_range change:repeating_weapons:weapon_range_2 change:repeating_weapons:weapon_range_3 change:repeating_weapons:weapon_range_4 change:repeating_weapons:weapon_range_5 change:repeating_weapons:weapon_range_level change:repeating_weapons:weapon_type change:repeating_weapons:weapon_thrown change:repeating_weapons:weapon_thrown_2 change:repeating_weapons:weapon_thrown_3 change:repeating_weapons:weapon_thrown_4 change:repeating_weapons:weapon_thrown_5 change:repeating_weapons:weapon_thrown_level", (e) => {
-		let q = e.sourceAttribute.substr(46).split("_")[0];
-		let k = e.sourceAttribute.substr(18,20);
+	on("change:repeating_weapons:weapon_range change:repeating_weapons:weapon_range_2 change:repeating_weapons:weapon_range_3 change:repeating_weapons:weapon_range_4 change:repeating_weapons:weapon_range_5 change:repeating_weapons:weapon_range_level change:repeating_weapons:weapon_thrown change:repeating_weapons:weapon_thrown_2 change:repeating_weapons:weapon_thrown_3 change:repeating_weapons:weapon_thrown_4 change:repeating_weapons:weapon_thrown_5 change:repeating_weapons:weapon_thrown_level change:repeating_weapons:weapon_type", (e) => {
+		let s = e.sourceAttribute;
+		let q = s.substr(46).split("_")[0];
+		let k = s.substr(18,20);
 		if (q == "range") {
-			stalker.checkWeaponRange(k, e.previousValue);
+			stalker.checkWeaponRange(s, k, e.previousValue);
+		} else if (q == "thrown") {
+			stalker.updateWeaponRange(k, s, e.newValue);
 		} else if (q == "type") {
-			if (e.newValue == "thrown") {
+			if (["thrown", "explosive"].includes(e.newValue)) {
 				let u = {};
 				u[`repeating_weapons_${k}_weapon_range_level`] = "1";
-				setAttrs(u, {silent: true});
-				stalker.updateWeaponRange(k);
-			} else if (e.previousValue == "thrown") {
-				stalker.updateWeaponRange(k, true);
+				setAttrs(u, {silent: true}, () => {
+					stalker.updateWeaponRange(k, s, null, true);
+				});
+			} else if (e.newValue == "firearm") {
+				stalker.updateWeaponRange(k, s, null, true);
 			}
-		} else if (q == "thrown") {
-			stalker.updateWeaponRange(k, null, e.sourceAttribute, e.newValue);
 		}
 	});
 
 	on("change:repeating_weapons:weapon_ammo_type change:repeating_weapons:weapon_ammo_type_2 change:repeating_weapons:weapon_ammo_type_3 change:repeating_weapons:weapon_ammo_type_4 change:repeating_weapons:weapon_ammo_type_5 change:repeating_weapons:weapon_ammo_type_level", (e) => {
-		let k = e.sourceAttribute;
-		stalker.updateWeaponAmmoType(k.substr(18,20), k.endsWith("level"), e.newValue);
+		stalker.updateWeaponAmmoType(e.sourceAttribute, e.newValue);
 	});
 
 	on("change:repeating_weapons:weapon_ammo_max change:repeating_weapons:weapon_ammo_max_2 change:repeating_weapons:weapon_ammo_max_3 change:repeating_weapons:weapon_ammo_max_4 change:repeating_weapons:weapon_ammo_max_5 change:repeating_weapons:weapon_ammo_max_level", (e) => {
-		let k = e.sourceAttribute;
-		stalker.updateWeaponAmmo(k.substr(18,20), k.endsWith("level"), e.newValue);
+		let s = e.sourceAttribute;
+		stalker.updateWeaponAmmo(s, s.endsWith("level"));
 	});
 
-	on("change:repeating_weapons:weapon_ammo_val", (e) => {
+	on("change:repeating_weapons:weapon_ammo_val change:repeating_weapons:weapon_type", (e) => {
 		stalker.checkWeaponAmmo(e.sourceAttribute.substr(18,20));
+	});
+
+	on("change:repeating_weapons:weapon_type", (e) => {
+		let k = e.sourceAttribute.substr(0,38);
+		let a = [k + "_weapon_type"];
+		getAttrs(a, (v) => {
+			let u = {};
+			u[k + "_weapon_roll_button"] = ["explosive", "trap"].includes(v[k + "_weapon_type"]) ? "@{weapon_roll_dmg}" : "@{weapon_roll}";
+			setAttrs(u, {silent: true});
+		});
 	});
 
 	on("change:repeating_weapons:weapon_mag change:repeating_weapons:weapon_penetration change:repeating_weapons:weapon_penetration_2 change:repeating_weapons:weapon_penetration_3 change:repeating_weapons:weapon_penetration_4 change:repeating_weapons:weapon_penetration_5 change:repeating_weapons:weapon_penetration_level", (e) => {
@@ -196,7 +203,7 @@
 		let u = {};
 		let b = e.sourceAttribute.endsWith("level");
 		let p = e.sourceAttribute.replace(/_\d$/, "").replace(/_level/, "");
-		let q = p.substr(42).split("_")[0];
+		let q = p.substr(42);
 		let k = e.sourceAttribute.substr(0,36);
 		let c = ["head", "arms", "torso", "legs"].includes(q);
 		let a, s;
@@ -220,15 +227,20 @@
 		} else { // value
 			s = typeof e.newValue !== "undefined" ? stalker.formatFormula(e.newValue) : "0";
 			u[e.sourceAttribute] = s;
-			if (c) {
-				u[p + "_str"] = s; // location
-				u[p + "_val"] = stalker.parseFormula(s); // location
-			} else stalker.updateSuitDamage(k, q, true); // damage
-			setAttrs(u, {silent: true});
+			getAttrs([`${k}_suit_${q}_level`], (v) => {
+				if (c) {
+					let t = v[`${k}_suit_${q}_level`] == "1" ? "" : "_" + v[`${k}_suit_${q}_level`];
+					if (e.sourceAttribute == `${k}_suit_${q}` + t) {
+						u[p + "_str"] = s; // location
+						u[p + "_val"] = stalker.parseFormula(s); // location
+					}
+				} else stalker.updateSuitDamage(k, q, true, true); // damage
+				setAttrs(u, {silent: true});
+			});
 		}
 	});
 
-	on("change:repeating_suits:suit_psi change:repeating_suits:suit_psi_2 change:repeating_suits:suit_psi_3 change:repeating_suits:suit_psi_4 change:repeating_suits:suit_psi_5 change:repeating_suits:suit_psi_level change:repeating_suits:suit_pocket change:repeating_suits:suit_pocket_2 change:repeating_suits:suit_pocket_3 change:repeating_suits:suit_pocket_4 change:repeating_suits:suit_pocket_5 change:repeating_suits:suit_pocket_level change:repeating_suits:suit_status", (e) => {
+	on("change:repeating_suits:suit_psi change:repeating_suits:suit_psi_2 change:repeating_suits:suit_psi_3 change:repeating_suits:suit_psi_4 change:repeating_suits:suit_psi_5 change:repeating_suits:suit_psi_level change:repeating_suits:suit_pocket change:repeating_suits:suit_pocket_2 change:repeating_suits:suit_pocket_3 change:repeating_suits:suit_pocket_4 change:repeating_suits:suit_pocket_5 change:repeating_suits:suit_pocket_level change:repeating_suits:suit_status change:repeating_suits:suit_status_2 change:repeating_suits:suit_status_3 change:repeating_suits:suit_status_4 change:repeating_suits:suit_status_5 change:repeating_suits:suit_status_level", (e) => {
 		stalker.checkSuitField(e.sourceAttribute, e.newValue);
 	});
 
@@ -276,8 +288,8 @@
 	});
 
 	on("remove:repeating_equipment remove:repeating_backpack remove:repeating_vehicle remove:repeating_den", (e) => {
-		let s = e.sourceAttribute.split("_")[1];
 		let k = e.sourceAttribute;
+		let s = k.split("_")[1];
 		let w = e.removedInfo[k + "_item_weight_total"];
 		stalker.refreshInventoryWeight(s, k, w);
 	});
@@ -287,16 +299,19 @@
 	//////////////////////////////////////////////////////////////////////////////
 
 	on("clicked:collapse", () => {
-		let a = stalker.getAbilities(), u = {};
-		let b = ["antecedents", "titles", "weapons", "suits", "artefacts", "equipment", "backpack", "vehicle", "den"];
-		for (k in a) u["options_flag_" + a[k]] = "0";
+		let a = ["antecedents", "titles", "specialities", "weapons", "suits", "artefacts", "equipment", "backpack", "vehicle", "den"];
+		let b = stalker.Stat.abilities, i, u = {};
+		for (k in b) u["options_flag_" + b[k]] = "0";
+		for (i = 1; i < 10; i++) u["options_flag_specswpn" + i] = "0";
 		u["options_toggle_abilities"] = 0;
 		u["options_counter_abilities"] = 0;
+		u["options_toggle_specswpn"] = 0;
+		u["options_counter_specswpn"] = 0;
+		u["options_flag_xp"] = 0;
 		u["options_flag_hp"] = 0;
 		u["options_flag_weighing_load"] = 0;
-		u["options_flag_xp"] = 0;
 		setAttrs(u, {silent: true});
-		for (k in b) stalker.resetOptionsToggles(b[k]);
+		for (k in a) stalker.resetOptionsToggles(a[k]);
 	});
 
 	on("clicked:rest", () => {
@@ -316,9 +331,8 @@
 	//////////////////////////////////////////////////////////////////////////////
 
 	on("change:opt_strelok", (e) => {
-		let n = (e.newValue == "1") ? "2" : "1";
-		setAttrs({"selfcontrol_die" : n}, {silent: true});
 		stalker.updateSpecialities();
+		stalker.checkAbilities();
 	});
 
 	on("change:opt_iron_skin", (e) => {
@@ -335,7 +349,7 @@
 	//////////////////////////////////////////////////////////////////////////////
 
 	on("change:options_toggle_abilities", (e) => {
-		let a = stalker.getAbilities(), b = false, k, u = {};
+		let a = stalker.Stat.abilities, b = false, k, u = {};
 		if (e.newValue == "1") b = true;
 		for (k in a) u["options_flag_" + a[k]] = b ? "1" : "0";
 		u["options_counter_abilities"] = b ? 13 : 0;
@@ -353,7 +367,26 @@
 		});
 	});
 
-	on("change:options_toggle_antecedents change:options_toggle_titles change:options_toggle_weapons change:options_toggle_suits change:options_toggle_artefacts change:options_toggle_equipment change:options_toggle_backpack change:options_toggle_vehicle change:options_toggle_den", (e) => {
+	on("change:options_toggle_specswpn", (e) => {
+		let b = false, u = {};
+		if (e.newValue == "1") b = true;
+		for (i = 1; i < 10; i++) u["options_flag_specswpn" + i] = b ? "1" : "0";
+		u["options_counter_specswpn"] = b ? 9 : 0;
+		setAttrs(u, {silent: true});
+	});
+
+	on("change:options_flag_specswpn1 change:options_flag_specswpn2 change:options_flag_specswpn3 change:options_flag_specswpn4 change:options_flag_specswpn5 change:options_flag_specswpn6 change:options_flag_specswpn7 change:options_flag_specswpn8 change:options_flag_specswpn9", (e) => {
+		getAttrs(["options_counter_specswpn"], (v) => {
+			let u = {};
+			let n = parseInt(v["options_counter_specswpn"]) + (e.newValue == "0" ? -1 : 1);
+			u["options_counter_specswpn"] = n;
+			if (e.newValue == "1") u["options_toggle_specswpn"] = "1";
+			else if (n == 0) u["options_toggle_specswpn"] = "0";
+			setAttrs(u, {silent: true});
+		});
+	});
+
+	on("change:options_toggle_antecedents change:options_toggle_titles change:options_toggle_specialities change:options_toggle_weapons change:options_toggle_suits change:options_toggle_artefacts change:options_toggle_equipment change:options_toggle_backpack change:options_toggle_vehicle change:options_toggle_den", (e) => {
 		let k = e.sourceAttribute.split("_")[2];
 		let s = "repeating_" + k;
 		let b = false;
@@ -370,7 +403,7 @@
 		});
 	});
 
-	on("change:repeating_antecedents:options_flag_antecedents change:repeating_titles:options_flag_titles change:repeating_weapons:options_flag_weapons change:repeating_suits:options_flag_suits change:repeating_artefacts:options_flag_artefacts change:repeating_equipment:options_flag_equipment change:repeating_backpack:options_flag_backpack change:repeating_vehicle:options_flag_vehicle change:repeating_den:options_flag_den", (e) => {
+	on("change:repeating_antecedents:options_flag_antecedents change:repeating_titles:options_flag_titles change:repeating_specialities:options_flag_specialities change:repeating_weapons:options_flag_weapons change:repeating_suits:options_flag_suits change:repeating_artefacts:options_flag_artefacts change:repeating_equipment:options_flag_equipment change:repeating_backpack:options_flag_backpack change:repeating_vehicle:options_flag_vehicle change:repeating_den:options_flag_den", (e) => {
 		let k = e.sourceAttribute.split("_")[1];
 		getAttrs(["options_counter_" + k], (v) => {
 			let u = {};
@@ -395,17 +428,13 @@
 		////////////////////////////////////////////////////////////////////////////
 
 		const Glob = { // Global
-			"version" : 2.0
+			"version" : 2.1
 		};
 
 		const Stat = { // Static
 			"abilities" : ["strength", "endurance", "agility", "accuracy", "reflexes", "knowledge", "perception", "will", "empathy", "persuasion", "psychology", "selfcontrol", "health"],
 			"resistances" : ["resistance_burn", "resistance_shock", "resistance_blow", "resistance_cut", "resistance_radiation", "resistance_chemical"],
-			"weighing_load" : ["weighing_load", "weighing_load_base", "weighing_load_mod", "weighing_load_max", "strength"],
-			"weapon" : {
-				"accuracy" : ["accuracy", "accuracy_2", "accuracy_3", "accuracy_4", "accuracy_5"],
-				"damage" : ["damage", "damage_2", "damage_3", "damage_4", "damage_5"]
-			}
+			"weighing_load" : ["weighing_load", "weighing_load_base", "weighing_load_mod", "weighing_load_max", "strength"]
 		};
 
 		const Roll = {
@@ -414,14 +443,15 @@
 				"mutant" : "@{rollwhisper} &{template:stalker} {{mutant_name=@{character_name}}}",
 				"tainted" : "@{rollwhisper} &{template:stalker} {{tainted_name=@{character_name}}}"
 			},
-			"speciality" : `@{rollbase} {{header=@{spec_name_____}}} {{ability_warn=[[1]]}} {{r_ability=^{@{spec_ability_____}}}} {{draw_ability=}} {{showrank=[[@{spec_rank_____}]]}} {{r_rank=+@{spec_rank_____}}} {{showleadership=[[@{leadership}]]}} {{r_leadership=+@{leadership}}} {{showselfcontrol=[[@{selfcontrol_ctrl}]]}} {{r_selfcontrol=+@{selfcontrol_die}d10}} {{draw_selfcontrol=[}](@{draw_selfcontrol})}} {{showmodifier=[[@{rollmodifier}]]}} {{r_modifier=+@{rollmodifier}}} {{roll=[[0d10 [${getTranslationByKey("ability")}] + @{spec_rank_____} [${getTranslationByKey("rank")}] + @{leadership} [${getTranslationByKey("leadership")}] + [[@{selfcontrol_ctrl} * @{selfcontrol_die}]]d10 [${getTranslationByKey("selfcontrol")}] + @{rollmodifier} [${getTranslationByKey("modifier")}]]]}}`,
+			"speciality" : `@{rollbase} {{header=@{spec_name_____}}} {{showability=[[1]]}} {{r_ability=^{@{spec_ability_____}}}} {{r_ability_name=}} {{draw_ability=}} {{showrank=[[@{spec_rank_____}]]}} {{r_rank=+@{spec_rank_____}}} {{showleadership=[[@{leadership}]]}} {{r_leadership=+@{leadership}}} {{showselfcontrol=[[@{selfcontrol_ctrl}]]}} {{r_selfcontrol=+@{selfcontrol_die}d10}} {{draw_selfcontrol=[}](@{draw_selfcontrol})}} {{showmodifier=[[@{rollmodifier}]]}} {{r_modifier=+@{rollmodifier}}} {{roll=[[0d10 [@{ability_tra}] + @{spec_rank_____} [@{rank_tra}] + @{leadership} [@{leadership_tra}] + [[@{selfcontrol_ctrl} * @{selfcontrol_die}]]d10 [@{selfcontrol_tra}] + @{rollmodifier} [@{modifier_tra}]]]}}`,
 			"weapon" : `@{rollbase} {{header=@{weapon_name}}} {{no_weapon_speciality=[[1]]}}`
 		};
 
 		const MinMax = {
 			"attr" : [0, 10], // default attribute
-			"abi_base" : [1, 10],
-			"abi_val" : [1, 10],
+			"abi_base" : [0, 10],
+			"abi_val" : [0, 10],
+			"abi_aug" : [0, 10],
 			"abi_mod" : [-10, 10],
 			"hp_mod" : [-25, 50],
 			"cond_num" : [0, 99],
@@ -432,6 +462,8 @@
 			"wpn_ammo" : [0, 9999],
 			"wpn_mag" : [0, 50],
 			"wpn_penetration" : [0, 25],
+			"wpn_rate_2" : [1, 9],
+			"wpn_rate_3" : [1, 99],
 			"wpn_status" : [-25, 25],
 			"wpn_weight" : [0, 100],
 			"sui_psi" : [0, 50],
@@ -446,8 +478,13 @@
 		// * Utilities
 		////////////////////////////////////////////////////////////////////////////
 
-		const getMin = function(k) {return MinMax[k][0];} // k = minmax key
-		const getMax = function(k) {return MinMax[k][1];} // k = minmax key
+		const getMin = function(k) { // k = minmax key
+			return MinMax[k][0];
+		};
+
+		const getMax = function(k) { // k = minmax key
+			return MinMax[k][1];
+		};
 
 		const formatNumber = function(n, b) { // n = number, b = zero padding ; returns string
 			let s = b ? ",0" : "";
@@ -483,7 +520,7 @@
 		};
 
 		const parseFormula = function(s) { // s = string ; returns string
-			return (typeof s !== "undefined" ? s.replace("×", "*") : "0");
+			return (typeof s !== "undefined" ? s.replaceAll("×", "*") : "0");
 		};
 
 		const formatFormula = function(s) { // s = string ; returns string
@@ -513,6 +550,11 @@
 			getAttrs(["char_gender"], (v) => {
 				let u = {};
 				let k = v["char_gender"];
+				u["overburdened"] = getTranslationByKey("overburdened_" + k);
+				u["bleeding_name"] = getTranslationByKey("bleeding_" + k);
+				u["stunned_name"] = getTranslationByKey("stunned_" + k);
+				u["deafened_name"] = getTranslationByKey("deafened_" + k);
+				u["blinded_name"] = getTranslationByKey("blinded_" + k);
 				u["hit_head_str"] = getTranslationByKey("hit_head_" + k);
 				u["hit_arms_str"] = getTranslationByKey("hit_arms_" + k);
 				u["hit_torso_str"] = getTranslationByKey("hit_torso_" + k);
@@ -545,24 +587,10 @@
 		// * Abilities
 		////////////////////////////////////////////////////////////////////////////
 
-		const getAbilities = function() { // returns abilities list
-			return Stat.abilities;
-		};
-
-		const checkSelfControlToggle = function(v, renew) { // v = value list, renew = boolean ; returns update list
-			let u = {}, k = "selfcontrol";
-			let n = Math.floor((parseInt(v["endurance"]) + parseInt(v["will"])) / 2);
-			let m = Math.min(n + parseInt(v[k + "_mod"]), 10);
-			u[k + "_base"] = n;
-			u[k] = m;
-			if (renew || parseInt(v[k + "_use"]) > m) u[k + "_use"] = m; // reset usable value
-			return u;
-		};
-
 		const updateSelfControl = function(v, renew) { // v = value list, renew = boolean ; returns update list
 			let u = {}, k = "selfcontrol";
 			let n = Math.floor((parseInt(v["endurance"]) + parseInt(v["will"])) / 2);
-			let m = Math.min(n + parseInt(v[k + "_mod"]), 10);
+			let m = Math.min(n + parseInt(v[k + "_mod"]) + parseInt(v[k + "_aug"]), 10);
 			u[k + "_base"] = n;
 			u[k] = m;
 			if (renew || parseInt(v[k + "_use"]) > m) u[k + "_use"] = m; // reset usable value
@@ -573,7 +601,7 @@
 			let u = {}, k = "hp";
 			let c = typeof v[k] === "string" ? evalFormula(v[k].trim()) : v[k];
 			let n = parseInt(v["health"]) * 5;
-			let d = clampInt(v[k + "_mod"], getMin("hp_mod"), getMax("hp_mod"));
+			let d = clampInt(v[k + "_mod"], getMin(k + "_mod"), getMax(k + "_mod"));
 			let m = Math.max(n + d, 0);
 			u[k] = c > m ? m : Math.max(c, 0);
 			u[k + "_base"] = n;
@@ -613,11 +641,12 @@
 			return u;
 		};
 
-		const updateAbilities = function(renew, key, suf, prv, recalc) { // renew = boolean, key = attribute key, suf = attribute suffix, prv = previous value, recalc = boolean flag
+		const updateAbilities = function(renew, key, suf, prv, recalc, callback) { // renew = boolean, key = attribute key, suf = attribute suffix, prv = previous value, recalc = boolean flag, callback = function
 			let l = ["hp", "weighing_load"];
-			let q = key === undefined;
-			let a = q ? getAbilities().concat(l) : [key];
+			let f = key == undefined;
+			let a = f ? Stat.abilities.concat(l) : [key];
 			let b = ["abilities_total"], k, i, s;
+			prv = prv != undefined ? parseInt(prv) : 0;
 			if (key == "strength") a = a.concat(["weighing_load"]);
 			else if (key == "endurance") a = a.concat(["will", "selfcontrol"]);
 			else if (key == "will") a = a.concat(["endurance", "selfcontrol"]);
@@ -626,24 +655,30 @@
 				s = l.includes(a[k]) ? "_max" : "_use";
 				b.push(a[k]);
 				b.push(a[k] + "_base");
+				b.push(a[k] + "_aug");
 				b.push(a[k] + "_mod");
 				b.push(a[k] + s);
 			}
 			getAttrs(b, (v) => {
-				let u = {}, base, mod, val;
-				let m = q ? 0 : parseInt(v["abilities_total"]);
+				let u = {}, base, aug, mod, val;
+				let m = f ? 0 : parseInt(v["abilities_total"]);
 				for (k in a) {
 					if (l.includes(a[k])) continue;
 					i = a[k] == "selfcontrol" ? 1 : 2;
 					base = clampInt(v[a[k] + "_base"], getMin("abi_base"), getMax("abi_base"));
+					aug = clampInt(v[a[k] + "_aug"], getMin("abi_aug"), getMax("abi_aug"));
 					mod = clampInt(v[a[k] + "_mod"], getMin("abi_mod"), getMax("abi_mod"));
-					val = clampInt(base + mod, getMin("abi_val"), getMax("abi_val"));
+					val = clampInt(base + aug + mod, getMin("abi_val"), getMax("abi_val"));
 					u[a[k]] = val; // calculate value
 					u[a[k] + "_base"] = base; // clamp base value
+					u[a[k] + "_aug"] = aug; // clamp aug value
 					u[a[k] + "_mod"] = mod; // clamp mod value
 					if (renew || parseInt(v[a[k] + "_use"]) > val * i) u[a[k] + "_use"] = val * i; // reset usable value
-					if (q && a[k] != "selfcontrol") m += base;
-					else if (a[k] == key && suf == "base") m += base - parseInt(prv);
+					if (f && a[k] != "selfcontrol") m += a[k] == "selfcontrol" ? aug : base + aug;
+					else if (a[k] == key) {
+						if (suf == "base") m += (base - prv);
+						else if (suf == "aug") m += (aug - prv);
+					}
 				}
 				if (a.includes("strength") && !recalc) u = Object.assign(u, updateWeighingLoad(Object.assign(v, u)));
 				if (a.includes("endurance") || a.includes("will")) u = Object.assign(u, updateSelfControl(u, renew));
@@ -653,6 +688,44 @@
 				u["abilities_total"] = m;
 				setAttrs(u, {silent: true}, function() {
 					if (a.includes("strength")) updateWeaponRange();
+					if (typeof callback == "function") callback();
+				});
+			});
+		};
+
+		const checkAbilities = function(k, f, callback) { // k = ability name, f = spend ability flag, callback = function
+			let l = ["opt_strelok"];
+			let a = l.concat(k == undefined ? Stat.abilities : [k]);
+			let b = [];
+			for (k in a) {
+				b.push(a[k]);
+				b.push(a[k] + "_use");
+			}
+			getAttrs(b, (v) => {
+				let u = {};
+				let c = v["opt_strelok"] == "1" ? true : false;
+				let n;
+				for (k in a) {
+					if (Stat.abilities.includes(a[k])) {
+						n = parseInt(v[a[k] + "_use"]);
+						if (f) { // spend ability
+							n = Math.max(n - (c ? 2 : 1), 0);
+							u[a[k] + "_use"] = n;
+						}
+						if (n == 0) {
+							if (a[k] == "selfcontrol") {
+								u["selfcontrol_toggle"] = 0;
+								u["selfcontrol_ctrl"] = 0;
+							}
+							u[a[k] + "_die"] = 0;
+						} else {
+							if (a[k] == "selfcontrol") u["selfcontrol_toggle"] = 1;
+							u[a[k] + "_die"] = Math.min((c ? 2 : 1), (f ? u[a[k] + "_use"] : parseInt(v[a[k] + "_use"])));
+						}
+					}
+				}
+				setAttrs(u, {silent: true}, () => {
+					if (typeof callback == "function") callback();
 				});
 			});
 		};
@@ -662,14 +735,13 @@
 		////////////////////////////////////////////////////////////////////////////
 
 		const resetVitals = function(callback) {
-			let a = ["hp_max", "exhaustion", "radiation"];
+			let a = ["hp", "hp_base", "hp_mod", "hp_max", "health"];
 			getAttrs(a, (v) => {
 				let u = {};
-				u["hp"] = parseInt(v["hp_max"]);
-				u["hp_percent"] = 100;
-				u["hp_warning"] = 0;
-				u["exhaustion"] = Math.max(parseInt(v["exhaustion"]) - 50, 0);
-				u["radiation"] = Math.max(parseInt(v["radiation"]) - 10, 0);
+				let n = parseInt(v["hp"]) + parseInt(v["health"]);
+				let m = parseInt(v["hp_max"]);
+				u["hp"] = clampInt(n, 0, m);
+				u = Object.assign(u, updateHitPoints(Object.assign(v, u)));
 				setAttrs(u, {silent: true}, () => {
 					if (callback) callback();
 				});
@@ -690,7 +762,7 @@
 				let u = {};
 				let c = v["opt_strelok"] == "1" ? true : false;
 				let n = c ? 2 : 1;
-				let r1 = r2 = r3 = "";
+				let r1 = r2 = r3 = r4 = r5 = "";
 				let k, s, q, p, r;
 				_.each(a, (o) => {
 					if (key == null) {
@@ -704,20 +776,25 @@
 					if (q !== "null") {
 						r1 = "[[@{" + q + "_use}]]";
 						r2 = "[}](@{draw_" + q + "})";
-						r3 = "[^{" + q + "}](@{show_" + q + "})";
+						r3 = "[+@{" + q + "_die}d10](@{show_" + q + "})";
+						r4 = q;
+						r5 = "@{" + q + "_die}d10";
 					} else { // reset variables
 						r1 = "";
 						r2 = "";
 						r3 = "";
+						r4 = "";
+						r5 = "0d10";
 					}
 					if (raz) {
 						p = o.startsWith("repeating_") ? "" : "_" + o;
 						r = Roll.speciality.replaceAll("_____", p);
 					} else r = v[s];
-					u[s] = r.replace(/\{\{ability_warn=[^ ]+/, "{{ability_warn=" + r1 + "}}");
+					u[s] = r.replace(/\{\{showability=[^ ]+/, "{{showability=" + r1 + "}}");
 					u[s] = u[s].replace(/\{\{draw_ability=[^ ]+/, "{{draw_ability=" + r2 + "}}");
 					u[s] = u[s].replace(/\{\{r_ability=[^ ]+/, "{{r_ability=" + r3 + "}}");
-					u[s] = u[s].replace(/\{\{roll=\[\[\d+d10( \[Strelok\])?/, "{{roll=[[" + (s == "null" ? 0 * n : 1 * n) + "d10" + (c ? " [Strelok]" : ""));
+					u[s] = u[s].replace(/\{\{r_ability_name=[^ ]+/, "{{r_ability_name=" + r4 + "}}");
+					u[s] = u[s].replace(/\{\{roll=\[\[(\d+|@\{\w+\})d10/, "{{roll=[[" + r5);
 				});
 				setAttrs(u, {silent: true}, function() {
 					if (key == null) updateWeapons();
@@ -763,7 +840,7 @@
 			return (n != "" ? v[k + "_" + n] : v[k]);
 		};
 
-		const updateArmamentWeight = function(s, k) { // s = section, k = row key
+		const updateArmamentWeight = function(s, k, c) { // s = section, k = row key, c = section flag
 			let r = "repeating_" + s;
 			let a = [s + "_weight", ...Stat.weighing_load];
 			let t = s.substr(0, s.length-1);
@@ -774,26 +851,28 @@
 			getAttrs(a, (v) => {
 				let u = {};
 				let n, m, w;
-				n = b ? getArmamentLevelValue(v, `${r}_${id}_weight`) : v[k];
+				n = b ? getArmamentLevelValue(v, `${r}_${id}_weight`) : formatNumber(v[k]);
 				n = Math.min(Math.max(parseNumber(n), 0), (t == "weapon" ? getMax("wpn_weight") : getMax("sui_weight")));
-				m = parseNumber(v[`${r}_${id}_weight_val`]);
-				w = formatNumber(Math.max(parseNumber(v["weighing_load"]) + n - m), 0);
-				u[`${r}_${id}_weight_val`] = n;
-				u[s + "_weight"] = formatNumber(Math.max(parseNumber(v[s + "_weight"]) + n - m, 0));
-				u["weighing_load"] = w;
-				u = Object.assign(u, updateWeighingLoad(v, w));
+				if (b || (k.endsWith("weight") ? "1" : k.slice(-1)) == v[`${r}_${id}_weight_level`]) {
+					m = parseNumber(v[`${r}_${id}_weight_val`]);
+					w = formatNumber(Math.max(parseNumber(v["weighing_load"]) + n - m), 0);
+					u[`${r}_${id}_weight_val`] = n;
+					u[s + "_weight"] = formatNumber(Math.max(parseNumber(v[s + "_weight"]) + n - m, 0));
+					u["weighing_load"] = w;
+					u = Object.assign(u, updateWeighingLoad(v, w));
+				}
+				if (!b) u[k] = formatNumber(n);
 				setAttrs(u, {silent: true});
 			});
 		};
 
-		const updateWeapon = function(k, n, v, q, id, us) { // k = repeating weapon id, n = accuracy value, v = attributes list, q = weapon specialization name, id = repeating speciality id, us = update status
+		const updateWeapon = function(k, n, v, q, id, us) { // k = source attribute, n = accuracy value, v = attributes list, q = weapon specialization name, id = repeating speciality id, us = update status
 			let r = "repeating_weapons";
 			getAttrs([v[`${r}_${id}_weapon_spec`], q], (w) => {
-				let u = {};
-				let t, s, o;
-				if (k == null || n == undefined) n = getArmamentLevelValue(v, `${r}_${id}_weapon_accuracy`); // get accuracy
-				if (k != null) u[getArmamentLevelString(v, `${r}_${id}_weapon_accuracy`)] = n; // update accuracy from input only
-				t = clampInt(v[`${r}_${id}_weapon_status`], getMin("wpn_status"), getMax("wpn_status"));
+				let t, s, o, c, i, u = {};
+				if (k != null && !k.endsWith("level") && k.substr(46).split("_")[0] == "accuracy") u[k] = n; // set accuracy
+				if (k == null || n == undefined || k.endsWith("level") || k != getArmamentLevelString(v, `${r}_${id}_weapon_accuracy`)) n = getArmamentLevelValue(v, `${r}_${id}_weapon_accuracy`); // get accuracy
+				t = clampInt(getArmamentLevelValue(v, `${r}_${id}_weapon_status`), getMin("wpn_status"), getMax("wpn_status"));
 				s = "[[" + parseFormula(n) + " [" + getTranslationByKey("weapon_accuracy") + "]" + (t < 0 ? " " + t + " [" + getTranslationByKey("weapon_status") + "]": ""); // negative weapon status decrease accuracy
 				o = v[`${r}_${id}_weapon_spec`] == "null" ? s + "]]" : w[v[`${r}_${id}_weapon_spec`]].replace(/\{\{roll=\[\[/, "{{roll=" + s + " + ");
 				s = w[q] !== undefined ? " {{r_speciality=" + w[q] + "}}" : "";
@@ -801,16 +880,34 @@
 				o += " {{wpn_acc=+" + n + "}}";
 				if (v[`${r}_${id}_weapon_range_val`] != "0") o += " {{wpn_rng=" + v[`${r}_${id}_weapon_range_val`] + "}}";
 				if (t != 0) o += " {{wpn_stt=" + (t > 0 ? "+" + t : t) + "}} {{wpn_stt_r=[[" + t + "]]}}";
-				if (v[`${r}_${id}_weapon_rate`] != "" && v[`${r}_${id}_weapon_type`] == "firearm") o += " {{wpn_rate=" + v[`${r}_${id}_weapon_rate`] + "}}";
+				if (v[`${r}_${id}_weapon_type`] != "melee") u[`${r}_${id}_weapon_bleed`] = "0";
+				if (v[`${r}_${id}_weapon_type`] == "firearm") {
+					c = "";
+					if (v[`${r}_${id}_weapon_rate_1`] == "1") c = getTranslationByKey("weapon_rate_1");
+					if (v[`${r}_${id}_weapon_rate_2`] == "1") {
+						c += (c != "" ? "\n" : "") + getTranslationByKey("weapon_rate_2");
+						i = clampInt(v[`${r}_${id}_weapon_rate_2_val`], getMin("wpn_rate_2"), getMax("wpn_rate_2"));
+						if (i > 1) c += " (×" + i + ")";
+						u[`${r}_${id}_weapon_rate_2_val`] = i;
+					}
+					if (v[`${r}_${id}_weapon_rate_3`] == "1") {
+						c += (c != "" ? "\n" : "") + getTranslationByKey("weapon_rate_3");
+						i = clampInt(v[`${r}_${id}_weapon_rate_3_val`], getMin("wpn_rate_3"), getMax("wpn_rate_3"));
+						if (i > 1) c += " (×" + i + ")";
+						u[`${r}_${id}_weapon_rate_3_val`] = i;
+					}
+					if (c != "") o += " {{wpn_rate=" + c + "}}";
+				}
 				o += " {{roll_dmg_btn=[t](~_x_weapon_roll_dmg)}}";
-				if (us) u[`${r}_${id}_weapon_status`] = t;
+				o += " {{roll_loc_btn=[[](~@{character_id}|location)}}";
+				if (us) u[us] = clampInt(v[us], getMin("wpn_status"), getMax("wpn_status"));
 				u[`${r}_${id}_weapon_spec_str`] = w[q] !== undefined && w[q] !== "" ? w[q] : "—";
 				u[`${r}_${id}_weapon_roll`] = o;
 				setAttrs(u, {silent: true});
 			});
 		};
 
-		const updateWeapons = function(k, n, i, us) { // k = repeating weapon id, n = accuracy value, i = weapon speciality index, us = update status
+		const updateWeapons = function(k, n, i, us) { // k = source attribute, n = accuracy value, i = weapon speciality index, us = update status
 			let r = "repeating_weapons";
 			let a = [], u = {};
 			let b, m, q;
@@ -826,12 +923,21 @@
 					a.push(`${r}_${id}_weapon_accuracy_level`);
 					a.push(`${r}_${id}_weapon_range_val`);
 					a.push(`${r}_${id}_weapon_status`);
+					a.push(`${r}_${id}_weapon_status_2`);
+					a.push(`${r}_${id}_weapon_status_3`);
+					a.push(`${r}_${id}_weapon_status_4`);
+					a.push(`${r}_${id}_weapon_status_5`);
+					a.push(`${r}_${id}_weapon_status_level`);
 					a.push(`${r}_${id}_weapon_type`);
-					a.push(`${r}_${id}_weapon_rate`);
+					a.push(`${r}_${id}_weapon_rate_1`);
+					a.push(`${r}_${id}_weapon_rate_2`);
+					a.push(`${r}_${id}_weapon_rate_2_val`);
+					a.push(`${r}_${id}_weapon_rate_3`);
+					a.push(`${r}_${id}_weapon_rate_3_val`);
 				});
 				getAttrs(a, (v) => {
 					_.each(sec, (id) => { // weapons
-						b = k != null && k == id;
+						b = k != null && k.substr(18,20) == id;
 						if (b || k == null) {
 							if (v[`${r}_${id}_weapon_spec`] != "null") {
 								m = parseInt(v[`${r}_${id}_weapon_spec`].slice(-1));
@@ -855,18 +961,24 @@
 			});
 		};
 
-		const updateWeaponDamage = function(k, s, n) { // k = attribute id, s = damage formula, n = attribue new value
+		const updateWeaponDamage = function(k, f, n) { // k = source attribute, s = damage formula, n = attribue new value
 			let u = {};
-			if (k.endsWith("_level")) {
+			let t = k.substr(0,52);
+			if (k.endsWith("level")) {
 				n = n == "1" ? "" : "_" + n;
 				k = k.replace("_level", n);
 				getAttrs([k], (v) => {
-					u[k.substr(0,52) + "_val"] = "[[" + stalker.parseFormula(v[k]) + "]]";
+					u[t + "_val"] = "[[" + stalker.parseFormula(v[k]) + "]]";
 					setAttrs(u, {silent: true});
 				});
 			} else {
-				u[k] = s;
-				u[k.substr(0,52) + "_val"] = "[[" + stalker.parseFormula(s) + "]]";
+				u[k] = f;
+				getAttrs([t + "_level"], (v) => {
+					if (t + "_" + v[t + "_level"] == k) {
+						u[t + "_val"] = "[[" + stalker.parseFormula(f) + "]]";
+						setAttrs(u, {silent: true});
+					}
+				});
 				setAttrs(u, {silent: true});
 			}
 		};
@@ -892,14 +1004,15 @@
 			});
 		};
 
-		const updateWeaponRange = function(k, z, s, i) { // k = repeating weapon id, raz = reset to zero flag, s = source attribute, i = new value
+		const updateWeaponRange = function(k, s, i, z) { // k = repeating weapon id, s = source attribute, i = new value, z = reset to zero flag
 			let r = "repeating_weapons";
 			let a = ["strength"], u = {};
-			let b, n;
+			let b, c, n, m, j, g;
 			getSectionIDs(r, (sec) => {
 				_.each(sec, (id) => {
 					a.push(`${r}_${id}_weapon_type`);
 					a.push(`${r}_${id}_weapon_range`);
+					a.push(`${r}_${id}_weapon_range_old`);
 					a.push(`${r}_${id}_weapon_thrown`);
 					a.push(`${r}_${id}_weapon_thrown_2`);
 					a.push(`${r}_${id}_weapon_thrown_3`);
@@ -909,75 +1022,86 @@
 				});
 				getAttrs(a, (v) => {
 					_.each(sec, (id) => {
+						s = s === undefined ? `${r}_${id}_weapon_thrown_level` : s;
 						b = k != null && k == id;
+						c = s.endsWith("level");
 						if (b || k == null) {
-							if (v[`${r}_${id}_weapon_type`] == "thrown") {
-								n = s !== undefined && s.endsWith("level") ? getArmamentLevelValue(v, `${r}_${id}_weapon_thrown`) : i;
+							g = ["thrown", "explosive"].includes(v[`${r}_${id}_weapon_type`]);
+							if (g) {
+								n = c || s.endsWith("type") ? getArmamentLevelValue(v, `${r}_${id}_weapon_thrown`) : i;
 								n = clampInt(n, getMin("wpn_thrown"), getMax("wpn_thrown"));
-								u[`${r}_${id}_weapon_range`] = (parseInt(v[`strength`]) || 0) * n;
-								u[getArmamentLevelString(v, `${r}_${id}_weapon_thrown`)] = n;
-							} else if (z) {
-								u[`${r}_${id}_weapon_range`] = "";
+								m = (parseInt(v[`strength`]) || 0) * n;
+								if (!c && !s.endsWith("type")) u[s] = n;
+								if (z) u[`${r}_${id}_weapon_range_old`] = v[`${r}_${id}_weapon_range`];
+							} else if (z) u[`${r}_${id}_weapon_range`] = v[`${r}_${id}_weapon_range_old`];
+							let w = v[`${r}_${id}_weapon_thrown_level`] == "1" ? "" : "_" + v[`${r}_${id}_weapon_thrown_level`];
+							if (c || s == `${r}_${id}_weapon_thrown` + w || (s.endsWith("type") && g)) {
+								u[`${r}_${id}_weapon_range_val`] = m;
+								u[`${r}_${id}_weapon_range`] = m;
 							}
-							u[`${r}_${id}_weapon_range_val`] = u[`${r}_${id}_weapon_range`];
 						}
 					});
-					setAttrs(u, {silent: true});
+					setAttrs(u, {silent: true}, () => {
+						updateWeapons(s);
+					});
 				});
 			});
 		};
 
-		const checkWeaponRange = function(k, p) { // k = repeating weapon id, p = range previous value
+		const checkWeaponRange = function(s, k, p) { // s = source attribute, k = weapon id, p = range previous value
 			let r = "repeating_weapons";
 			let a = [`${r}_${k}_weapon_type`, `${r}_${k}_weapon_range`, `${r}_${k}_weapon_range_1`, `${r}_${k}_weapon_range_2`, `${r}_${k}_weapon_range_3`, `${r}_${k}_weapon_range_4`, `${r}_${k}_weapon_range_5`, `${r}_${k}_weapon_range_level`], u = {};
-			let n, i;
+			let b, t, n, i;
 			getAttrs(a, (v) => {
-				n = v[`${r}_${k}_weapon_range_level`];
-				n = n == "1" ? "" : "_" + n;
-				i = v[`${r}_${k}_weapon_range${n}`];
-				i = v[`${r}_${k}_weapon_type`] == "thrown" ? p : clampInt(i, getMin("wpn_range"), getMax("wpn_range"));
-				u[`${r}_${k}_weapon_range${n}`] = i;
-				u[`${r}_${k}_weapon_range_val`] = i;
+				b = ["thrown", "explosive"].includes(v[`${r}_${k}_weapon_type`]);
+				t = v[`${r}_${k}_weapon_range_level`];
+				t = t == "1" ? "" : "_" + t;
+				n = v[`${r}_${k}_weapon_range${t}`];
+				if (!s.endsWith("level")) {
+					i = b ? p : clampInt(v[s], getMin("wpn_range"), getMax("wpn_range"));
+					u[s] = i;
+					if (!b && `${r}_${k}_weapon_range${t}` == s) n = i;
+				}
+				u[`${r}_${k}_weapon_range_val`] = n;
 				setAttrs(u, {silent: true}, () => {
-					updateWeapons(k);
+					updateWeapons(s);
 				});
 			});
 		};
 
-		const updateWeaponAmmoType = function(k, b, s) { // k = repeating weapon id, b = reset value, s = new value
+		const updateWeaponAmmoType = function(s, n) { // s = source attribute, n = new value
 			let r = "repeating_weapons";
+			let k = s.substr(18,20);
+			let b = s.endsWith("level");
 			let a = [`${r}_${k}_weapon_ammo_type`, `${r}_${k}_weapon_ammo_type_2`, `${r}_${k}_weapon_ammo_type_3`, `${r}_${k}_weapon_ammo_type_4`, `${r}_${k}_weapon_ammo_type_5`, `${r}_${k}_weapon_ammo_type_level`], u = {};
 			getAttrs(a, (v) => {
-				if (b) {
-					s = s == "1" ? "" : "_" + s;
-					s = v[`${r}_${k}_weapon_ammo_type${s}`];
-				}
-				u[`${r}_${k}_weapon_ammo_type_val`] = s;
+				if (b) n = v[`${r}_${k}_weapon_ammo_type${n == "1" ? "" : "_" + n}`];
+				if (b || s == `${r}_${k}_weapon_ammo_type_` + v[`${r}_${k}_weapon_ammo_type_level`]) u[`${r}_${k}_weapon_ammo_type_val`] = n;
 				setAttrs(u, {silent: true});
 			});
 		};
 
-		const updateWeaponAmmo = function(k, b, s) { // k = repeating weapon id, b = reset value, s = new value
+		const updateWeaponAmmo = function(s, b, n) { // s = source attribute, b = level selector, s = new value
+			let k = s.substr(18,20);
 			let r = "repeating_weapons";
 			let a = [`${r}_${k}_weapon_ammo_max`, `${r}_${k}_weapon_ammo_max_2`, `${r}_${k}_weapon_ammo_max_3`, `${r}_${k}_weapon_ammo_max_4`, `${r}_${k}_weapon_ammo_max_5`, `${r}_${k}_weapon_ammo_max_level`], u = {};
 			getAttrs(a, (v) => {
-				if (b) {
-					s = s == "1" ? "" : "_" + s;
-					s = parseInt(v[`${r}_${k}_weapon_ammo_max${s}`]);
-				} else s = clampInt(parseInt(s), getMin("wpn_ammo"), getMax("wpn_ammo"));
-				u[`${r}_${k}_weapon_ammo_max_val`] = s;
+				let t = getArmamentLevelString(v, `${r}_${k}_weapon_ammo_max`);
+				n = b ? parseInt(v[t]) : clampInt(v[s], getMin("wpn_ammo"), getMax("wpn_ammo"));
+				if (!b) u[s] = n;
+				if (b || s == t) u[`${r}_${k}_weapon_ammo_max_val`] = n;
 				setAttrs(u, {silent: true}, () => {
-					if (b) checkWeaponAmmo(k);
+					checkWeaponAmmo(k);
 				});
 			});
 		};
 
 		const checkWeaponAmmo = function(k) { // k = repeating weapon id
 			let r = "repeating_weapons";
-			let a = [`${r}_${k}_weapon_ammo_val`, `${r}_${k}_weapon_ammo_max_val`], u = {};
+			let a = [`${r}_${k}_weapon_ammo_val`, `${r}_${k}_weapon_ammo_max_val`, `${r}_${k}_weapon_type`], u = {};
 			let n;
 			getAttrs(a, (v) => {
-				n = parseInt(v[`${r}_${k}_weapon_ammo_max_val`]);
+				n = v[`${r}_${k}_weapon_type`] == "firearm" ? parseInt(v[`${r}_${k}_weapon_ammo_max_val`]) : getMax("wpn_ammo");
 				u[`${r}_${k}_weapon_ammo_val`] = clampInt(v[`${r}_${k}_weapon_ammo_val`], getMin("wpn_ammo"), n);
 				setAttrs(u, {silent: true});
 			});
@@ -985,26 +1109,38 @@
 
 		const checkWeaponField = function(k, s, n) { // k = repeating weapon id, s = repeating weapon suffix, n = new value
 			let u = {};
-			let p = s.split("_")[0];
-			if (s.endsWith("_level")) {
-				n = n == "1" ? "" : "_" + n;
-				getAttrs([`repeating_weapons_${k}_weapon_${p}${n}`], v => {
-					u[`repeating_weapons_${k}_weapon_${p}_val`] = v[`repeating_weapons_${k}_weapon_${p}${n}`];
+			let p = s.split("_")[0], i;
+			if (s.endsWith("level")) {
+				i = n == "1" ? "" : "_" + n;
+				getAttrs([`repeating_weapons_${k}_weapon_${p}${i}`], v => {
+					u[`repeating_weapons_${k}_weapon_${p}_val`] = v[`repeating_weapons_${k}_weapon_${p}${i}`];
 					setAttrs(u, {silent: true});
 				});
 			} else {
 				n = clampInt(n, getMin("wpn_" + p), getMax("wpn_" + p));
 				u[`repeating_weapons_${k}_weapon_${s}`] = n;
-				u[`repeating_weapons_${k}_weapon_${p}_val`] = n;
-				setAttrs(u, {silent: true});
+				if (p != "mag") {
+					let t = `repeating_weapons_${k}_weapon_${p}_level`;
+					getAttrs([t], v => {
+						i = v[t] == "1" ? "" : "_" + v[t];
+						if (s == p + i) u[`repeating_weapons_${k}_weapon_${p}_val`] = n;
+						setAttrs(u, {silent: true});
+					});
+				} else setAttrs(u, {silent: true});
 			}
 		};
 
-		const updateSuitDamage = function(k, q, b) { // k = repeating suit id, q = damage type string, b = check selected damage type
+		const updateSuitDamage = function(k, q, b, z) { // k = repeating suit id, q = damage type string, b = check selected damage type, z = parse string
 			getAttrs([`${k}_suit_dmg`, `${k}_suit_${q}`, `${k}_suit_${q}_2`, `${k}_suit_${q}_3`, `${k}_suit_${q}_4`, `${k}_suit_${q}_5`, `${k}_suit_${q}_level`, `resistance_${q}`], (v) => {
 				if (!b || v[`${k}_suit_dmg`] == q) {
-					let u = {};
-					let n = getArmamentLevelValue(v, `${k}_suit_${q}`);
+					let u = {}, n, m;
+					n = getArmamentLevelValue(v, `${k}_suit_${q}`);
+					if (z) n = formatFormula(n);
+					if (getArmamentLevelIndex(v, `${k}_suit_${q}`) != "") {
+						m = v[`${k}_suit_${q}`];
+						if (z) m = formatFormula(m);
+						n = m + "+" + n;
+					}
 					u[`${k}_suit_dmg_str`] = n;
 					u[`${k}_suit_dmg_val`] = parseFormula(n) + " [" + getTranslationByKey("suit_protection") + "]";
 					if (v[`resistance_${q}`] !== undefined) u[`${k}_suit_dmg_val`] += " + " + v[`resistance_${q}`] + " [" + getTranslationByKey("resistance") + "]";
@@ -1027,23 +1163,15 @@
 		const checkSuitField = function(s, n) { // s = source attribute, n = new value
 			let k = s.substr(16,20); // id
 			let t = s.substr(42).split("_")[0]; // suffix
-			let r = "repeating_suits";
-			let i;
-			let u = {};
-			if (t !== "status") {
-				let a = [`${r}_${k}_suit_${t}`, `${r}_${k}_suit_${t}_2`, `${r}_${k}_suit_${t}_3`, `${r}_${k}_suit_${t}_4`, `${r}_${k}_suit_${t}_5`, `${r}_${k}_suit_${t}_level`];
-				getAttrs(a, (v) => {
-					i = s.endsWith("level") ? getArmamentLevelValue(v, `${r}_${k}_suit_${t}`) : clampInt(n, getMin("sui_" + t), getMax("sui_" + t));
-					u[getArmamentLevelString(v, `${r}_${k}_suit_${t}`)] = i;
-					u[`${r}_${k}_suit_${t}_val`] = i;
-					setAttrs(u, {silent: true});
-				});
-			} else {
-				i = clampInt(n, getMin("sui_" + t), getMax("sui_" + t));
-				u[`${r}_${k}_suit_${t}`] = i;
-				u[`${r}_${k}_suit_status_val`] = i < 0 ? i : 0;
+			let r = "repeating_suits", i, u = {};
+			let a = [`${r}_${k}_suit_${t}`, `${r}_${k}_suit_${t}_2`, `${r}_${k}_suit_${t}_3`, `${r}_${k}_suit_${t}_4`, `${r}_${k}_suit_${t}_5`, `${r}_${k}_suit_${t}_level`];
+			getAttrs(a, (v) => {
+				n = clampInt(n, getMin("sui_" + t), getMax("sui_" + t));
+				i = s.endsWith("level") ? getArmamentLevelValue(v, `${r}_${k}_suit_${t}`) : n;
+				if (s.endsWith("level") || s == getArmamentLevelString(v, `${r}_${k}_suit_${t}`)) u[`${r}_${k}_suit_${t}_val`] = i;
+				if (!s.endsWith("level")) u[s] = n;
 				setAttrs(u, {silent: true});
-			}
+			});
 		};
 
 		////////////////////////////////////////////////////////////////////////////
@@ -1070,6 +1198,7 @@
 		};
 
 		const refreshInventoryWeight = function(s, k, w) { // s = section name, k = item id, weight of removed item
+			w = parseNumber(w);
 			let a = [s + "_weight"];
 			let b = s == "equipment" || s == "backpack";
 			if (b) a = a.concat(Stat.weighing_load);
@@ -1248,9 +1377,12 @@
 
 		const restCharacter = function() {
 			console.log("Resting..."); // DEBUG
-			updateAbilities(true);
 			resetVitals(() => {
-				console.log("Resting finished!"); // DEBUG
+				updateAbilities(true, null, null, null, false, () => {
+					checkAbilities(null, null, () => {
+						console.log("Resting finished!"); // DEBUG
+					});
+				});
 			});
 		};
 
@@ -1274,10 +1406,13 @@
 		};
 
 		const updateCharacterType = function(n) { // n = new value
-			console.log("Changing character type..."); // DEBUG
 			let u = {};
-			u["rollbase"] = Roll.rollbase[n];
-			setAttrs(u, {silent: true});
+			getAttrs(["sheet_type"], (v) => {
+				n = n === undefined ? v["sheet_type"] : n;
+				u["rollbase"] = Roll.rollbase[n];
+				u["antecedents_str"] = getTranslationByKey(n == "pc" ? "antecedents" : "traits");
+				setAttrs(u, {silent: true});
+			});
 		};
 
 		////////////////////////////////////////////////////////////////////////////
@@ -1300,10 +1435,14 @@
 
 		const setupTranslations = function() {
 			let u = {};
-			u["modifier_tra"] = getTranslationByKey("modifier");
 			u["whisper_to_gm_tra"] = getTranslationByKey("whisper_to_gm");
 			u["dialog_yes_tra"] = getTranslationByKey("yes");
 			u["dialog_no_tra"] = getTranslationByKey("no");
+			u["rank_tra"] = getTranslationByKey("rank");
+			u["ability_tra"] = getTranslationByKey("ability");
+			u["leadership_tra"] = getTranslationByKey("leadership");
+			u["selfcontrol_tra"] = getTranslationByKey("selfcontrol");
+			u["modifier_tra"] = getTranslationByKey("modifier");
 			u["suit_location_tra"] = getTranslationByKey("suit_location");
 			u["suit_status_tra"] = getTranslationByKey("suit_status");
 			setAttrs(u, {silent: true});
@@ -1479,7 +1618,6 @@
 					console.info("S.T.A.L.K.E.R. Sheet Is Now Updated to v" + Glob.version); // DEBUG
 					if (typeof v["char_rank"] === undefined) stalker.checkExperience(v["xp"]);
 					updateCharacterSheet();
-					updateGender();
 					setAttrs({"version" : Glob.version}, {silent: true});
 				} else {
 					console.info("S.T.A.L.K.E.R. Sheet v" + Glob.version + " Loaded!"); // DEBUG
@@ -1503,9 +1641,9 @@
 			updateGender: updateGender,
 			checkExperience: checkExperience,
 			updateExperience: updateExperience,
-			getAbilities: getAbilities,
 			updateResistances: updateResistances,
 			updateAbilities: updateAbilities,
+			checkAbilities: checkAbilities,
 			updateHitPoints: updateHitPoints,
 			updateWeighingLoad: updateWeighingLoad,
 			updateSpeciality: updateSpeciality,
@@ -1527,6 +1665,7 @@
 			updateInventoryWeight: updateInventoryWeight,
 			refreshInventoryWeight: refreshInventoryWeight,
 			transferItem: transferItem,
+			recalcWeight: recalcWeight,
 			updateMoney: updateMoney,
 			restCharacter: restCharacter,
 			recalcCharacterSheet: recalcCharacterSheet,

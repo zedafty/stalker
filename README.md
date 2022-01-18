@@ -1,13 +1,13 @@
-  ## S.T.A.L.K.E.R. Sheet
+  ## S.T.A.L.K.E.R. SD Character Sheet
 
-  Roll20 Character Sheet for **S.T.A.L.K.E.R. SD** Role Playing Game by *Fabien 'Amatsu' Gest* (5th version, 2011).
+  Roll20 character sheet for **S.T.A.L.K.E.R. SD** role-playing game by *Fabien 'Amatsu' Gest* (5th version, 2011).
   Inspired by video games S.T.A.L.K.E.R.: **Shadow of Chernobyl**, **Clear Sky** & **Call of Pripyat** which rights are owned by GSC Game World.
   Based upon **Capitaine Red** original character sheet.
-  Testing by **Leon Solitaire** and **Pingu**
+  Testing and management by **Leon Solitaire** and **Pingu**.
 
   ### Status
 
-  * achieved 2021-12-27
+  * achieved 2022-01-18
 
   ### Milestone
 
@@ -15,7 +15,7 @@
 
   ### Latest
 
-  * 2.0
+  * 2.1
 
   ### File System
 
