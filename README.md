@@ -21,7 +21,7 @@
 
   * doc -> documents (txt)
   * img -> images (jpg, png)
-  * scr -> scripts (html, js, json)
+  * src -> sources (html, js, json)
 
   ### License
 
