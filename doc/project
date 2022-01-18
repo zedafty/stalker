@@ -1,0 +1,88 @@
+================================================================================
+--------------------------------------------------------------------------------
+# S.T.A.L.K.E.R. Sheet
+--------------------------------------------------------------------------------
+================================================================================
+
+	Roll20 character sheet for S.T.A.L.K.E.R. SD role-playing game by Fabien « Amatsu » Gest (5th version, 2011).
+	Inspired by video games S.T.A.L.K.E.R.: Shadow of Chernobyl, Clear Sky & Call of Pripyat which rights are owned by GSC Game World.
+	Based upon Capitaine Red original character sheet.
+	Testing and management by Leon Solitaire and Pingu.
+
+================================================================================
+--------------------------------------------------------------------------------
+# Structure
+--------------------------------------------------------------------------------
+================================================================================
+
+1) character - Personnage
+	A - state - État civil
+	B - history - Historique
+2) abilities - Caractéristiques
+3) status - État de santé
+	A - vitals - Signes vitaux
+	B - conditions - États préjudiciables
+	C - resistances - Résistances naturelles
+4) specialities - Spécialités
+	A - weapon_specialities - Spécialités martiales
+	B - common_specialities - Spécialités générales
+5) armament - Armement
+	A - weapons - Armes
+	B - suits - Tenues
+	C - artefacts - Artefacts
+6) equipment - Équipement
+7) inventory - Inventaire
+	A - backpack - Sac à dos
+	B - vehicle - Véhicule
+	C - den - Planque
+8) settings - Paramètres
+
+================================================================================
+--------------------------------------------------------------------------------
+# Hit Location
+--------------------------------------------------------------------------------
+================================================================================
+
+	Roll 2d6, optionally, the first d6 can be skept.
+
+	1 = head
+	- > 1 = forehead_left
+	- > 2 = eye_left
+	- > 3 = forehead_right
+	- > 4 = eye_right
+	- > 5 = mouth
+	- > 6 = throat
+	2 = arms
+	- > 1 = hand
+	- > 2 = wrist
+	- > 3 = forearm
+	- > 4 = biceps
+	- > 5 = shoulder
+	- > 6 = elbow
+	3,4,5 = torso
+	- > 1 = heart
+	- > 2 = chest
+	- > 3 = liver
+	- > 4 = spleen
+	- > 5 = stomach
+	- > 6 = pelvis
+	6 = legs
+	- > 1 = foot
+	- > 2 = ankle
+	- > 3 = calf
+	- > 4 = thigh
+	- > 5 = groin
+	- > 6 = knee
+
+================================================================================
+--------------------------------------------------------------------------------
+# Left-overs
+--------------------------------------------------------------------------------
+================================================================================
+
+* Hide unused weapon specialities
+* Hide weapon roll button if unrollable (no spec)
+* Add controllers like money for experience
+* Allow direct money edit
+* Add initiative button
+* Add critical and fumble hits
