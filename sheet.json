@@ -10,7 +10,6 @@
 			"attribute": "show_all_tabs",
 			"type": "checkbox",
 			"value": "1",
-			
 			"displayname": "Show All Tabs",
 			"displaytranslationkey": "show_all_tabs"
 		},
