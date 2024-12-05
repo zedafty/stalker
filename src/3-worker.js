@@ -428,7 +428,7 @@
 		////////////////////////////////////////////////////////////////////////////
 
 		const Glob = { // Global
-			"version" : 2.11
+			"version" : 2.12
 		};
 
 		const Stat = { // Static
@@ -974,12 +974,11 @@
 			} else {
 				u[k] = f;
 				getAttrs([t + "_level"], (v) => {
-					if (t + "_" + v[t + "_level"] == k) {
+					if (t == k || t + "_" + v[t + "_level"] == k) {
 						u[t + "_val"] = "[[" + stalker.parseFormula(f) + "]]";
-						setAttrs(u, {silent: true});
 					}
+					setAttrs(u, {silent: true});
 				});
-				setAttrs(u, {silent: true});
 			}
 		};
 

@@ -432,6 +432,13 @@ $box-shadow-active: 1px 1px 3px $bgd-dark-thrd inset
 // -----------------------------------------------------------------------------
 // =============================================================================
 
+.sheet-darkmode
+	.sheetform
+		background-color: inherit
+	.stalker
+		label
+			color: $txt-pc
+
 .stalker
 	label
 		user-select: none
@@ -3468,14 +3475,14 @@ $box-shadow-active: 1px 1px 3px $bgd-dark-thrd inset
 		margin: 4px 0
 		padding: 4px
 		background-color: $bgd-base-qrtr
+		.inlinerollresult,
+		.inlinerollresult.fullcrit,
+		.inlinerollresult.fullfail,
+		.inlinerollresult.importantroll
+			font-size: 16px
+			border-color: $brd-base-full
+			background-color: $bgd-base-half
 
-	.inlinerollresult,
-	.inlinerollresult.fullcrit,
-	.inlinerollresult.fullfail,
-	.inlinerollresult.importantroll
-		font-size: 16px
-		border-color: $brd-base-full
-		background-color: $bgd-base-half
 	.sheet-result.sheet-damage .inlinerollresult
 		border-color: $brd-warning
 		background-color: $bgd-warning
